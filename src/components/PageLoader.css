@@ -1,0 +1,47 @@
+.page-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-primary-deep);
+  opacity: 1;
+  transition: opacity 0.4s ease;
+}
+
+.page-loader.is-fading {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.page-loader__mark {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  animation: page-loader-in 0.5s ease-out;
+}
+
+@keyframes page-loader-in {
+  from {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.page-loader__mark span {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: -0.01em;
+  color: #fff;
+}
+
+body.is-loading {
+  overflow: hidden;
+}

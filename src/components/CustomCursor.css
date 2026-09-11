@@ -1,0 +1,22 @@
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  margin: -10px 0 0 -10px;
+  border-radius: 50%;
+  background: var(--color-mint);
+  mix-blend-mode: exclusion;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 250;
+  transition: opacity 0.25s ease;
+  will-change: transform;
+}
+
+@media (max-width: 900px) {
+  .custom-cursor {
+    display: none;
+  }
+}
