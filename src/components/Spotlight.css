@@ -1,10 +1,15 @@
 .spotlight {
   position: relative;
   z-index: 2;
+}
+
+.spotlight__frame {
+  position: relative;
   min-height: 560px;
   display: flex;
   align-items: flex-end;
   overflow: hidden;
+  will-change: transform;
 }
 
 .spotlight__img {
@@ -32,7 +37,7 @@
   grid-template-columns: 1.3fr 1fr;
   gap: 48px;
   align-items: end;
-  padding: 80px 24px;
+  padding: 80px 24px 210px;
 }
 
 .spotlight__title {
@@ -74,12 +79,12 @@
 }
 
 @media (max-width: 900px) {
-  .spotlight {
+  .spotlight__frame {
     min-height: 480px;
   }
   .spotlight__inner {
     grid-template-columns: 1fr;
-    padding: 56px 24px;
+    padding: 56px 24px 120px;
     gap: 32px;
   }
   .spotlight__facts {

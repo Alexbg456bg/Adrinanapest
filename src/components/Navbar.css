@@ -42,6 +42,14 @@
   color: #fff;
 }
 
+.navbar__logo svg {
+  transition: transform 0.3s ease;
+}
+
+.navbar--scrolled .navbar__logo svg {
+  transform: scale(0.84);
+}
+
 .navbar__logo-text {
   display: flex;
   flex-direction: column;
@@ -60,6 +68,16 @@
   letter-spacing: 0.09em;
   text-transform: uppercase;
   color: var(--color-accent);
+  max-height: 14px;
+  opacity: 1;
+  overflow: hidden;
+  transition: max-height 0.3s ease, opacity 0.25s ease, margin-top 0.3s ease;
+}
+
+.navbar--scrolled .navbar__logo-text small {
+  max-height: 0;
+  opacity: 0;
+  margin-top: -2px;
 }
 
 .navbar__logo-mark {

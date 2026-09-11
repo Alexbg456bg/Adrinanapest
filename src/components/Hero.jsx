@@ -3,13 +3,13 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 import { IconCheck, IconPhone, IconShield } from './icons.jsx'
 import PestBackdrop from './PestBackdrop.jsx'
 import Magnetic from './Magnetic.jsx'
-import hlebarkaPhoto from '../assets/pests/hlebarka.png'
-import mravkaPhoto from '../assets/pests/mravka.png'
-import osaPhoto from '../assets/pests/osa.png'
-import balhaPhoto from '../assets/pests/balha.png'
-import darvenicaPhoto from '../assets/pests/darvenica.png'
-import karlezhPhoto from '../assets/pests/karlezh.png'
-import gryzachPhoto from '../assets/pests/gryzach.png'
+import hlebarkaPhoto from '../assets/pests/hlebarka.jpg'
+import mravkaPhoto from '../assets/pests/mravka.jpg'
+import osaPhoto from '../assets/pests/osa.jpg'
+import balhaPhoto from '../assets/pests/balha.jpg'
+import darvenicaPhoto from '../assets/pests/darvenica.jpg'
+import karlezhPhoto from '../assets/pests/karlezh.jpg'
+import gryzachPhoto from '../assets/pests/gryzach.jpg'
 import wallTreatmentPhoto from '../assets/team/wall-treatment.jpg'
 import './Hero.css'
 
@@ -52,12 +52,13 @@ export default function Hero() {
     offset: ['start start', 'end start'],
   })
 
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 0.86])
-  const opacity = useTransform(scrollYProgress, [0, 0.85, 1], [1, 0.3, 0])
-  const radius = useTransform(scrollYProgress, [0, 1], [0, 56])
-  const y = useTransform(scrollYProgress, [0, 1], [0, -60])
-  const blur = useTransform(scrollYProgress, [0, 1], [0, 6])
-  const filter = useTransform(blur, (v) => `blur(${v}px)`)
+  // "Стек карти" преход — Hero остава рязък (без blur), само леко се смалява,
+  // заоблява и притъмнява, докато следващата секция (Stats) буквално се
+  // изтегля отгоре му като карта (виж Stats.css — голям отрицателен margin-top).
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 0.92])
+  const radius = useTransform(scrollYProgress, [0, 1], [0, 48])
+  const y = useTransform(scrollYProgress, [0, 1], [0, -30])
+  const dim = useTransform(scrollYProgress, [0, 0.8], [0, 0.6])
   const cueOpacity = useTransform(scrollYProgress, [0, 0.3], [1, 0])
   const backdropParallax = useTransform(scrollYProgress, [0, 1], [0, -60])
 
@@ -66,8 +67,9 @@ export default function Hero() {
       <motion.section
         id="top"
         className="hero has-cursor-accent"
-        style={{ scale, opacity, borderRadius: radius, y, filter }}
+        style={{ scale, borderRadius: radius, y }}
       >
+        <motion.div className="hero__scrim" aria-hidden="true" style={{ opacity: dim }} />
         <div className="hero__split">
           <div className="hero__text">
             <motion.div

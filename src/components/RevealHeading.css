@@ -1,0 +1,9 @@
+.reveal-word__mask {
+  display: inline-block;
+  overflow: hidden;
+}
+
+.reveal-word {
+  display: inline-block;
+  will-change: transform, opacity;
+}

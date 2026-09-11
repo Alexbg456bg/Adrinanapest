@@ -1,10 +1,11 @@
 import { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-import { IconBug, IconRat, IconSpray, IconTick, IconChevronDown } from './icons.jsx'
-import PestBackdrop from './PestBackdrop.jsx'
-import hlebarkaPhoto from '../assets/pests/hlebarka.png'
-import gryzachPhoto from '../assets/pests/gryzach.png'
-import karlezhPhoto from '../assets/pests/karlezh.png'
+import { AnimatePresence, motion } from 'framer-motion'
+import { IconBug, IconRat, IconSpray, IconTick } from './icons.jsx'
+import RevealHeading from './RevealHeading.jsx'
+import hlebarkaPhoto from '../assets/pests/hlebarka.jpg'
+import gryzachPhoto from '../assets/pests/gryzach.jpg'
+import karlezhPhoto from '../assets/pests/karlezh.jpg'
+import disinfectPhoto from '../assets/team/warehouse-flashlight.jpg'
 import './Services.css'
 
 const SERVICES = [
@@ -12,21 +13,21 @@ const SERVICES = [
     icon: IconSpray,
     title: 'Дезинфекция',
     desc: 'Унищожаване на болестотворни микроорганизми във външната среда — дизентерия, салмонелоза, вирусни хепатити, туберкулоза и SARS-CoV-2 (COVID-19).',
-    more: 'Дезинфекцията редуцира количеството микроорганизми върху обработената повърхност с минимум 84–99% (при обикновено почистване ефектът е едва 50–80%). При епидемична обстановка или съмнение за особено опасна инфекция дезинфекционните мероприятия са задължителни по закон.',
-    photo: null,
+    more: 'Дезинфекцията редуцира количеството микроорганизми върху обработената повърхност с минимум 84–99% (при обикновено почистване ефектът е едва 50–80%). При епидемична обстановка дезинфекционните мероприятия са задължителни по закон.',
+    photo: disinfectPhoto,
   },
   {
     icon: IconBug,
     title: 'Дезинсекция',
-    desc: 'Пълно унищожаване на хлебарки, дървеници, мравки, бълхи, оси и комари — в жилища, офиси и производствени помещения.',
-    more: 'Хлебарките пренасят патогенни микроорганизми (полиомиелит, дизентерия, коремен тиф) по повърхности и храна. За траен резултат третираме едновременно всички помещения в обекта — вкл. мазета, тавани и шахти — с интервал между обработките до 25–30 дни при по-висока заселеност.',
+    desc: 'Пълно унищожаване на хлебарки, дървеници, мравки, бълхи и оси — в жилища, офиси и производствени помещения.',
+    more: 'Хлебарките пренасят патогенни микроорганизми по повърхности и храна. За траен резултат третираме едновременно всички помещения в обекта — вкл. мазета, тавани и шахти — с интервал между обработките до 25–30 дни при по-висока заселеност.',
     photo: hlebarkaPhoto,
   },
   {
     icon: IconRat,
     title: 'Дератизация',
     desc: 'Контрол и унищожаване на гризачи — домашни, полски и горски мишки, сив и черен плъх — с изграждане на трайна защита.',
-    more: 'Гризачите замърсяват храни и повърхности с косми, урина и изпражнения и са преносители на тежки заразни заболявания. Ключово условие за успех е изграждането на плъхонепроницаемост на обекта и редовен профилактичен мониторинг от лицензиран екип.',
+    more: 'Гризачите замърсяват храни и повърхности с косми, урина и изпражнения и са преносители на тежки заразни заболявания. Ключово условие за успех е изграждането на плъхонепроницаемост на обекта и редовен профилактичен мониторинг.',
     photo: gryzachPhoto,
   },
   {
@@ -38,78 +39,67 @@ const SERVICES = [
   },
 ]
 
-const container = {
-  hidden: {},
-  show: { transition: { staggerChildren: 0.1 } },
-}
-
-const cardVariant = {
-  hidden: { opacity: 0, y: 28 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' } },
+function pad(n) {
+  return String(n).padStart(2, '0')
 }
 
 export default function Services() {
-  const [openIdx, setOpenIdx] = useState(null)
+  const [active, setActive] = useState(0)
+  const current = SERVICES[active]
 
   return (
     <section id="uslugi" className="section services">
       <div className="container">
         <div className="section-head">
           <span className="eyebrow">Какво предлагаме</span>
-          <h2>ДДД услуги за <span className="accent-text">дом и бизнес</span></h2>
+          <RevealHeading>ДДД услуги за <span className="accent-text">дом и бизнес</span></RevealHeading>
           <p>Пълен пакет услуги по <strong>Наредба № 1/2018</strong> на МЗ, съобразен с типа обект и степента на зараза.</p>
         </div>
 
-        <motion.div
-          className="services__grid"
-          variants={container}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, margin: '-80px' }}
-        >
-          {SERVICES.map((s, i) => {
-            const open = openIdx === i
-            return (
+        <div className="services-scrolly">
+          <div className="services-scrolly__media">
+            <AnimatePresence mode="wait">
+              <motion.img
+                key={current.title}
+                src={current.photo}
+                alt={current.title}
+                initial={{ opacity: 0, scale: 1.06 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.98 }}
+                transition={{ duration: 0.5, ease: 'easeOut' }}
+              />
+            </AnimatePresence>
+            <div className="services-scrolly__media-overlay">
+              <span className="services-scrolly__media-number">{pad(active + 1)} / {pad(SERVICES.length)}</span>
+              <h3>{current.title}</h3>
+            </div>
+          </div>
+
+          <div className="services-scrolly__list">
+            {SERVICES.map((s, i) => (
               <motion.div
                 key={s.title}
-                className="services__card"
-                variants={cardVariant}
-                whileHover={{ y: -8 }}
+                className={`services-scrolly__row ${active === i ? 'is-active' : ''}`}
+                onViewportEnter={() => setActive(i)}
+                viewport={{ margin: '-45% 0px -45% 0px' }}
               >
-                {s.photo && <PestBackdrop photo={s.photo} className="services__backdrop" />}
-                <div className="services__icon">
-                  <s.icon width={26} height={26} />
+                <img src={s.photo} alt={s.title} className="services-scrolly__row-photo" loading="lazy" />
+                <div className="services-scrolly__top">
+                  <span className="services-scrolly__icon">
+                    <s.icon width={24} height={24} />
+                  </span>
+                  <span className="services-scrolly__number">{pad(i + 1)}</span>
                 </div>
                 <h3>{s.title}</h3>
                 <p>{s.desc}</p>
-
-                <AnimatePresence initial={false}>
-                  {open && (
-                    <motion.p
-                      className="services__more"
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: 'auto' }}
-                      exit={{ opacity: 0, height: 0 }}
-                      transition={{ duration: 0.3, ease: 'easeInOut' }}
-                    >
-                      {s.more}
-                    </motion.p>
-                  )}
-                </AnimatePresence>
-
-                <button
-                  type="button"
-                  className="services__link"
-                  onClick={() => setOpenIdx(open ? null : i)}
-                  aria-expanded={open}
-                >
-                  {open ? 'Скрий' : 'Виж повече'}
-                  <IconChevronDown width={14} height={14} className={open ? 'is-open' : ''} />
-                </button>
+                <p className="services-scrolly__more">{s.more}</p>
+                <a href="#kontakti" className="services-scrolly__link">
+                  Запитване за {s.title.toLowerCase()} →
+                </a>
               </motion.div>
-            )
-          })}
-        </motion.div>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   )

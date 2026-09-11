@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { IconStar, IconArrowLeft, IconArrowRight, IconQuote } from './icons.jsx'
+import RevealHeading from './RevealHeading.jsx'
 import './Testimonials.css'
 
 // ПРИМЕРНИ отзиви — заменете с реални коментари на клиенти (с тяхно съгласие) преди пускане в реална експлоатация.
@@ -54,7 +55,7 @@ export default function Testimonials() {
       <div className="container">
         <div className="section-head">
           <span className="eyebrow">Отзиви</span>
-          <h2>Какво казват <span className="accent-text">клиентите ни</span></h2>
+          <RevealHeading>Какво казват <span className="accent-text">клиентите ни</span></RevealHeading>
           {/* TODO: примерни отзиви — заменете с реални преди пускане в реална експлоатация */}
         </div>
 

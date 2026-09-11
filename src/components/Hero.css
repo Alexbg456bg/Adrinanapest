@@ -20,6 +20,14 @@
   min-height: 100vh;
 }
 
+.hero__scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  background: var(--color-primary-deep);
+  pointer-events: none;
+}
+
 /* ---------- Left: solid text panel — guaranteed contrast ---------- */
 
 .hero__text {
@@ -359,6 +367,9 @@
     opacity: 1 !important;
     filter: none !important;
     border-radius: 0 !important;
+  }
+  .hero__scrim {
+    display: none !important;
   }
   .hero__split {
     flex-direction: column;

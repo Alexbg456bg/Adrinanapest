@@ -11,16 +11,15 @@ import Testimonials from './components/Testimonials.jsx'
 import Contact from './components/Contact.jsx'
 import Footer from './components/Footer.jsx'
 import FloatingCall from './components/FloatingCall.jsx'
+import BackToTop from './components/BackToTop.jsx'
 import ScrollProgress from './components/ScrollProgress.jsx'
 import PageLoader from './components/PageLoader.jsx'
-import CustomCursor from './components/CustomCursor.jsx'
 
 function App() {
   return (
     <>
       <PageLoader />
       <ScrollProgress />
-      <CustomCursor />
       <Navbar />
       <main>
         <Hero />
@@ -36,6 +35,7 @@ function App() {
       </main>
       <Footer />
       <FloatingCall />
+      <BackToTop />
     </>
   )
 }

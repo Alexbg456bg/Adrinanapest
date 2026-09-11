@@ -1,6 +1,6 @@
 .pests__grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
   gap: 18px;
 }
 
@@ -8,13 +8,16 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
-  padding: 26px 12px;
+  gap: 14px;
+  padding: 28px 12px;
   background: #fff;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
   text-align: center;
-  transition: box-shadow 0.25s ease, border-color 0.25s ease;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  transition: box-shadow 0.25s ease, border-color 0.25s ease, transform 0.15s ease;
 }
 
 .pests__item:hover {
@@ -22,12 +25,16 @@
   border-color: transparent;
 }
 
+.pests__item:active {
+  transform: scale(0.97);
+}
+
 .pests__icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 64px;
-  height: 64px;
+  width: 92px;
+  height: 92px;
   border-radius: 50%;
   background: rgba(5, 166, 143, 0.1);
   color: var(--color-accent);

@@ -2,6 +2,9 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { IconPhone, IconMail, IconPin, IconClock } from './icons.jsx'
 import Magnetic from './Magnetic.jsx'
+import PestBackdrop from './PestBackdrop.jsx'
+import RevealHeading from './RevealHeading.jsx'
+import vanInspectionPhoto from '../assets/team/van-inspection.jpg'
 import './Contact.css'
 
 const CONTACT_INFO = {
@@ -55,6 +58,9 @@ export default function Contact() {
   return (
     <section id="kontakti" className="section contact">
       <div className="container contact__inner has-cursor-accent">
+        <PestBackdrop photo={vanInspectionPhoto} className="contact__backdrop" />
+        <div className="contact__grid" aria-hidden="true" />
+
         <motion.div
           className="contact__info"
           initial={{ opacity: 0, x: -24 }}
@@ -63,31 +69,54 @@ export default function Contact() {
           transition={{ duration: 0.5 }}
         >
           <span className="eyebrow">Контакти</span>
-          <h2>Заявете оглед <span className="accent-text">още днес</span></h2>
+          <RevealHeading>Заявете оглед <span className="accent-text">още днес</span></RevealHeading>
           <p className="contact__lead">
             Свържете се с нас по телефон, имейл или чрез формата — отговаряме бързо.
           </p>
 
           <ul className="contact__list">
             <li>
-              <IconPhone width={20} height={20} />
-              <a href={`tel:+359${CONTACT_INFO.phone.replace(/^0/, '').replace(/\s/g, '')}`}>{CONTACT_INFO.phone}</a>
-              <span className="contact__sep">/</span>
-              <a href={`tel:+359${CONTACT_INFO.phone2.replace(/^0/, '').replace(/\s/g, '')}`}>{CONTACT_INFO.phone2}</a>
+              <span className="contact__list-icon"><IconPhone width={18} height={18} /></span>
+              <div className="contact__list-text">
+                <a href={`tel:+359${CONTACT_INFO.phone.replace(/^0/, '').replace(/\s/g, '')}`}>{CONTACT_INFO.phone}</a>
+                <span className="contact__sep">/</span>
+                <a href={`tel:+359${CONTACT_INFO.phone2.replace(/^0/, '').replace(/\s/g, '')}`}>{CONTACT_INFO.phone2}</a>
+              </div>
             </li>
             <li>
-              <IconMail width={20} height={20} />
-              <a href={`mailto:${CONTACT_INFO.email}`}>{CONTACT_INFO.email}</a>
+              <span className="contact__list-icon"><IconMail width={18} height={18} /></span>
+              <div className="contact__list-text">
+                <a href={`mailto:${CONTACT_INFO.email}`}>{CONTACT_INFO.email}</a>
+              </div>
             </li>
             <li>
-              <IconPin width={20} height={20} />
-              <span>{CONTACT_INFO.address}</span>
+              <span className="contact__list-icon"><IconPin width={18} height={18} /></span>
+              <div className="contact__list-text">
+                <span>{CONTACT_INFO.address}</span>
+              </div>
             </li>
             <li>
-              <IconClock width={20} height={20} />
-              <span>{CONTACT_INFO.hours}</span>
+              <span className="contact__list-icon"><IconClock width={18} height={18} /></span>
+              <div className="contact__list-text">
+                <span>{CONTACT_INFO.hours}</span>
+              </div>
             </li>
           </ul>
+
+          <div className="contact__trust">
+            <div className="contact__trust-item">
+              <strong>20+</strong>
+              <span>години опит</span>
+            </div>
+            <div className="contact__trust-item">
+              <strong>№ 2-25</strong>
+              <span>лиценз от 2005 г.</span>
+            </div>
+            <div className="contact__trust-item">
+              <strong>24 ч.</strong>
+              <span>реакция при спешност</span>
+            </div>
+          </div>
         </motion.div>
 
         <motion.form

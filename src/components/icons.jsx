@@ -185,6 +185,19 @@ export const IconArrowRight = (props) => (
   </svg>
 )
 
+export const IconSearch = (props) => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" {...props}>
+    <circle cx="10.5" cy="10.5" r="6.5" />
+    <path d="m20 20-4.6-4.6" strokeLinecap="round" />
+  </svg>
+)
+
+export const IconX = (props) => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" {...props}>
+    <path d="M6 6l12 12M18 6 6 18" strokeLinecap="round" />
+  </svg>
+)
+
 export const IconQuote = (props) => (
   <svg viewBox="0 0 32 24" fill="currentColor" {...props}>
     <path d="M4 24V15.2C4 8.6 7.9 3.6 14 0l2.2 3.4C12 6 9.9 8.7 9.6 12.4c.5-.2 1.1-.3 1.8-.3 3 0 5.4 2.3 5.4 5.6 0 3.4-2.6 6.3-6 6.3-3.8 0-6.8-2.7-6.8-8zm17.8 0V15.2c0-6.6 3.9-11.6 10-15.2l2.2 3.4c-4.2 2.6-6.3 5.3-6.6 9 .5-.2 1.1-.3 1.8-.3 3 0 5.4 2.3 5.4 5.6 0 3.4-2.6 6.3-6 6.3-3.8 0-6.8-2.7-6.8-8z" />

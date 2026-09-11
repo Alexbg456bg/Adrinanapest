@@ -2,6 +2,7 @@ import { useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { IconCertificate, IconUsers, IconLeaf, IconBuilding, IconRepeat } from './icons.jsx'
 import corridorCheckPhoto from '../assets/team/corridor-check.jpg'
+import RevealHeading from './RevealHeading.jsx'
 import './WhyUs.css'
 
 const POINTS = [
@@ -67,7 +68,7 @@ export default function WhyUs() {
 
         <div className="why__content">
           <span className="eyebrow">Защо да изберете нас</span>
-          <h2>Резултат, на който <span className="accent-text">можете да разчитате</span></h2>
+          <RevealHeading>Резултат, на който <span className="accent-text">можете да разчитате</span></RevealHeading>
 
           <div className="why__list">
             {POINTS.map((p, i) => (

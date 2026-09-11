@@ -1,0 +1,87 @@
+body.pest-modal-open {
+  overflow: hidden;
+}
+
+.pest-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(6, 20, 28, 0.6);
+  backdrop-filter: blur(3px);
+}
+
+.pest-modal {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  max-height: 90vh;
+  overflow-y: auto;
+  background: #fff;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+}
+
+.pest-modal__close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--color-primary);
+  box-shadow: var(--shadow-sm);
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.pest-modal__close:hover {
+  background: var(--color-accent);
+  color: #fff;
+  transform: rotate(90deg);
+}
+
+.pest-modal__photo {
+  width: 100%;
+  aspect-ratio: 16 / 11;
+  overflow: hidden;
+}
+
+.pest-modal__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.pest-modal__body {
+  padding: 26px 28px 30px;
+}
+
+.pest-modal__body h3 {
+  font-size: 22px;
+  margin-bottom: 12px;
+}
+
+.pest-modal__body p {
+  font-size: 14.5px;
+  color: var(--color-text-muted);
+  margin-bottom: 22px;
+}
+
+.pest-modal__body .btn {
+  width: 100%;
+}
+
+@media (max-width: 480px) {
+  .pest-modal__body {
+    padding: 22px 20px 26px;
+  }
+}
