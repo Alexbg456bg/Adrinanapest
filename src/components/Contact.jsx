@@ -1,6 +1,6 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
-import { IconPhone, IconMail, IconPin, IconClock } from './icons.jsx'
+import { IconPhone, IconMail, IconPin, IconClock, IconSpray } from './icons.jsx'
 import Magnetic from './Magnetic.jsx'
 import PestBackdrop from './PestBackdrop.jsx'
 import RevealHeading from './RevealHeading.jsx'
@@ -18,17 +18,31 @@ const CONTACT_INFO = {
 
 const SERVICES = ['Дезинсекция', 'Дератизация', 'Дезинфекция', 'Дезакаризация', 'Друго']
 
-/*
-  Хостингът е SuperHosting (споделен PHP хостинг, без база данни), затова формата
-  изпраща заявката към public/contact.php чрез fetch — при качване на dist/ на
-  хостинга, contact.php застава на същия път и изпраща имейл до CONTACT_INFO.email.
-  При локална разработка (npm run dev) заявката ще върне грешка, тъй като Vite
-  не изпълнява PHP — това е очаквано, тества се само след качване на хостинга.
-*/
+const EMPTY_FORM = { name: '', phone: '', email: '', service: SERVICES[0], message: '', _gotcha: '' }
+
+// Ъгли на "капките" при пръскащата анимация след успешно изпращане.
+const SPRAY_ANGLES = [-48, -28, -8, 12, 32, 50, 2]
+
+// Формата изпраща директно през Formspree (без нужда от бекенд/PHP хостинг) —
+// работи еднакво в локална разработка и на живо. Имейлът, на който пристигат
+// заявките, се управлява от настройките на формуляра в dashboard-а на Formspree
+// (formspree.io/forms), не от кода — смяната на получателя не изисква редеплой.
+const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xljeyreq'
 
 export default function Contact() {
-  const [form, setForm] = useState({ name: '', phone: '', email: '', service: SERVICES[0], message: '', company: '' })
+  const [form, setForm] = useState(EMPTY_FORM)
   const [status, setStatus] = useState('idle') // idle | sending | sent | error
+
+  // След успешно изпращане пуска кратка "пръскаща" анимация, после нулира
+  // формата, за да може да се изпрати ново запитване.
+  useEffect(() => {
+    if (status !== 'sent') return undefined
+    const timer = setTimeout(() => {
+      setStatus('idle')
+      setForm(EMPTY_FORM)
+    }, 1900)
+    return () => clearTimeout(timer)
+  }, [status])
 
   const handleChange = (e) => {
     setForm((f) => ({ ...f, [e.target.name]: e.target.value }))
@@ -36,16 +50,15 @@ export default function Contact() {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    if (form.company) return // honeypot — бот попълнил скрито поле
+    if (form._gotcha) return // honeypot — бот попълнил скрито поле
     setStatus('sending')
     try {
-      const res = await fetch('/contact.php', {
+      const res = await fetch(FORMSPREE_ENDPOINT, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({ ...form, _subject: `Ново запитване — ${form.service}` }),
       })
-      const data = await res.json().catch(() => null)
-      if (res.ok && data?.success) {
+      if (res.ok) {
         setStatus('sent')
       } else {
         setStatus('error')
@@ -133,38 +146,47 @@ export default function Contact() {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
             >
-              <svg className="contact__success-check" viewBox="0 0 64 64" fill="none">
-                <motion.circle
-                  cx="32"
-                  cy="32"
-                  r="28"
-                  stroke="var(--color-accent)"
-                  strokeWidth="3"
-                  initial={{ pathLength: 0 }}
-                  animate={{ pathLength: 1 }}
-                  transition={{ duration: 0.6, ease: 'easeOut' }}
-                />
-                <motion.path
-                  d="M20 33.5 28 41 44 24"
-                  stroke="var(--color-accent)"
-                  strokeWidth="3.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  initial={{ pathLength: 0 }}
-                  animate={{ pathLength: 1 }}
-                  transition={{ duration: 0.4, delay: 0.5, ease: 'easeOut' }}
-                />
-              </svg>
-              <h3>Благодарим ви!</h3>
-              <p>Заявката е изпратена. Ще се свържем с вас възможно най-скоро.</p>
+              <div className="contact__spray" aria-hidden="true">
+                <motion.div
+                  className="contact__spray-icon"
+                  animate={{ rotate: [0, -14, 10, -6, 0] }}
+                  transition={{ duration: 0.55, ease: 'easeInOut' }}
+                >
+                  <IconSpray width={40} height={40} />
+                </motion.div>
+                {SPRAY_ANGLES.map((angle, i) => {
+                  const rad = (angle * Math.PI) / 180
+                  const dist = 60 + (i % 3) * 12
+                  return (
+                    <motion.span
+                      key={i}
+                      className="contact__droplet"
+                      initial={{ opacity: 0, x: 0, y: 0, scale: 0.5 }}
+                      animate={{
+                        opacity: [0, 1, 0],
+                        x: Math.cos(rad) * dist,
+                        y: Math.sin(rad) * dist,
+                        scale: [0.5, 1, 0.5],
+                      }}
+                      transition={{ duration: 0.65, delay: 0.1 + i * 0.05, ease: 'easeOut' }}
+                    />
+                  )
+                })}
+              </div>
+              <motion.h3 initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}>
+                Изпратено!
+              </motion.h3>
+              <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4 }}>
+                Ще се свържем с вас възможно най-скоро.
+              </motion.p>
             </motion.div>
           ) : (
             <>
               {/* honeypot — скрито за хора, ботовете обикновено го попълват */}
               <input
                 type="text"
-                name="company"
-                value={form.company}
+                name="_gotcha"
+                value={form._gotcha}
                 onChange={handleChange}
                 className="contact__honeypot"
                 tabIndex={-1}

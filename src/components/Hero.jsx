@@ -7,7 +7,6 @@ import hlebarkaPhoto from '../assets/pests/hlebarka.jpg'
 import mravkaPhoto from '../assets/pests/mravka.jpg'
 import osaPhoto from '../assets/pests/osa.jpg'
 import balhaPhoto from '../assets/pests/balha.jpg'
-import darvenicaPhoto from '../assets/pests/darvenica.jpg'
 import karlezhPhoto from '../assets/pests/karlezh.jpg'
 import gryzachPhoto from '../assets/pests/gryzach.jpg'
 import wallTreatmentPhoto from '../assets/team/wall-treatment.jpg'
@@ -32,7 +31,6 @@ const ORBIT_ITEMS = [
   { photo: mravkaPhoto, label: 'Мравки' },
   { photo: osaPhoto, label: 'Оси' },
   { photo: balhaPhoto, label: 'Бълхи' },
-  { photo: darvenicaPhoto, label: 'Дървеници' },
   { photo: gryzachPhoto, label: 'Гризачи' },
   { photo: karlezhPhoto, label: 'Кърлежи' },
 ]

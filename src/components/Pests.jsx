@@ -4,11 +4,11 @@ import hlebarkaPhoto from '../assets/pests/hlebarka.jpg'
 import mravkaPhoto from '../assets/pests/mravka.jpg'
 import osaPhoto from '../assets/pests/osa.jpg'
 import balhaPhoto from '../assets/pests/balha.jpg'
-import darvenicaPhoto from '../assets/pests/darvenica.jpg'
 import karlezhPhoto from '../assets/pests/karlezh.jpg'
 import gryzachPhoto from '../assets/pests/gryzach.jpg'
 import PestModal from './PestModal.jsx'
 import RevealHeading from './RevealHeading.jsx'
+import SprayReveal from './SprayReveal.jsx'
 import './Pests.css'
 
 const PESTS = [
@@ -31,11 +31,6 @@ const PESTS = [
     photo: balhaPhoto,
     label: 'Бълхи',
     info: 'Ларвите оцеляват с месеци в килими, мека мебел и пукнатини по пода. Третирането само на домашния любимец не е достатъчно — нужна е обработка на цялото жилище.',
-  },
-  {
-    photo: darvenicaPhoto,
-    label: 'Дървеници',
-    info: 'Хранят се с кръв през нощта и се разпространяват лесно чрез багаж, дрехи и мебели втора употреба. Изключително устойчиви на обикновени препарати — нужна е специализирана обработка.',
   },
   {
     photo: gryzachPhoto,
@@ -71,29 +66,31 @@ export default function Pests() {
           <p>Регулярната обработка и правилният метод дават <strong>траен резултат</strong> — независимо от вида на вредителя.</p>
         </div>
 
-        <motion.div
-          className="pests__grid"
-          variants={container}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, margin: '-60px' }}
-        >
-          {PESTS.map((p) => (
-            <motion.button
-              type="button"
-              key={p.label}
-              className="pests__item"
-              variants={item}
-              whileHover={{ y: -6 }}
-              onClick={() => setSelected(p)}
-            >
-              <span className="pests__icon pests__icon--photo">
-                <img src={p.photo} alt={p.label} loading="lazy" />
-              </span>
-              <span className="pests__label">{p.label}</span>
-            </motion.button>
-          ))}
-        </motion.div>
+        <SprayReveal>
+          <motion.div
+            className="pests__grid"
+            variants={container}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, margin: '-60px' }}
+          >
+            {PESTS.map((p) => (
+              <motion.button
+                type="button"
+                key={p.label}
+                className="pests__item"
+                variants={item}
+                whileHover={{ y: -6 }}
+                onClick={() => setSelected(p)}
+              >
+                <span className="pests__icon pests__icon--photo">
+                  <img src={p.photo} alt={p.label} loading="lazy" />
+                </span>
+                <span className="pests__label">{p.label}</span>
+              </motion.button>
+            ))}
+          </motion.div>
+        </SprayReveal>
       </div>
 
       <PestModal pest={selected} onClose={() => setSelected(null)} />
