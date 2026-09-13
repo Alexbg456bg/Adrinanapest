@@ -1,35 +1,35 @@
 import { useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
-import { IconCertificate, IconUsers, IconLeaf, IconBuilding, IconRepeat } from './icons.jsx'
+import { IconClock, IconPin, IconLeaf, IconBuilding, IconCertificate } from './icons.jsx'
 import corridorCheckPhoto from '../assets/team/corridor-check.jpg'
-import RevealHeading from './RevealHeading.jsx'
+import BlurReveal from './BlurReveal.jsx'
 import './WhyUs.css'
 
 const POINTS = [
   {
-    icon: IconCertificate,
-    title: 'Лицензирани от 2005 г.',
-    desc: 'Удостоверение № 2-25/01.04.2005 г. Работим по Наредба № 1 от 5 януари 2018 г. на Министерство на здравеопазването.',
+    icon: IconClock,
+    title: 'Опит от 2003 г.',
+    desc: '23 години практика в обекти с висока натовареност и постоянен режим на работа.',
   },
   {
-    icon: IconUsers,
-    title: 'Семейна фирма с грижа',
-    desc: 'Обслужваме клиенти в София вече над 20 години — лично отношение, коректност и доверие.',
+    icon: IconPin,
+    title: 'Без регионално ограничение',
+    desc: 'Обслужваме обекти в цялата страна по договорен график, съобразен с производствения режим.',
   },
   {
     icon: IconLeaf,
-    title: 'Сертифицирани препарати',
-    desc: 'Използваме биоцидни продукти с разрешение от Министерство на здравеопазването на марки като Bayer, BASF и Novartis.',
+    title: 'IPM подход',
+    desc: 'Комбинация от наблюдение, превенция и целево третиране — вместо еднократна намеса без проследяване.',
   },
   {
     icon: IconBuilding,
-    title: 'За дома и бизнеса',
-    desc: 'Жилища, офиси, ресторанти, хотели, училища, детски градини, складове и производствени обекти.',
+    title: 'За индустрия и институции',
+    desc: 'Производствени линии, логистични центрове, хранително-вкусова промишленост, хотели и административни сгради.',
   },
   {
-    icon: IconRepeat,
-    title: 'Еднократни и абонаментни планове',
-    desc: 'От еднократна обработка до редовен абонамент по график, съгласуван с вас.',
+    icon: IconCertificate,
+    title: 'Протокол след всяко третиране',
+    desc: 'Документация и фактура при всяко посещение — проследимост и готовност за вътрешна или външна проверка.',
   },
 ]
 
@@ -49,7 +49,7 @@ export default function WhyUs() {
           className="why__media"
           initial={{ opacity: 0, x: -30 }}
           whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, margin: '-100px' }}
+          viewport={{ once: false, margin: '-100px' }}
           transition={{ duration: 0.6 }}
         >
           <div className="why__photo">
@@ -60,15 +60,15 @@ export default function WhyUs() {
               style={{ y: parallaxY }}
             />
             <div className="why__photo-badge">
-              <strong>20+</strong>
+              <strong>23</strong>
               <span>години опит</span>
             </div>
           </div>
         </motion.div>
 
         <div className="why__content">
-          <span className="eyebrow">Защо да изберете нас</span>
-          <RevealHeading>Резултат, на който <span className="accent-text">можете да разчитате</span></RevealHeading>
+          <span className="eyebrow">Защо АДРИНА</span>
+          <BlurReveal>Резултат, <span className="accent-text">който издържа на проверка</span></BlurReveal>
 
           <div className="why__list">
             {POINTS.map((p, i) => (
@@ -77,7 +77,7 @@ export default function WhyUs() {
                 className="why__point"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-60px' }}
+                viewport={{ once: false, margin: '-60px' }}
                 transition={{ duration: 0.45, delay: i * 0.08 }}
               >
                 <div className="why__point-icon">

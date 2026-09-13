@@ -11,7 +11,7 @@ const CONTACT_INFO = {
   phone: '0887 803 023',
   phone2: '0884 388 435',
   email: 'adrinapest@gmail.com',
-  address: 'гр. София — обслужваме целия град',
+  address: 'ул. „Цар Самуил“ 109, гр. София',
   // TODO: потвърдете точното работно време с клиента
   hours: 'Пон–Съб: 08:00 – 19:00',
 }
@@ -78,13 +78,14 @@ export default function Contact() {
           className="contact__info"
           initial={{ opacity: 0, x: -24 }}
           whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, margin: '-80px' }}
+          viewport={{ once: false, margin: '-80px' }}
           transition={{ duration: 0.5 }}
         >
-          <span className="eyebrow">Контакти</span>
-          <RevealHeading>Заявете оглед <span className="accent-text">още днес</span></RevealHeading>
+          <span className="eyebrow eyebrow--light">Контакти</span>
+          <RevealHeading>Заявете оглед <span className="accent-text">на обекта</span></RevealHeading>
           <p className="contact__lead">
-            Свържете се с нас по телефон, имейл или чрез формата — отговаряме бързо.
+            Свържете се с нас по телефон, имейл или чрез формата. Работим без ограничение
+            в региона — отговаряме бързо на всяко запитване.
           </p>
 
           <ul className="contact__list">
@@ -118,16 +119,16 @@ export default function Contact() {
 
           <div className="contact__trust">
             <div className="contact__trust-item">
-              <strong>20+</strong>
+              <strong>23</strong>
               <span>години опит</span>
             </div>
             <div className="contact__trust-item">
-              <strong>№ 2-25</strong>
-              <span>лиценз от 2005 г.</span>
+              <strong>Протокол</strong>
+              <span>и фактура</span>
             </div>
             <div className="contact__trust-item">
-              <strong>24 ч.</strong>
-              <span>реакция при спешност</span>
+              <strong>Без граница</strong>
+              <span>в региона</span>
             </div>
           </div>
         </motion.div>
@@ -137,7 +138,7 @@ export default function Contact() {
           onSubmit={handleSubmit}
           initial={{ opacity: 0, x: 24 }}
           whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, margin: '-80px' }}
+          viewport={{ once: false, margin: '-80px' }}
           transition={{ duration: 0.5, delay: 0.1 }}
         >
           {status === 'sent' ? (

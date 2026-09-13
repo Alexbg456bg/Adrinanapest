@@ -23,7 +23,7 @@ function renderWords(children, idxRef) {
               className="reveal-word"
               initial={{ opacity: 0, y: '0.65em' }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-80px' }}
+              viewport={{ once: false, margin: '-80px' }}
               transition={{ duration: 0.55, ease: 'easeOut', delay: current * 0.045 }}
             >
               {part}

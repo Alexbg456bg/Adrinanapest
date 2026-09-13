@@ -13,7 +13,7 @@ export default function Partners() {
           className="partners__list"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          viewport={{ once: true, margin: '-60px' }}
+          viewport={{ once: false, margin: '-60px' }}
           transition={{ duration: 0.5 }}
         >
           {PARTNERS.map((p) => (

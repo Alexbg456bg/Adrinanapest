@@ -5,7 +5,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--color-primary-deep);
+  background:
+    linear-gradient(180deg, rgba(6, 28, 41, 0.88) 0%, rgba(6, 28, 41, 0.94) 100%),
+    url('../assets/team/office-fog.jpg') center/cover no-repeat;
   opacity: 1;
   transition: opacity 0.4s ease;
 }

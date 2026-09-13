@@ -4,8 +4,7 @@ import './Footer.css'
 
 const LINKS = [
   { href: '#uslugi', label: 'Услуги' },
-  { href: '#vreditelite', label: 'Вредители' },
-  { href: '#zashto-nie', label: 'Защо ние' },
+  { href: '#zashto-nie', label: 'Защо АДРИНА' },
   { href: '#kak-rabotim', label: 'Как работим' },
   { href: '#kontakti', label: 'Контакти' },
 ]
@@ -21,8 +20,9 @@ export default function Footer() {
             Адрина ООД
           </span>
           <p>
-            Лицензирана ДДД фирма в София от 2005 г. — дезинсекция, дератизация,
-            дезинфекция и дезакаризация за дома и бизнеса.
+            ДДД управление за производствени, логистични и корпоративни обекти — от 2003 г.
+            Дезинсекция, дератизация, дезинфекция и дезакаризация с протокол след
+            всяко третиране.
           </p>
         </div>
 
@@ -40,7 +40,7 @@ export default function Footer() {
 
       <div className="container footer__bottom">
         <span>© {year} Адрина ООД. Всички права запазени.</span>
-        <span className="footer__license">Лиценз № 2-25 / 01.04.2005 г.</span>
+        <span className="footer__license">ЕИК 131046886 · ул. „Цар Самуил“ 109, София</span>
       </div>
     </footer>
   )

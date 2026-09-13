@@ -2,9 +2,9 @@ import Navbar from './components/Navbar.jsx'
 import Hero from './components/Hero.jsx'
 import Stats from './components/Stats.jsx'
 import Services from './components/Services.jsx'
-import Pests from './components/Pests.jsx'
 import WhyUs from './components/WhyUs.jsx'
 import Process from './components/Process.jsx'
+import TickerStrip from './components/TickerStrip.jsx'
 import Spotlight from './components/Spotlight.jsx'
 import Partners from './components/Partners.jsx'
 import Testimonials from './components/Testimonials.jsx'
@@ -25,8 +25,10 @@ function App() {
         <Hero />
         <Stats />
         <Services />
-        <Pests />
         <WhyUs />
+        <TickerStrip
+          items={['Запитване', 'Оглед и оценка', 'План за третиране', 'Третиране', 'Документиране', 'Проследяване']}
+        />
         <Process />
         <Spotlight />
         <Partners />

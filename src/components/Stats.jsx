@@ -2,16 +2,18 @@ import { useEffect, useRef, useState } from 'react'
 import { motion, useInView, animate } from 'framer-motion'
 import './Stats.css'
 
+// Само потвърдени факти — без предположения за клиентска база, обем
+// обработени площи или сертификати.
 const STATS = [
-  { value: 20, suffix: '+', label: 'години опит (от 2005 г.)' },
-  { value: 4, suffix: '', label: 'ДДД услуги' },
-  { value: 24, suffix: ' ч.', label: 'реакция при спешност' },
-  { value: 100, suffix: '%', label: 'лицензирани препарати' },
+  { kind: 'number', value: 23, suffix: '', label: 'години опит (от 2003 г.)' },
+  { kind: 'number', value: 4, suffix: '', label: 'ДДД услуги в едно портфолио' },
+  { kind: 'text', big: 'IPM подход', label: 'превенция, наблюдение и контрол' },
+  { kind: 'text', big: 'Протокол', label: 'и фактура след третиране' },
 ]
 
 function Counter({ value, suffix }) {
   const ref = useRef(null)
-  const inView = useInView(ref, { once: true, margin: '-80px' })
+  const inView = useInView(ref, { once: false, margin: '-80px' })
   const [display, setDisplay] = useState(0)
 
   useEffect(() => {
@@ -42,10 +44,14 @@ export default function Stats() {
             className="stats__item"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-60px' }}
+            viewport={{ once: false, margin: '-60px' }}
             transition={{ duration: 0.5, delay: i * 0.08 }}
           >
-            <Counter value={s.value} suffix={s.suffix} />
+            {s.kind === 'number' ? (
+              <Counter value={s.value} suffix={s.suffix} />
+            ) : (
+              <span className="stats__number">{s.big}</span>
+            )}
             <span className="stats__label">{s.label}</span>
           </motion.div>
         ))}

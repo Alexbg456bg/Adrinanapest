@@ -5,8 +5,8 @@ import RevealHeading from './RevealHeading.jsx'
 import './Spotlight.css'
 
 const FACTS = [
-  { value: '20+', label: 'години професионален опит' },
-  { value: '№ 2-25', label: 'лиценз от 01.04.2005 г.' },
+  { value: '23', label: 'години професионален опит' },
+  { value: 'Протокол', label: 'и фактура след третиране' },
   { value: '4', label: 'ДДД услуги в едно портфолио' },
 ]
 
@@ -52,17 +52,17 @@ export default function Spotlight() {
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-100px' }}
+            viewport={{ once: false, margin: '-100px' }}
             transition={{ duration: 0.6 }}
           >
             <span className="eyebrow eyebrow--light">На терен</span>
             <RevealHeading className="spotlight__title">
-              Вредителите не чакат —{' '}
-              <span className="accent-text">ние винаги идваме подготвени.</span>
+              Рискът не изчаква работния график —{' '}
+              <span className="accent-text">ние също не.</span>
             </RevealHeading>
             <p className="spotlight__lead">
-              Защитно оборудване, сертифицирани препарати и обучен екип за обекти
-              от жилищна сграда до производствен цех.
+              Защитно оборудване и обучен екип за обекти с непрекъснат режим на работа —
+              от логистичен център до производствен цех.
             </p>
           </motion.div>
 
@@ -70,7 +70,7 @@ export default function Spotlight() {
             className="spotlight__facts"
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-100px' }}
+            viewport={{ once: false, margin: '-100px' }}
             transition={{ duration: 0.6, delay: 0.15 }}
           >
             {FACTS.map((f) => (

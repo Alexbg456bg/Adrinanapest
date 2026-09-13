@@ -1,42 +1,20 @@
-// Марка на "Адрина ООД" — шестоъгълен щит-печат (сертификат/защита) с
-// вътрешен пръстен като на официален знак за качество и открояваща се
-// отметка. Няма готово фирмено лого от клиента — лесно за подмяна.
+// Официален знак на "Адрина ООД" — шестоъгълен знак с геометрична буква А,
+// предоставен от клиента (същия знак, използван в неговия референтен сайт).
 export default function Logo({ size = 38 }) {
   return (
-    <svg width={size} height={size} viewBox="0 0 40 40" aria-hidden="true">
-      <defs>
-        <linearGradient id="logoGrad" x1="0" y1="0" x2="0.9" y2="1">
-          <stop offset="0%" stopColor="#1c3d4d" />
-          <stop offset="100%" stopColor="#061c29" />
-        </linearGradient>
-        <linearGradient id="logoCheck" x1="0" y1="1" x2="1" y2="0">
-          <stop offset="0%" stopColor="#3dbfa8" />
-          <stop offset="100%" stopColor="#71d4c5" />
-        </linearGradient>
-      </defs>
-
-      <path
-        d="M20 2.4 34.5 8.6v10.2c0 9.9-6.1 16.4-14.5 20.2C11.6 35.2 5.5 28.7 5.5 18.8V8.6L20 2.4Z"
-        fill="url(#logoGrad)"
-      />
-
-      <path
-        d="M20 6.1 30.9 10.7v8.3c0 8-4.8 13.4-10.9 16.6-6.1-3.2-10.9-8.6-10.9-16.6v-8.3L20 6.1Z"
-        fill="none"
-        stroke="rgba(113, 212, 197, 0.32)"
-        strokeWidth="1"
-      />
-
-      <circle cx="20" cy="9.4" r="1.15" fill="#71d4c5" />
-
-      <path
-        d="M12.8 19.8c1.9 2.1 4.1 4.4 4.1 4.4S22.7 16.7 27.6 12"
-        fill="none"
-        stroke="url(#logoCheck)"
-        strokeWidth="3.1"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
+    <svg width={size} height={size} viewBox="0 0 300 300" aria-hidden="true">
+      <g transform="translate(150 150) scale(.9)">
+        <path d="M0-132 114-66v132L0 132-114 66V-66Z" fill="#071c2c" />
+        <path d="M0-132 114-66 0 0-114-66Z" fill="#687542" />
+        <path
+          d="M-82 95 0-98 82 95M-48 32h96"
+          fill="none"
+          stroke="#fff"
+          strokeWidth="30"
+          strokeLinecap="square"
+          strokeLinejoin="miter"
+        />
+      </g>
     </svg>
   )
 }

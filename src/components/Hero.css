@@ -60,12 +60,6 @@
   color: var(--color-mint);
 }
 
-.eyebrow--light {
-  background: rgba(255, 255, 255, 0.12);
-  border-color: rgba(255, 255, 255, 0.2);
-  color: #fff;
-}
-
 .hero__lead {
   color: rgba(255, 255, 255, 0.88);
   font-size: 17px;

@@ -7,8 +7,7 @@ import './Navbar.css'
 
 const LINKS = [
   { href: '#uslugi', label: 'Услуги' },
-  { href: '#vreditelite', label: 'Вредители' },
-  { href: '#zashto-nie', label: 'Защо ние' },
+  { href: '#zashto-nie', label: 'Защо АДРИНА' },
   { href: '#kak-rabotim', label: 'Как работим' },
   { href: '#kontakti', label: 'Контакти' },
 ]

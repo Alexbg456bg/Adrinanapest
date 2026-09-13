@@ -185,6 +185,14 @@ export const IconArrowRight = (props) => (
   </svg>
 )
 
+export const IconClipboard = (props) => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" {...props}>
+    <rect x="5" y="4.5" width="14" height="17" rx="2" />
+    <rect x="9" y="3" width="6" height="3" rx="1" fill="currentColor" stroke="none" />
+    <path d="M8.5 11h7M8.5 14.5h7M8.5 18h4.5" strokeLinecap="round" />
+  </svg>
+)
+
 export const IconSearch = (props) => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" {...props}>
     <circle cx="10.5" cy="10.5" r="6.5" />

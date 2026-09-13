@@ -126,6 +126,19 @@ button {
   flex-shrink: 0;
 }
 
+/* Вариант за тъмни фонове (Hero, Spotlight, Contact) — по-висока специфичност
+   (.eyebrow.eyebrow--light), за да печели гарантирано над базовия .eyebrow
+   независимо от реда на зареждане на CSS файловете на компонентите. */
+.eyebrow.eyebrow--light {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
+.eyebrow--light::before {
+  background: var(--color-mint);
+}
+
 .section-head {
   max-width: 640px;
   margin: 0 auto 60px;

@@ -25,7 +25,7 @@ const item = {
 }
 
 // Реални снимки на вредителите, с които работи фирмата — обикалят в орбита
-// около баджа "20+ години опит".
+// около баджа "23 години опит".
 const ORBIT_ITEMS = [
   { photo: hlebarkaPhoto, label: 'Хлебарки' },
   { photo: mravkaPhoto, label: 'Мравки' },
@@ -77,18 +77,18 @@ export default function Hero() {
               animate="show"
             >
               <motion.span variants={item} className="eyebrow eyebrow--light">
-                Лицензирана ДДД фирма от 2005 г.
+                Управление на вредители за бизнеса — от 2003 г.
               </motion.span>
 
               <motion.h1 variants={item}>
-                Спокоен дом и бизнес —{' '}
-                <span className="hero__accent">без вредители</span>
+                ДДД контрол, вграден в работния процес —{' '}
+                <span className="hero__accent">не в извънредната ситуация</span>
               </motion.h1>
 
               <motion.p variants={item} className="hero__lead">
-                Адрина ООД е семейна фирма за професионален контрол на вредители в София.
-                Извършваме дезинсекция, дератизация, дезинфекция и дезакаризация — бързо,
-                безопасно и с гаранция за резултата.
+                Адрина ООД управлява ДДД риска в производствени, логистични и административни
+                обекти. Дезинсекция, дератизация, дезинфекция и дезакаризация се извършват по
+                договорен график, с протокол и фактура след всяко третиране.
               </motion.p>
 
               <motion.div variants={item} className="hero__actions">
@@ -102,9 +102,9 @@ export default function Hero() {
               </motion.div>
 
               <motion.ul variants={item} className="hero__checks">
-                <li><IconCheck width={16} height={16} /> Лиценз № 2-25 / 2005 г.</li>
-                <li><IconCheck width={16} height={16} /> Сертифицирани препарати</li>
-                <li><IconCheck width={16} height={16} /> Гаранция за резултата</li>
+                <li><IconCheck width={16} height={16} /> 23 години опит в обекти с висока натовареност</li>
+                <li><IconCheck width={16} height={16} /> Протокол и фактура след всяко третиране</li>
+                <li><IconCheck width={16} height={16} /> Работа без прекъсване на процеса</li>
               </motion.ul>
             </motion.div>
           </div>
@@ -146,7 +146,7 @@ export default function Hero() {
                 transition={{ duration: 3.2, repeat: Infinity, ease: 'easeInOut' }}
               >
                 <IconShield width={44} height={44} />
-                <strong>20+</strong>
+                <strong>23</strong>
                 <span>години опит</span>
               </motion.div>
 
