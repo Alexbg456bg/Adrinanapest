@@ -96,7 +96,8 @@ export default function Hero() {
               animate="show"
             >
               <motion.span variants={item} className="eyebrow eyebrow--light">
-                Управление на вредители за бизнеса — от 2003 г.
+                <span className="hero__eyebrow-full">Управление на вредители за бизнеса — от 2003 г.</span>
+                <span className="hero__eyebrow-short">ДДД за бизнеса — от 2003 г.</span>
               </motion.span>
 
               <motion.h1 variants={item}>
@@ -104,26 +105,31 @@ export default function Hero() {
                 <span className="hero__accent">не в извънредната ситуация</span>
               </motion.h1>
 
-              <motion.p variants={item} className="hero__lead">
+              <motion.p variants={item} className="hero__lead hero__lead--full">
                 Адрина ООД управлява ДДД риска в производствени, логистични и административни
                 обекти. Дезинсекция, дератизация, дезинфекция и дезакаризация се извършват по
                 договорен график, с протокол и фактура след всяко третиране.
               </motion.p>
+              <motion.p variants={item} className="hero__lead hero__lead--short">
+                Дезинсекция, дератизация, дезинфекция и дезакаризация за бизнеса — с протокол
+                след всяко третиране.
+              </motion.p>
 
               <motion.div variants={item} className="hero__actions">
                 <Magnetic>
-                  <a href="#kontakti" className="btn btn-primary">Направете запитване</a>
+                  <a href="#kontakti" className="btn btn-primary hero__cta-form">Направете запитване</a>
                 </Magnetic>
-                <a href="tel:+359887803023" className="btn btn-outline">
+                <a href="tel:+359887803023" className="btn btn-outline hero__phone-cta">
+                  <span className="hero__phone-pulse" aria-hidden="true" />
                   <IconPhone width={18} height={18} />
                   0887 803 023
                 </a>
               </motion.div>
 
               <motion.ul variants={item} className="hero__checks">
-                <li><IconCheck width={16} height={16} /> 23 години опит в обекти с висока натовареност</li>
+                <li><IconCheck width={16} height={16} /> 23 години опит с бизнес клиенти</li>
                 <li><IconCheck width={16} height={16} /> Протокол и фактура след всяко третиране</li>
-                <li><IconCheck width={16} height={16} /> Работа без прекъсване на процеса</li>
+                <li><IconCheck width={16} height={16} /> Без прекъсване на процеса</li>
               </motion.ul>
             </motion.div>
           </div>
