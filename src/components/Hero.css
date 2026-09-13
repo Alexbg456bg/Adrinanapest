@@ -382,6 +382,20 @@
   .hero__visual::before {
     display: none;
   }
+  .hero__blob--1 {
+    width: 160px;
+    height: 160px;
+    top: -30px;
+    right: -30px;
+    opacity: 0.4;
+  }
+  .hero__blob--2 {
+    width: 130px;
+    height: 130px;
+    bottom: -20px;
+    left: 5%;
+    opacity: 0.22;
+  }
   .hero__badge {
     width: 190px;
     height: 190px;

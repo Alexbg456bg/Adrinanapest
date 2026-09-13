@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { IconCheck, IconPhone, IconShield } from './icons.jsx'
 import PestBackdrop from './PestBackdrop.jsx'
@@ -34,17 +34,36 @@ const ORBIT_ITEMS = [
   { photo: gryzachPhoto, label: 'Гризачи' },
   { photo: karlezhPhoto, label: 'Кърлежи' },
 ]
-const ORBIT_RADIUS = 132
+const ORBIT_RADIUS_DESKTOP = 132
+const ORBIT_RADIUS_MOBILE = 66
 const ORBIT_DURATION = 34
 
-function orbitPosition(index, total) {
+function orbitPosition(index, total, radius) {
   const angle = (360 / total) * index - 90
   const rad = (angle * Math.PI) / 180
-  return { x: Math.cos(rad) * ORBIT_RADIUS, y: Math.sin(rad) * ORBIT_RADIUS }
+  return { x: Math.cos(rad) * radius, y: Math.sin(rad) * radius }
+}
+
+// На тесни екрани орбитата трябва да е по-малка, иначе снимките периодично
+// застъпват "Дезинсекция / Дератизация..." плочките под баджа при въртене.
+function useOrbitRadius() {
+  const [radius, setRadius] = useState(() =>
+    typeof window !== 'undefined' && window.innerWidth <= 900 ? ORBIT_RADIUS_MOBILE : ORBIT_RADIUS_DESKTOP
+  )
+
+  useEffect(() => {
+    const update = () => setRadius(window.innerWidth <= 900 ? ORBIT_RADIUS_MOBILE : ORBIT_RADIUS_DESKTOP)
+    update()
+    window.addEventListener('resize', update)
+    return () => window.removeEventListener('resize', update)
+  }, [])
+
+  return radius
 }
 
 export default function Hero() {
   const pinRef = useRef(null)
+  const orbitRadius = useOrbitRadius()
   const { scrollYProgress } = useScroll({
     target: pinRef,
     offset: ['start start', 'end start'],
@@ -156,7 +175,7 @@ export default function Hero() {
                 transition={{ duration: ORBIT_DURATION, repeat: Infinity, ease: 'linear' }}
               >
                 {ORBIT_ITEMS.map(({ photo, label }, i) => {
-                  const { x: ox, y: oy } = orbitPosition(i, ORBIT_ITEMS.length)
+                  const { x: ox, y: oy } = orbitPosition(i, ORBIT_ITEMS.length, orbitRadius)
                   return (
                     <div
                       key={label}

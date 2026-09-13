@@ -67,7 +67,7 @@ export default function Testimonials() {
           <IconQuote className="testimonials__quote-mark" />
 
           <div className="testimonials__viewport">
-            <AnimatePresence initial={false} mode="wait" custom={direction}>
+            <AnimatePresence initial={false} custom={direction}>
               <motion.div
                 key={index}
                 className="testimonials__slide"
