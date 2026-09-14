@@ -86,7 +86,42 @@
 }
 
 @media (max-width: 560px) {
+  /* На тесен екран 8-те карти в стълб са прекалено дълги за скролване —
+     вместо това стават хоризонтален "swipe" ред със snap, с леко подаваща
+     се следваща карта като визуален знак, че има още. Секцията остава част
+     от същата страница, просто този конкретен блок се скролва настрани. */
   .process__steps {
-    grid-template-columns: 1fr;
+    display: flex;
+    grid-template-columns: unset;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 14px;
+    margin: 0 -24px;
+    padding: 4px 24px 14px;
+    scroll-padding-left: 24px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .process__steps::-webkit-scrollbar {
+    display: none;
+  }
+  .process__step {
+    flex: 0 0 78%;
+    scroll-snap-align: start;
+    padding: 22px 20px 20px;
+  }
+  .process__icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+  }
+  .process__number {
+    font-size: 22px;
+  }
+  .process__step h3 {
+    font-size: 16.5px;
+  }
+  .process__step p {
+    font-size: 14px;
   }
 }

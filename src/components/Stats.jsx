@@ -7,8 +7,8 @@ import './Stats.css'
 const STATS = [
   { kind: 'number', value: 23, suffix: '', label: 'години опит (от 2003 г.)' },
   { kind: 'number', value: 4, suffix: '', label: 'ДДД услуги в едно портфолио' },
+  { kind: 'number', value: 24, suffix: ' ч.', label: 'реакция при спешност' },
   { kind: 'text', big: 'IPM подход', label: 'превенция, наблюдение и контрол' },
-  { kind: 'text', big: 'Протокол', label: 'и фактура след третиране' },
 ]
 
 function Counter({ value, suffix }) {

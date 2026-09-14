@@ -12,8 +12,6 @@ const CONTACT_INFO = {
   phone2: '0884 388 435',
   email: 'adrinapest@gmail.com',
   address: 'ул. „Цар Самуил“ 109, гр. София',
-  // TODO: потвърдете точното работно време с клиента
-  hours: 'Пон–Съб: 08:00 – 19:00',
 }
 
 const SERVICES = ['Дезинсекция', 'Дератизация', 'Дезинфекция', 'Дезакаризация', 'Друго']
@@ -112,7 +110,7 @@ export default function Contact() {
             <li>
               <span className="contact__list-icon"><IconClock width={18} height={18} /></span>
               <div className="contact__list-text">
-                <span>{CONTACT_INFO.hours}</span>
+                <span>На разположение при спешност</span>
               </div>
             </li>
           </ul>
@@ -129,6 +127,10 @@ export default function Contact() {
             <div className="contact__trust-item">
               <strong>Без граница</strong>
               <span>в региона</span>
+            </div>
+            <div className="contact__trust-item">
+              <strong>24 ч.</strong>
+              <span>реакция при спешност</span>
             </div>
           </div>
         </motion.div>

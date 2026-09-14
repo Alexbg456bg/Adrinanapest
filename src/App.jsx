@@ -7,7 +7,6 @@ import Process from './components/Process.jsx'
 import TickerStrip from './components/TickerStrip.jsx'
 import Spotlight from './components/Spotlight.jsx'
 import Partners from './components/Partners.jsx'
-import Testimonials from './components/Testimonials.jsx'
 import Contact from './components/Contact.jsx'
 import Footer from './components/Footer.jsx'
 import FloatingCall from './components/FloatingCall.jsx'
@@ -32,7 +31,6 @@ function App() {
         <Process />
         <Spotlight />
         <Partners />
-        <Testimonials />
         <Contact />
       </main>
       <Footer />
