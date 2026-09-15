@@ -17,6 +17,12 @@ export default function PageLoader() {
     const removeTimer = setTimeout(() => {
       setVisible(false)
       document.body.classList.remove('is-loading')
+      // Докато body имаше overflow:hidden, браузърът не успя да скролне до
+      // евентуален #hash от адреса при първото зареждане — довършваме го ръчно.
+      if (window.location.hash) {
+        const target = document.querySelector(window.location.hash)
+        if (target) target.scrollIntoView({ behavior: 'instant' })
+      }
     }, 1250)
     return () => {
       clearTimeout(fadeTimer)
