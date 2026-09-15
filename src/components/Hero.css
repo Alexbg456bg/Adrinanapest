@@ -435,20 +435,6 @@
   .hero__actions .magnetic {
     width: 100%;
   }
-  .hero__cta-form {
-    order: 2;
-  }
-  .btn.hero__phone-cta {
-    order: 1;
-    background: var(--color-accent);
-    border-color: var(--color-accent);
-    color: var(--color-primary-deep);
-    font-weight: 800;
-  }
-  .hero__phone-pulse {
-    opacity: 0.55;
-    animation: hero-phone-pulse 2.2s ease-out infinite;
-  }
   .hero__checks {
     flex-direction: row;
     flex-wrap: wrap;
