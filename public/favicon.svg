@@ -3,5 +3,6 @@
     <path d="M0-132 114-66v132L0 132-114 66V-66Z" fill="#071c2c" />
     <path d="M0-132 114-66 0 0-114-66Z" fill="#687542" />
     <path d="M-82 95 0-98 82 95M-48 32h96" fill="none" stroke="#fff" stroke-width="30" stroke-linecap="square" stroke-linejoin="miter" />
+    <path d="M0-132 114-66v132L0 132-114 66V-66Z" fill="none" stroke="#fff" stroke-width="10" stroke-linejoin="round" />
   </g>
 </svg>

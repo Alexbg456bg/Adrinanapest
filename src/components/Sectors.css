@@ -1,0 +1,52 @@
+.sectors__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.sectors__card {
+  background: #fff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 28px 24px 26px;
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.sectors__card:hover {
+  box-shadow: var(--shadow-lg);
+  border-color: transparent;
+}
+
+.sectors__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: linear-gradient(150deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+  color: var(--color-mint);
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 18px;
+}
+
+.sectors__card h3 {
+  font-size: 17px;
+  margin-bottom: 8px;
+}
+
+.sectors__card p {
+  font-size: 14.5px;
+}
+
+@media (max-width: 900px) {
+  .sectors__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .sectors__grid {
+    grid-template-columns: 1fr;
+  }
+}

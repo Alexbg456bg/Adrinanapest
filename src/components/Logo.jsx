@@ -14,6 +14,13 @@ export default function Logo({ size = 38 }) {
           strokeLinecap="square"
           strokeLinejoin="miter"
         />
+        <path
+          d="M0-132 114-66v132L0 132-114 66V-66Z"
+          fill="none"
+          stroke="#fff"
+          strokeWidth="10"
+          strokeLinejoin="round"
+        />
       </g>
     </svg>
   )

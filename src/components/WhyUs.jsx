@@ -90,6 +90,20 @@ export default function WhyUs() {
               </motion.div>
             ))}
           </div>
+
+          <div className="why__about">
+            <p className="why__about-lead">АДРИНА ООД е основана в София през 2003 г.</p>
+            <div className="why__team">
+              <div className="why__team-member">
+                <strong>Елени Кацарова</strong>
+                <span>биолог, ръководител ДДД</span>
+              </div>
+              <div className="why__team-member">
+                <strong>Адриана Кацарова</strong>
+                <span>еколог, ръководител ДДД</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>

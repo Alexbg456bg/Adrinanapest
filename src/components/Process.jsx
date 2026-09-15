@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { IconPhone, IconSearch, IconClipboard, IconUsers, IconSpray, IconCertificate, IconRepeat, IconShield, IconArrowRight } from './icons.jsx'
+import { IconSearch, IconClipboard, IconCertificate, IconRepeat, IconShield, IconArrowRight } from './icons.jsx'
 import RevealHeading from './RevealHeading.jsx'
 import TiltCard from './TiltCard.jsx'
 import './Process.css'
@@ -7,51 +7,33 @@ import './Process.css'
 const STEPS = [
   {
     n: '01',
-    icon: IconPhone,
-    title: 'Запитване',
-    desc: 'Приемаме запитването и уточняваме обекта, обхвата на дейност и критичните точки за проверка.',
+    icon: IconSearch,
+    title: 'Оглед',
+    desc: 'Проверяваме рисковите точки, условията и следите от активност.',
   },
   {
     n: '02',
-    icon: IconSearch,
-    title: 'Оглед и оценка на риска',
-    desc: 'Инспекция на място, идентифициране на огнища и оценка на риска за работния процес.',
+    icon: IconClipboard,
+    title: 'Оценка',
+    desc: 'Определяме мерките, графика, отговорностите и местата за наблюдение.',
   },
   {
     n: '03',
-    icon: IconClipboard,
-    title: 'План за третиране',
-    desc: 'Изготвяме план по IPM подход — метод, честота и контролни точки, съобразени с обекта.',
+    icon: IconCertificate,
+    title: 'План',
+    desc: 'Отразяваме извършената работа, приложените средства и указанията към клиента.',
   },
   {
     n: '04',
-    icon: IconUsers,
-    title: 'Съгласуване',
-    desc: 'Съгласуваме график и достъп с отговорните лица, без прекъсване на работния процес.',
+    icon: IconShield,
+    title: 'Контрол',
+    desc: 'Сравняваме резултатите и при нужда променяме плана.',
   },
   {
     n: '05',
-    icon: IconSpray,
-    title: 'Третиране',
-    desc: 'Извършваме дезинсекция, дератизация, дезинфекция или дезакаризация според плана.',
-  },
-  {
-    n: '06',
-    icon: IconCertificate,
-    title: 'Документиране',
-    desc: 'Всяко третиране приключва с протокол и фактура — за вашата вътрешна документация.',
-  },
-  {
-    n: '07',
     icon: IconRepeat,
     title: 'Проследяване',
     desc: 'Периодичен мониторинг на контролните точки и коригиране на плана при нужда.',
-  },
-  {
-    n: '08',
-    icon: IconShield,
-    title: 'Отчетност',
-    desc: 'Поддържаме пълна проследимост на обекта — готовност за вътрешна или регулаторна проверка.',
   },
 ]
 
@@ -62,12 +44,12 @@ export default function Process() {
         <div className="section-head">
           <span className="eyebrow">Процес</span>
           <RevealHeading>Как <span className="accent-text">работим</span></RevealHeading>
-          <p>Осем стъпки от <strong>първия контакт</strong> до документирания резултат.</p>
+          <p>Пет стъпки от <strong>огледа</strong> до документирания резултат.</p>
         </div>
 
         <div className="process__steps">
           {STEPS.map((s, i) => {
-            const isRowEnd = (i + 1) % 4 === 0
+            const isRowEnd = (i + 1) % 5 === 0
             return (
               <TiltCard
                 key={s.n}
@@ -76,7 +58,7 @@ export default function Process() {
                 initial={{ opacity: 0, y: 26 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: false, margin: '-80px' }}
-                transition={{ duration: 0.5, delay: (i % 4) * 0.1 }}
+                transition={{ duration: 0.5, delay: (i % 5) * 0.1 }}
                 whileHover={{ y: -6 }}
               >
                 <div className="process__top">
@@ -95,7 +77,7 @@ export default function Process() {
                     initial={{ opacity: 0, x: -6 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: false, margin: '-80px' }}
-                    transition={{ duration: 0.4, delay: (i % 4) * 0.1 + 0.35 }}
+                    transition={{ duration: 0.4, delay: (i % 5) * 0.1 + 0.35 }}
                   >
                     <IconArrowRight width={18} height={18} />
                   </motion.span>

@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
-import { IconCheck, IconPhone, IconShield } from './icons.jsx'
+import { IconCheck, IconShield } from './icons.jsx'
 import PestBackdrop from './PestBackdrop.jsx'
 import Magnetic from './Magnetic.jsx'
 import hlebarkaPhoto from '../assets/pests/hlebarka.jpg'
@@ -96,33 +96,30 @@ export default function Hero() {
               animate="show"
             >
               <motion.span variants={item} className="eyebrow eyebrow--light">
-                <span className="hero__eyebrow-full">Управление на вредители за бизнеса — от 2003 г.</span>
-                <span className="hero__eyebrow-short">ДДД за бизнеса — от 2003 г.</span>
+                <span className="hero__eyebrow-full">Интегрирано управление на биологичния риск</span>
+                <span className="hero__eyebrow-short">Интегрирано управление на биологичния риск</span>
               </motion.span>
 
               <motion.h1 variants={item}>
-                ДДД контрол, вграден в работния процес —{' '}
-                <span className="hero__accent">не в извънредната ситуация</span>
+                Контролирана среда.{' '}
+                <span className="hero__accent">Документиран резултат.</span>
               </motion.h1>
 
               <motion.p variants={item} className="hero__lead hero__lead--full">
-                Адрина ООД управлява ДДД риска в производствени, логистични и административни
-                обекти. Дезинсекция, дератизация, дезинфекция и дезакаризация се извършват по
-                договорен график, с протокол и фактура след всяко третиране.
+                АДРИНА планира, изпълнява и документира ДДД програми за обществени структури и
+                предприятия.
               </motion.p>
               <motion.p variants={item} className="hero__lead hero__lead--short">
-                Дезинсекция, дератизация, дезинфекция и дезакаризация за бизнеса — с протокол
-                след всяко третиране.
+                АДРИНА планира, изпълнява и документира ДДД програми за обществени структури и
+                предприятия.
               </motion.p>
 
               <motion.div variants={item} className="hero__actions">
                 <Magnetic>
-                  <a href="#kontakti" className="btn btn-primary hero__cta-form">Направете запитване</a>
+                  <a href="#kontakti" className="btn btn-primary hero__cta-form">Заявете консултация</a>
                 </Magnetic>
-                <a href="tel:+359887803023" className="btn btn-outline hero__phone-cta">
-                  <span className="hero__phone-pulse" aria-hidden="true" />
-                  <IconPhone width={18} height={18} />
-                  0887 803 023
+                <a href="#sektori" className="btn btn-outline hero__phone-cta">
+                  Решения за организации
                 </a>
               </motion.div>
 

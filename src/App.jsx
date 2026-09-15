@@ -1,6 +1,8 @@
 import Navbar from './components/Navbar.jsx'
 import Hero from './components/Hero.jsx'
 import Stats from './components/Stats.jsx'
+import Coverage from './components/Coverage.jsx'
+import Sectors from './components/Sectors.jsx'
 import Services from './components/Services.jsx'
 import WhyUs from './components/WhyUs.jsx'
 import Process from './components/Process.jsx'
@@ -23,6 +25,8 @@ function App() {
       <main>
         <Hero />
         <Stats />
+        <Coverage />
+        <Sectors />
         <Services />
         <WhyUs />
         <TickerStrip

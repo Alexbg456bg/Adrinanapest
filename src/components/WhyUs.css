@@ -157,6 +157,40 @@
   font-size: 14.5px;
 }
 
+.why__about {
+  margin-top: 32px;
+  padding-top: 28px;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.why__about-lead {
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 14.5px;
+  margin-bottom: 16px;
+}
+
+.why__team {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.why__team-member {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.why__team-member strong {
+  color: #fff;
+  font-size: 15px;
+}
+
+.why__team-member span {
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 13px;
+}
+
 @media (max-width: 900px) {
   .why__inner {
     grid-template-columns: 1fr;
