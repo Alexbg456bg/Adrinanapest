@@ -1,0 +1,76 @@
+.hero-network {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.hero-network__line {
+  fill: none;
+  stroke: var(--color-mint);
+  stroke-width: 1.2;
+  stroke-linecap: round;
+  opacity: 0.55;
+  stroke-dasharray: var(--dash-length);
+  stroke-dashoffset: var(--dash-length);
+  animation: hero-network-draw 1s ease-out forwards;
+  animation-delay: var(--dash-delay, 0s);
+}
+
+.hero-network__dot {
+  fill: var(--color-mint);
+  transform-origin: center;
+  transform-box: fill-box;
+  opacity: 0;
+  animation:
+    hero-network-appear 0.4s ease-out forwards,
+    hero-network-pulse 2.6s ease-in-out 0.4s infinite;
+  animation-delay: var(--dot-delay, 0s), calc(var(--dot-delay, 0s) + 0.4s);
+}
+
+@keyframes hero-network-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes hero-network-appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.9;
+  }
+}
+
+@keyframes hero-network-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.85;
+  }
+  50% {
+    transform: scale(1.15);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 900px) {
+  .hero-network {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-network__line {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+  .hero-network__dot {
+    animation: none;
+    opacity: 0.9;
+  }
+}

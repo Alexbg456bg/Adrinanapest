@@ -3,6 +3,7 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 import { IconCheck, IconShield } from './icons.jsx'
 import PestBackdrop from './PestBackdrop.jsx'
 import Magnetic from './Magnetic.jsx'
+import HeroMonitorNetwork from './HeroMonitorNetwork.jsx'
 import hlebarkaPhoto from '../assets/pests/hlebarka.jpg'
 import mravkaPhoto from '../assets/pests/mravka.jpg'
 import osaPhoto from '../assets/pests/osa.jpg'
@@ -38,6 +39,8 @@ const ORBIT_RADIUS_DESKTOP = 132
 const ORBIT_RADIUS_MOBILE = 66
 const ORBIT_DURATION = 34
 
+const CAPTION_LABELS = ['Дезинсекция', 'Дератизация', 'Дезинфекция', 'Дезакаризация']
+
 function orbitPosition(index, total, radius) {
   const angle = (360 / total) * index - 90
   const rad = (angle * Math.PI) / 180
@@ -63,6 +66,8 @@ function useOrbitRadius() {
 
 export default function Hero() {
   const pinRef = useRef(null)
+  const visualRef = useRef(null)
+  const captionRefs = useRef([])
   const orbitRadius = useOrbitRadius()
   const { scrollYProgress } = useScroll({
     target: pinRef,
@@ -131,7 +136,7 @@ export default function Hero() {
             </motion.div>
           </div>
 
-          <div className="hero__visual">
+          <div className="hero__visual" ref={visualRef}>
             <PestBackdrop
               photo={wallTreatmentPhoto}
               className="hero__visual-backdrop"
@@ -198,11 +203,14 @@ export default function Hero() {
               </motion.div>
             </motion.div>
 
+            <HeroMonitorNetwork containerRef={visualRef} targetRefs={captionRefs} />
+
             <div className="hero__visual-caption">
-              <span>Дезинсекция</span>
-              <span>Дератизация</span>
-              <span>Дезинфекция</span>
-              <span>Дезакаризация</span>
+              {CAPTION_LABELS.map((label, i) => (
+                <span key={label} ref={(el) => (captionRefs.current[i] = el)}>
+                  {label}
+                </span>
+              ))}
             </div>
           </div>
         </div>
