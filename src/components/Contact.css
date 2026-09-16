@@ -235,34 +235,12 @@
 
 .contact__spray {
   position: relative;
-  width: 96px;
-  height: 96px;
+  width: 108px;
+  height: 108px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 10px;
-}
-
-.contact__spray-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  background: rgba(5, 166, 143, 0.12);
-  color: var(--color-accent);
-}
-
-.contact__droplet {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 8px;
-  height: 8px;
-  margin: -4px 0 0 -4px;
-  border-radius: 50%;
-  background: var(--color-accent);
+  margin-bottom: 6px;
 }
 
 @media (max-width: 900px) {

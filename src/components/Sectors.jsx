@@ -1,6 +1,8 @@
 import { IconBuilding, IconCertificate, IconSpray, IconPin, IconShield, IconStar } from './icons.jsx'
 import RevealHeading from './RevealHeading.jsx'
 import TiltCard from './TiltCard.jsx'
+import CarouselDots from './CarouselDots.jsx'
+import { useMobileCarousel } from './useMobileCarousel.js'
 import './Sectors.css'
 
 const SECTORS = [
@@ -37,6 +39,8 @@ const SECTORS = [
 ]
 
 export default function Sectors() {
+  const { ref: carouselRef, active, scrollToIndex } = useMobileCarousel(SECTORS.length)
+
   return (
     <section id="sektori" className="section section-alt sectors">
       <div className="container">
@@ -46,7 +50,7 @@ export default function Sectors() {
           <p>Мерките и честотата се определят според предназначението, работния режим и присъствието на хора и животни.</p>
         </div>
 
-        <div className="sectors__grid">
+        <div className="sectors__grid" ref={carouselRef}>
           {SECTORS.map((s, i) => (
             <TiltCard
               key={s.title}
@@ -66,6 +70,7 @@ export default function Sectors() {
             </TiltCard>
           ))}
         </div>
+        <CarouselDots count={SECTORS.length} active={active} onSelect={scrollToIndex} />
       </div>
     </section>
   )

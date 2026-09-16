@@ -4,6 +4,7 @@ import { IconCheck, IconShield } from './icons.jsx'
 import PestBackdrop from './PestBackdrop.jsx'
 import Magnetic from './Magnetic.jsx'
 import HeroMonitorNetwork from './HeroMonitorNetwork.jsx'
+import { handleHashClick } from '../utils/scroll.js'
 import hlebarkaPhoto from '../assets/pests/hlebarka.jpg'
 import mravkaPhoto from '../assets/pests/mravka.jpg'
 import osaPhoto from '../assets/pests/osa.jpg'
@@ -121,9 +122,9 @@ export default function Hero() {
 
               <motion.div variants={item} className="hero__actions">
                 <Magnetic>
-                  <a href="#kontakti" className="btn btn-primary hero__cta-form">Заявете консултация</a>
+                  <a href="#kontakti" className="btn btn-primary hero__cta-form" onClick={handleHashClick('#kontakti')}>Заявете консултация</a>
                 </Magnetic>
-                <a href="#sektori" className="btn btn-outline hero__phone-cta">
+                <a href="#sektori" className="btn btn-outline hero__phone-cta" onClick={handleHashClick('#sektori')}>
                   Решения за организации
                 </a>
               </motion.div>

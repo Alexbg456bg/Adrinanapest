@@ -3,12 +3,14 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { IconPhone } from './icons.jsx'
 import Logo from './Logo.jsx'
 import Magnetic from './Magnetic.jsx'
+import { handleHashClick } from '../utils/scroll.js'
 import './Navbar.css'
 
 const LINKS = [
   { href: '#uslugi', label: 'Услуги' },
   { href: '#zashto-nie', label: 'Защо АДРИНА' },
   { href: '#kak-rabotim', label: 'Как работим' },
+  { href: '#vaprosi', label: 'Въпроси' },
   { href: '#kontakti', label: 'Контакти' },
 ]
 
@@ -45,7 +47,7 @@ export default function Navbar() {
   return (
     <header className={`navbar ${scrolled ? 'navbar--scrolled' : ''}`}>
       <div className="container navbar__inner">
-        <a href="#top" className="navbar__logo">
+        <a href="#top" className="navbar__logo" onClick={handleHashClick('#top')}>
           <Logo size={36} />
           <span className="navbar__logo-text">
             Адрина <em>ООД</em>
@@ -55,7 +57,12 @@ export default function Navbar() {
 
         <nav className="navbar__links">
           {LINKS.map((l) => (
-            <a key={l.href} href={l.href} className={activeId === l.href.slice(1) ? 'is-active' : ''}>
+            <a
+              key={l.href}
+              href={l.href}
+              className={activeId === l.href.slice(1) ? 'is-active' : ''}
+              onClick={handleHashClick(l.href)}
+            >
               {l.label}
             </a>
           ))}
@@ -67,7 +74,7 @@ export default function Navbar() {
             {PHONE}
           </a>
           <Magnetic strength={10}>
-            <a href="#kontakti" className="btn btn-primary navbar__cta">Запитване</a>
+            <a href="#kontakti" className="btn btn-primary navbar__cta" onClick={handleHashClick('#kontakti')}>Запитване</a>
           </Magnetic>
         </div>
 
@@ -92,7 +99,16 @@ export default function Navbar() {
             transition={{ duration: 0.25, ease: 'easeInOut' }}
           >
             {LINKS.map((l) => (
-              <a key={l.href} href={l.href} onClick={() => setOpen(false)}>{l.label}</a>
+              <a
+                key={l.href}
+                href={l.href}
+                onClick={(e) => {
+                  handleHashClick(l.href)(e)
+                  setOpen(false)
+                }}
+              >
+                {l.label}
+              </a>
             ))}
             <a
               href={`tel:+359${PHONE.replace(/^0/, '').replace(/\s/g, '')}`}
@@ -101,7 +117,16 @@ export default function Navbar() {
             >
               <IconPhone width={18} height={18} /> {PHONE}
             </a>
-            <a href="#kontakti" className="btn btn-primary" onClick={() => setOpen(false)}>Запитване</a>
+            <a
+              href="#kontakti"
+              className="btn btn-primary"
+              onClick={(e) => {
+                handleHashClick('#kontakti')(e)
+                setOpen(false)
+              }}
+            >
+              Запитване
+            </a>
           </motion.nav>
         )}
       </AnimatePresence>

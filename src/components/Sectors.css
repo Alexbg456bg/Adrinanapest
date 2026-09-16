@@ -46,7 +46,37 @@
 }
 
 @media (max-width: 560px) {
+  /* Същият хоризонтален "swipe" ред като при "Как работим" — 6 карти в
+     стълб бяха прекалено дълго и монотонно скролване на тесен екран. */
   .sectors__grid {
-    grid-template-columns: 1fr;
+    display: flex;
+    grid-template-columns: unset;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 14px;
+    margin: 0 -24px;
+    padding: 4px 24px 14px;
+    scroll-padding-left: 24px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .sectors__grid::-webkit-scrollbar {
+    display: none;
+  }
+  .sectors__card {
+    flex: 0 0 78%;
+    scroll-snap-align: start;
+    padding: 22px 20px 20px;
+  }
+  .sectors__icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+  }
+  .sectors__card h3 {
+    font-size: 16.5px;
+  }
+  .sectors__card p {
+    font-size: 14px;
   }
 }

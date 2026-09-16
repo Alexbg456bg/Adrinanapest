@@ -9,8 +9,10 @@ export default function TiltCard({ children, className = '', maxTilt = 7, style,
   const ref = useRef(null)
   const px = useMotionValue(0.5)
   const py = useMotionValue(0.5)
+  const pressed = useMotionValue(1)
   const springX = useSpring(px, { stiffness: 220, damping: 22, mass: 0.4 })
   const springY = useSpring(py, { stiffness: 220, damping: 22, mass: 0.4 })
+  const springScale = useSpring(pressed, { stiffness: 420, damping: 24 })
   const rotateX = useTransform(springY, [0, 1], [maxTilt, -maxTilt])
   const rotateY = useTransform(springX, [0, 1], [-maxTilt, maxTilt])
 
@@ -25,13 +27,21 @@ export default function TiltCard({ children, className = '', maxTilt = 7, style,
     py.set(0.5)
   }
 
+  // hover не се задейства на тъч устройства — без това картите изглеждат
+  // статични при докосване, вместо да реагират като бутон.
+  const handlePressStart = () => pressed.set(0.97)
+  const handlePressEnd = () => pressed.set(1)
+
   return (
     <motion.div
       ref={ref}
       className={className}
       onMouseMove={handleMove}
       onMouseLeave={handleLeave}
-      style={{ ...style, rotateX, rotateY, transformPerspective: 800 }}
+      onTouchStart={handlePressStart}
+      onTouchEnd={handlePressEnd}
+      onTouchCancel={handlePressEnd}
+      style={{ ...style, rotateX, rotateY, scale: springScale, transformPerspective: 800 }}
       {...motionProps}
     >
       {children}

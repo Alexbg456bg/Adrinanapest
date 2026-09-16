@@ -2,6 +2,8 @@ import { motion } from 'framer-motion'
 import { IconSearch, IconClipboard, IconCertificate, IconRepeat, IconShield, IconArrowRight } from './icons.jsx'
 import RevealHeading from './RevealHeading.jsx'
 import TiltCard from './TiltCard.jsx'
+import CarouselDots from './CarouselDots.jsx'
+import { useMobileCarousel } from './useMobileCarousel.js'
 import './Process.css'
 
 const STEPS = [
@@ -38,6 +40,8 @@ const STEPS = [
 ]
 
 export default function Process() {
+  const { ref: carouselRef, active, scrollToIndex } = useMobileCarousel(STEPS.length)
+
   return (
     <section id="kak-rabotim" className="section process">
       <div className="container">
@@ -47,7 +51,7 @@ export default function Process() {
           <p>Пет стъпки от <strong>огледа</strong> до документирания резултат.</p>
         </div>
 
-        <div className="process__steps">
+        <div className="process__steps" ref={carouselRef}>
           {STEPS.map((s, i) => {
             const isRowEnd = (i + 1) % 5 === 0
             return (
@@ -86,6 +90,7 @@ export default function Process() {
             )
           })}
         </div>
+        <CarouselDots count={STEPS.length} active={active} onSelect={scrollToIndex} />
       </div>
     </section>
   )

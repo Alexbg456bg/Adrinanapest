@@ -1,11 +1,13 @@
 import { IconPhone, IconMail } from './icons.jsx'
 import Logo from './Logo.jsx'
+import { handleHashClick } from '../utils/scroll.js'
 import './Footer.css'
 
 const LINKS = [
   { href: '#uslugi', label: 'Услуги' },
   { href: '#zashto-nie', label: 'Защо АДРИНА' },
   { href: '#kak-rabotim', label: 'Как работим' },
+  { href: '#vaprosi', label: 'Въпроси' },
   { href: '#kontakti', label: 'Контакти' },
 ]
 
@@ -28,7 +30,7 @@ export default function Footer() {
 
         <nav className="footer__links">
           {LINKS.map((l) => (
-            <a key={l.href} href={l.href}>{l.label}</a>
+            <a key={l.href} href={l.href} onClick={handleHashClick(l.href)}>{l.label}</a>
           ))}
         </nav>
 

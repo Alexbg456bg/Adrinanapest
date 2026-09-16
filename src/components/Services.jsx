@@ -6,6 +6,7 @@ import hlebarkaPhoto from '../assets/pests/hlebarka.jpg'
 import gryzachPhoto from '../assets/pests/gryzach.jpg'
 import karlezhPhoto from '../assets/pests/karlezh.jpg'
 import disinfectPhoto from '../assets/team/warehouse-flashlight.jpg'
+import { handleHashClick } from '../utils/scroll.js'
 import './Services.css'
 
 const SERVICES = [
@@ -93,7 +94,7 @@ export default function Services() {
                 <h3>{s.title}</h3>
                 <p>{s.desc}</p>
                 <p className="services-scrolly__more">{s.more}</p>
-                <a href="#kontakti" className="services-scrolly__link">
+                <a href="#kontakti" className="services-scrolly__link" onClick={handleHashClick('#kontakti')}>
                   Запитване за {s.title.toLowerCase()} →
                 </a>
               </motion.div>
