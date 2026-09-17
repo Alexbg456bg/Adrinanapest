@@ -30,7 +30,7 @@ export default function Spotlight() {
   return (
     <section className="spotlight" ref={sectionRef}>
       <motion.div
-        className="spotlight__frame has-cursor-accent"
+        className="spotlight__frame has-cursor-accent has-grain"
         style={{
           scale: frameScale,
           rotateX: frameRotateX,

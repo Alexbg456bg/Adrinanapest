@@ -128,17 +128,38 @@
   font-size: 16px;
   padding: 26px 18px 12px;
   border-radius: var(--radius-sm);
-  border: 1.5px solid var(--color-border);
+  border: 1.5px solid transparent;
   background: var(--color-bg-alt);
   resize: vertical;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  transition: border-color 0.25s ease, box-shadow 0.3s ease, background 0.25s ease, transform 0.2s ease;
 }
 
 .contact__form .field input:focus,
 .contact__form .field textarea:focus {
   outline: none;
-  border-color: var(--color-accent);
-  box-shadow: 0 0 0 3px rgba(5, 166, 143, 0.14);
+  background: #fff;
+  box-shadow: 0 0 0 1px rgba(5, 166, 143, 0.25), 0 10px 26px rgba(5, 166, 143, 0.16);
+  transform: translateY(-1px);
+}
+
+/* Тънка линия, която се "разгъва" от центъра при фокус, вместо статична
+   рамка — по-жив, премиум сигнал за активното поле. */
+.contact__form .field::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  height: 2px;
+  width: 0;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--color-accent-light), var(--color-accent));
+  transform: translateX(-50%);
+  transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+}
+
+.contact__form .field:focus-within::after {
+  width: calc(100% - 10px);
 }
 
 .contact__form .field label {
@@ -178,15 +199,16 @@
   font-size: 16px;
   padding: 15px 16px;
   border-radius: var(--radius-sm);
-  border: 1.5px solid var(--color-border);
+  border: 1.5px solid transparent;
   background: var(--color-bg-alt);
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  transition: box-shadow 0.3s ease, background 0.25s ease, transform 0.2s ease;
 }
 
 .contact__form .field--select select:focus {
   outline: none;
-  border-color: var(--color-accent);
-  box-shadow: 0 0 0 3px rgba(5, 166, 143, 0.14);
+  background: #fff;
+  box-shadow: 0 0 0 1px rgba(5, 166, 143, 0.25), 0 10px 26px rgba(5, 166, 143, 0.16);
+  transform: translateY(-1px);
 }
 
 .contact__honeypot {

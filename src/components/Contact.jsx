@@ -66,7 +66,7 @@ export default function Contact() {
 
   return (
     <section id="kontakti" className="section contact">
-      <div className="container contact__inner has-cursor-accent">
+      <div className="container contact__inner has-cursor-accent has-grain">
         <PestBackdrop photo={vanInspectionPhoto} className="contact__backdrop" />
         <div className="contact__grid" aria-hidden="true" />
 

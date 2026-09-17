@@ -89,7 +89,7 @@ export default function Hero() {
     <div className="hero-pin" ref={pinRef}>
       <motion.section
         id="top"
-        className="hero has-cursor-accent"
+        className="hero has-cursor-accent has-grain"
         style={{ scale, borderRadius: radius, y }}
       >
         <motion.div className="hero__scrim" aria-hidden="true" style={{ opacity: dim }} />

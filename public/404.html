@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="bg">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>Страницата не е намерена — Адрина ООД</title>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Roboto+Slab:wght@700;800&display=swap');
+
+      :root {
+        --color-primary-dark: #0b1f28;
+        --color-primary-deep: #061c29;
+        --color-accent: #05a68f;
+        --color-accent-light: #3dbfa8;
+        --color-accent-dark: #048c78;
+        --color-mint: #71d4c5;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        height: 100%;
+      }
+
+      body {
+        font-family: 'Manrope', 'Segoe UI', system-ui, sans-serif;
+        background: linear-gradient(165deg, var(--color-primary-dark) 0%, var(--color-primary-deep) 100%);
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        padding: 24px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      body::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        opacity: 0.05;
+        mix-blend-mode: overlay;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'%3E%3C/feTurbulence%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'%3E%3C/rect%3E%3C/svg%3E");
+      }
+
+      .wrap {
+        position: relative;
+        z-index: 1;
+        text-align: center;
+        max-width: 480px;
+      }
+
+      .logo {
+        margin-bottom: 28px;
+      }
+
+      .code {
+        font-family: 'Roboto Slab', Georgia, serif;
+        font-weight: 800;
+        font-size: clamp(64px, 12vw, 96px);
+        line-height: 1;
+        color: var(--color-mint);
+        letter-spacing: -0.02em;
+        margin: 0 0 12px;
+      }
+
+      h1 {
+        font-family: 'Roboto Slab', Georgia, serif;
+        font-weight: 800;
+        font-size: clamp(22px, 4vw, 28px);
+        margin: 0 0 14px;
+        letter-spacing: -0.01em;
+      }
+
+      p {
+        color: rgba(255, 255, 255, 0.72);
+        font-size: 15.5px;
+        line-height: 1.6;
+        margin: 0 0 32px;
+      }
+
+      .actions {
+        display: flex;
+        gap: 14px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 14px 26px;
+        border-radius: 6px;
+        font-weight: 700;
+        font-size: 15px;
+        text-decoration: none;
+        border: 2px solid transparent;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .btn-primary {
+        background: linear-gradient(135deg, var(--color-accent-light), var(--color-accent) 55%, var(--color-accent-dark));
+        color: var(--color-primary-deep);
+        box-shadow: 0 10px 24px rgba(5, 166, 143, 0.28);
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 14px 30px rgba(5, 166, 143, 0.36);
+      }
+
+      .btn-outline {
+        background: rgba(255, 255, 255, 0.06);
+        border-color: rgba(255, 255, 255, 0.3);
+        color: #fff;
+      }
+
+      .btn-outline:hover {
+        background: rgba(255, 255, 255, 0.14);
+        transform: translateY(-2px);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="logo">
+        <svg width="52" height="52" viewBox="0 0 300 300" aria-hidden="true">
+          <g transform="translate(150 150) scale(.9)">
+            <path d="M0-132 114-66v132L0 132-114 66V-66Z" fill="#071c2c" />
+            <path d="M0-132 114-66 0 0-114-66Z" fill="#687542" />
+            <path
+              d="M-82 95 0-98 82 95M-48 32h96"
+              fill="none"
+              stroke="#fff"
+              stroke-width="30"
+              stroke-linecap="square"
+              stroke-linejoin="miter"
+            />
+          </g>
+        </svg>
+      </div>
+      <p class="code">404</p>
+      <h1>Тази страница не е намерена</h1>
+      <p>Възможно е линкът да е остарял или адресът да е сгрешен. Може да се върнете към началната страница или да се свържете директно с нас.</p>
+      <div class="actions">
+        <a href="/" class="btn btn-primary">Към началната страница</a>
+        <a href="tel:+359887803023" class="btn btn-outline">0887 803 023</a>
+      </div>
+    </div>
+  </body>
+</html>

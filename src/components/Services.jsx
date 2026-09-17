@@ -86,8 +86,13 @@ export default function Services() {
               >
                 <img src={s.photo} alt={s.title} className="services-scrolly__row-photo" loading="lazy" />
                 <div className="services-scrolly__top">
-                  <span className="services-scrolly__icon">
-                    <s.icon width={24} height={24} />
+                  <span className="services-scrolly__icon-wrap">
+                    <svg className="services-scrolly__icon-ring" viewBox="0 0 64 64" aria-hidden="true">
+                      <circle cx="32" cy="32" r="29" />
+                    </svg>
+                    <span className="services-scrolly__icon">
+                      <s.icon width={24} height={24} />
+                    </span>
                   </span>
                   <span className="services-scrolly__number">{pad(i + 1)}</span>
                 </div>
