@@ -5,6 +5,16 @@
   overflow: hidden;
 }
 
+.brand-motif--why {
+  bottom: -180px;
+  right: -160px;
+}
+
+.brand-motif--why-left {
+  bottom: -180px;
+  left: -160px;
+}
+
 .why::before {
   content: '';
   position: absolute;

@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { motion, useInView, animate } from 'framer-motion'
 import { IconSpray, IconBug, IconRat, IconShield } from './icons.jsx'
 import RevealHeading from './RevealHeading.jsx'
+import BrandMotif from './BrandMotif.jsx'
 import './Coverage.css'
 
 const CARDS = [
@@ -40,6 +41,8 @@ function CoverageValue({ value }) {
 export default function Coverage() {
   return (
     <section className="section coverage">
+      <BrandMotif className="brand-motif--coverage" />
+      <BrandMotif className="brand-motif--coverage-left" />
       <div className="container">
         <div className="section-head">
           <span className="eyebrow">Корпоративни решения</span>

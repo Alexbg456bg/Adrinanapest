@@ -1,7 +1,19 @@
 .footer {
+  position: relative;
+  overflow: hidden;
   background: var(--color-bg-dark);
   color: rgba(255, 255, 255, 0.75);
   padding-top: 56px;
+}
+
+.brand-motif--footer {
+  bottom: -220px;
+  right: -180px;
+}
+
+.brand-motif--footer-left {
+  bottom: -220px;
+  left: -180px;
 }
 
 .footer__inner {

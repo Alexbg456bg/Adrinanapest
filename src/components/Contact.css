@@ -257,12 +257,44 @@
 
 .contact__spray {
   position: relative;
-  width: 108px;
-  height: 108px;
+  width: 100%;
+  aspect-ratio: 1 / 1;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 6px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--color-bg-alt);
+  box-shadow: var(--shadow-md);
+}
+
+.contact__spray-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.contact__submit-loading {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.contact__spinner {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2.5px solid rgba(6, 28, 41, 0.25);
+  border-top-color: var(--color-primary-deep);
+  animation: contact-spin 0.7s linear infinite;
+  flex-shrink: 0;
+}
+
+@keyframes contact-spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 @media (max-width: 900px) {

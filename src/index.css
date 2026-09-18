@@ -41,6 +41,8 @@
 
 html {
   scroll-behavior: smooth;
+  scrollbar-color: var(--color-accent) var(--color-bg);
+  scrollbar-width: thin;
 }
 
 body {
@@ -51,12 +53,51 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+::selection {
+  background: var(--color-accent);
+  color: #fff;
+}
+
+::-webkit-scrollbar {
+  width: 11px;
+  height: 11px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-accent);
+  border-radius: 999px;
+  border: 2px solid var(--color-bg);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent-dark);
+}
+
+/* По-строга йерархия между нивата заглавия — h1/h2 остават тежки и стегнати,
+   h3/h4 постепенно по-леки, вместо всички да тежат еднакво 800. */
 h1, h2, h3, h4 {
   font-family: var(--font-heading);
   margin: 0;
   line-height: 1.15;
+}
+
+h1, h2 {
   font-weight: 800;
   letter-spacing: -0.02em;
+}
+
+h3 {
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+h4 {
+  font-weight: 700;
+  letter-spacing: 0;
 }
 
 p {
@@ -235,6 +276,48 @@ button {
    `position: relative`, при равна специфичност (един клас) резултатът
    зависи от реда на зареждане на CSS файловете и може да презапише sticky-то
    на Hero с relative — точно този бъг вече се случи веднъж. */
+.brand-motif {
+  position: absolute;
+  width: 640px;
+  height: 640px;
+  color: var(--color-primary);
+  opacity: 0.035;
+  pointer-events: none;
+  z-index: 0;
+  animation: brand-motif-spin 100s linear infinite;
+}
+
+.brand-motif--on-dark {
+  color: var(--color-mint);
+  opacity: 0.05;
+}
+
+.brand-motif--sm {
+  width: 420px;
+  height: 420px;
+}
+
+@keyframes brand-motif-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 900px) {
+  .brand-motif {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .brand-motif {
+    animation: none;
+  }
+}
+
 .has-grain::before {
   content: '';
   position: absolute;

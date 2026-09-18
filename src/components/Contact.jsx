@@ -4,8 +4,8 @@ import { IconPhone, IconMail, IconPin, IconClock } from './icons.jsx'
 import Magnetic from './Magnetic.jsx'
 import PestBackdrop from './PestBackdrop.jsx'
 import RevealHeading from './RevealHeading.jsx'
-import SprayerAnimation from './SprayerAnimation.jsx'
 import vanInspectionPhoto from '../assets/team/van-inspection.jpg'
+import sprayerVideo from '../assets/video/sprayer.mp4'
 import './Contact.css'
 
 const CONTACT_INFO = {
@@ -36,7 +36,7 @@ export default function Contact() {
     const timer = setTimeout(() => {
       setStatus('idle')
       setForm(EMPTY_FORM)
-    }, 2800)
+    }, 4200)
     return () => clearTimeout(timer)
   }, [status])
 
@@ -148,12 +148,19 @@ export default function Contact() {
               animate={{ opacity: 1, scale: 1 }}
             >
               <div className="contact__spray" aria-hidden="true">
-                <SprayerAnimation size={108} />
+                <video
+                  className="contact__spray-video"
+                  src={sprayerVideo}
+                  autoPlay
+                  muted
+                  playsInline
+                  disablePictureInPicture
+                />
               </div>
-              <motion.h3 initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.3 }}>
+              <motion.h3 initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 2.7 }}>
                 Изпратено!
               </motion.h3>
-              <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.45 }}>
+              <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 2.85 }}>
                 Ще се свържем с вас възможно най-скоро.
               </motion.p>
             </motion.div>
@@ -211,7 +218,14 @@ export default function Contact() {
 
               <Magnetic strength={22} className="contact__submit-wrap">
                 <button type="submit" className="btn btn-primary contact__submit" disabled={status === 'sending'}>
-                  {status === 'sending' ? 'Изпращане…' : 'Изпрати заявка'}
+                  {status === 'sending' ? (
+                    <span className="contact__submit-loading">
+                      <span className="contact__spinner" aria-hidden="true" />
+                      Изпращане…
+                    </span>
+                  ) : (
+                    'Изпрати заявка'
+                  )}
                 </button>
               </Magnetic>
             </>

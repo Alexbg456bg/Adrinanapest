@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { motion, useInView, animate } from 'framer-motion'
+import BrandMotif from './BrandMotif.jsx'
 import './Stats.css'
 
 // Само потвърдени факти — без предположения за клиентска база, обем
@@ -37,6 +38,8 @@ function Counter({ value, suffix }) {
 export default function Stats() {
   return (
     <section className="stats has-cursor-accent">
+      <BrandMotif className="brand-motif--on-dark brand-motif--sm brand-motif--stats" />
+      <BrandMotif className="brand-motif--on-dark brand-motif--sm brand-motif--stats-left" />
       <div className="container stats__grid">
         {STATS.map((s, i) => (
           <motion.div

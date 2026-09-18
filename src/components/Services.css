@@ -1,3 +1,21 @@
+.services {
+  position: relative;
+  /* НЕ overflow:hidden тук — вътре има sticky закачена снимка
+     (.services-scrolly__media), а overflow:hidden на родител чупи
+     position:sticky на детето. Затова мотивът отдолу е позициониран така,
+     че да не излиза извън секцията, вместо да разчита на изрязване. */
+}
+
+.brand-motif--services {
+  top: -160px;
+  right: 0;
+}
+
+.brand-motif--services-left {
+  top: -160px;
+  left: 0;
+}
+
 .services-scrolly {
   display: grid;
   grid-template-columns: 0.85fr 1.15fr;

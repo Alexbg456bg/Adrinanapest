@@ -7,6 +7,7 @@ import gryzachPhoto from '../assets/pests/gryzach.jpg'
 import karlezhPhoto from '../assets/pests/karlezh.jpg'
 import disinfectPhoto from '../assets/team/warehouse-flashlight.jpg'
 import { handleHashClick } from '../utils/scroll.js'
+import BrandMotif from './BrandMotif.jsx'
 import './Services.css'
 
 const SERVICES = [
@@ -50,6 +51,8 @@ export default function Services() {
 
   return (
     <section id="uslugi" className="section services">
+      <BrandMotif className="brand-motif--services" />
+      <BrandMotif className="brand-motif--services-left" />
       <div className="container">
         <div className="section-head">
           <span className="eyebrow">Обхват на услугите</span>

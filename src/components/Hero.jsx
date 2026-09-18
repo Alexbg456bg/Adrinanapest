@@ -121,9 +121,11 @@ export default function Hero() {
                 <Magnetic>
                   <a href="#kontakti" className="btn btn-primary hero__cta-form" onClick={handleHashClick('#kontakti')}>Заявете консултация</a>
                 </Magnetic>
-                <a href="#sektori" className="btn btn-outline hero__phone-cta" onClick={handleHashClick('#sektori')}>
-                  Решения за организации
-                </a>
+                <Magnetic>
+                  <a href="#sektori" className="btn btn-outline hero__phone-cta" onClick={handleHashClick('#sektori')}>
+                    Решения за организации
+                  </a>
+                </Magnetic>
               </motion.div>
 
               <motion.ul variants={item} className="hero__checks">

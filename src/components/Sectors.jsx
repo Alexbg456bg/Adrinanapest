@@ -2,6 +2,7 @@ import { IconBuilding, IconCertificate, IconSpray, IconPin, IconShield, IconStar
 import RevealHeading from './RevealHeading.jsx'
 import TiltCard from './TiltCard.jsx'
 import CarouselDots from './CarouselDots.jsx'
+import BrandMotif from './BrandMotif.jsx'
 import { useMobileCarousel } from './useMobileCarousel.js'
 import './Sectors.css'
 
@@ -43,6 +44,8 @@ export default function Sectors() {
 
   return (
     <section id="sektori" className="section section-alt sectors">
+      <BrandMotif className="brand-motif--sectors" />
+      <BrandMotif className="brand-motif--sectors-left" />
       <div className="container">
         <div className="section-head">
           <span className="eyebrow">Обществени и корпоративни обекти</span>

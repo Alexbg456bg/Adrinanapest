@@ -3,6 +3,7 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 import { IconClock, IconPin, IconLeaf, IconBuilding, IconCertificate } from './icons.jsx'
 import corridorCheckPhoto from '../assets/team/corridor-check.jpg'
 import BlurReveal from './BlurReveal.jsx'
+import BrandMotif from './BrandMotif.jsx'
 import './WhyUs.css'
 
 const POINTS = [
@@ -43,6 +44,8 @@ export default function WhyUs() {
 
   return (
     <section id="zashto-nie" className="section why has-cursor-accent" ref={sectionRef}>
+      <BrandMotif className="brand-motif--on-dark brand-motif--why" />
+      <BrandMotif className="brand-motif--on-dark brand-motif--why-left" />
       <div className="why__fade-bottom" aria-hidden="true" />
       <div className="container why__inner">
         <motion.div

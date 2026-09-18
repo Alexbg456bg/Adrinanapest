@@ -1,3 +1,18 @@
+.faq {
+  position: relative;
+  overflow: hidden;
+}
+
+.brand-motif--faq {
+  bottom: -220px;
+  right: -220px;
+}
+
+.brand-motif--faq-left {
+  bottom: -220px;
+  left: -220px;
+}
+
 .faq__list {
   max-width: 760px;
   margin: 0 auto;

@@ -1,3 +1,18 @@
+.coverage {
+  position: relative;
+  overflow: hidden;
+}
+
+.brand-motif--coverage {
+  bottom: -200px;
+  right: -180px;
+}
+
+.brand-motif--coverage-left {
+  bottom: -200px;
+  left: -180px;
+}
+
 .coverage__grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);

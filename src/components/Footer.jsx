@@ -1,5 +1,6 @@
 import { IconPhone, IconMail } from './icons.jsx'
 import Logo from './Logo.jsx'
+import BrandMotif from './BrandMotif.jsx'
 import { handleHashClick } from '../utils/scroll.js'
 import './Footer.css'
 
@@ -15,6 +16,8 @@ export default function Footer() {
   const year = new Date().getFullYear()
   return (
     <footer className="footer has-cursor-accent">
+      <BrandMotif className="brand-motif--on-dark brand-motif--footer" />
+      <BrandMotif className="brand-motif--on-dark brand-motif--footer-left" />
       <div className="container footer__inner">
         <div className="footer__brand">
           <span className="footer__logo">

@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { IconChevronDown } from './icons.jsx'
 import RevealHeading from './RevealHeading.jsx'
+import BrandMotif from './BrandMotif.jsx'
 import './Faq.css'
 
 // Само потвърдени факти — без измислени срокове, цени или сертификати.
@@ -67,6 +68,8 @@ export default function Faq() {
 
   return (
     <section id="vaprosi" className="section faq">
+      <BrandMotif className="brand-motif--faq" />
+      <BrandMotif className="brand-motif--faq-left" />
       <div className="container">
         <div className="section-head">
           <span className="eyebrow">Въпроси</span>

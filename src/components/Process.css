@@ -1,3 +1,18 @@
+.process {
+  position: relative;
+  overflow: hidden;
+}
+
+.brand-motif--process {
+  top: -140px;
+  right: -160px;
+}
+
+.brand-motif--process-left {
+  top: -140px;
+  left: -160px;
+}
+
 .process__steps {
   display: grid;
   grid-template-columns: repeat(5, 1fr);

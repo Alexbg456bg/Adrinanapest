@@ -3,6 +3,7 @@ import { IconSearch, IconClipboard, IconCertificate, IconRepeat, IconShield, Ico
 import RevealHeading from './RevealHeading.jsx'
 import TiltCard from './TiltCard.jsx'
 import CarouselDots from './CarouselDots.jsx'
+import BrandMotif from './BrandMotif.jsx'
 import { useMobileCarousel } from './useMobileCarousel.js'
 import './Process.css'
 
@@ -44,6 +45,8 @@ export default function Process() {
 
   return (
     <section id="kak-rabotim" className="section process">
+      <BrandMotif className="brand-motif--sm brand-motif--process" />
+      <BrandMotif className="brand-motif--sm brand-motif--process-left" />
       <div className="container">
         <div className="section-head">
           <span className="eyebrow">Процес</span>
