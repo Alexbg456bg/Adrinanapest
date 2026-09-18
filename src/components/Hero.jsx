@@ -4,6 +4,7 @@ import { IconCheck, IconShield } from './icons.jsx'
 import PestBackdrop from './PestBackdrop.jsx'
 import Magnetic from './Magnetic.jsx'
 import HeroMonitorNetwork from './HeroMonitorNetwork.jsx'
+import HeroSlideshow from './HeroSlideshow.jsx'
 import { handleHashClick } from '../utils/scroll.js'
 import hlebarkaPhoto from '../assets/pests/hlebarka.jpg'
 import mravkaPhoto from '../assets/pests/mravka.jpg'
@@ -93,6 +94,7 @@ export default function Hero() {
         style={{ scale, borderRadius: radius, y }}
       >
         <motion.div className="hero__scrim" aria-hidden="true" style={{ opacity: dim }} />
+        <HeroSlideshow />
         <div className="hero__split">
           <div className="hero__text">
             <motion.div
@@ -101,11 +103,6 @@ export default function Hero() {
               initial="hidden"
               animate="show"
             >
-              <motion.span variants={item} className="eyebrow eyebrow--light">
-                <span className="hero__eyebrow-full">Интегрирано управление на биологичния риск</span>
-                <span className="hero__eyebrow-short">Интегрирано управление на биологичния риск</span>
-              </motion.span>
-
               <motion.h1 variants={item}>
                 Контролирана среда.{' '}
                 <span className="hero__accent">Документиран резултат.</span>
