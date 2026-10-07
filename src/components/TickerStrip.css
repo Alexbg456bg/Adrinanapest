@@ -3,32 +3,32 @@
   background: var(--color-primary-dark);
   border-top: 1px solid rgba(255, 255, 255, 0.08);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  padding: 18px 0;
+  padding: 34px 0;
 }
 
 .ticker__track {
   display: flex;
   width: max-content;
-  animation: ticker-scroll 26s linear infinite;
+  animation: ticker-scroll 48s linear infinite;
 }
 
 .ticker__item {
   display: flex;
   align-items: center;
-  gap: 22px;
-  padding: 0 30px;
+  gap: 44px;
+  padding: 0 44px;
   font-family: var(--font-heading);
   font-weight: 800;
-  font-size: 18px;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
+  font-size: clamp(32px, 4.4vw, 62px);
+  letter-spacing: -0.03em;
+  line-height: 1;
   color: rgba(255, 255, 255, 0.9);
   white-space: nowrap;
 }
 
 .ticker__dot {
-  width: 6px;
-  height: 6px;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
   background: var(--color-mint);
   flex-shrink: 0;
@@ -47,4 +47,9 @@
   .ticker__track {
     animation: none;
   }
+}
+
+.ticker__item:nth-child(even) {
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.55);
 }

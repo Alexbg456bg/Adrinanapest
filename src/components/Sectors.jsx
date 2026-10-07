@@ -3,6 +3,7 @@ import RevealHeading from './RevealHeading.jsx'
 import TiltCard from './TiltCard.jsx'
 import CarouselDots from './CarouselDots.jsx'
 import BrandMotif from './BrandMotif.jsx'
+import featurePhoto from '../assets/team/warehouse-spray.jpg'
 import { useMobileCarousel } from './useMobileCarousel.js'
 import './Sectors.css'
 
@@ -57,7 +58,7 @@ export default function Sectors() {
           {SECTORS.map((s, i) => (
             <TiltCard
               key={s.title}
-              className="sectors__card"
+              className={`sectors__card ${i === 0 ? 'sectors__card--feature' : ''}`}
               maxTilt={6}
               initial={{ opacity: 0, y: 26 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -65,6 +66,12 @@ export default function Sectors() {
               transition={{ duration: 0.5, delay: (i % 3) * 0.1 }}
               whileHover={{ y: -6 }}
             >
+              {i === 0 && (
+                <>
+                  <img className="sectors__feature-img" src={featurePhoto} alt="" loading="lazy" />
+                  <span className="sectors__feature-shade" aria-hidden="true" />
+                </>
+              )}
               <span className="sectors__icon">
                 <s.icon width={24} height={24} />
               </span>

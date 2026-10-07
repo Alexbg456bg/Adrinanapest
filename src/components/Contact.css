@@ -304,3 +304,15 @@
     padding: 32px 24px;
   }
 }
+
+/* Големият телефон най-отгоре — главното действие, както при референтния дизайн */
+.contact__list li:first-child .contact__list-text a {
+  font-size: clamp(24px, 2.6vw, 34px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.contact__list li:first-child .contact__list-text {
+  flex-wrap: wrap;
+  gap: 4px 14px;
+}

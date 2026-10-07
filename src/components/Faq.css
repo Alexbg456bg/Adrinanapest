@@ -14,8 +14,8 @@
 }
 
 .faq__list {
-  max-width: 760px;
-  margin: 0 auto;
+  max-width: 100%;
+  margin: 0;
   display: flex;
   flex-direction: column;
   gap: 14px;
@@ -76,5 +76,28 @@
   .faq__answer {
     padding: 0 20px 20px;
     font-size: 14.5px;
+  }
+}
+
+.faq__num {
+  flex-shrink: 0;
+  min-width: 34px;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  color: var(--color-accent);
+}
+
+.faq__q {
+  flex: 1;
+}
+
+.faq__answer {
+  padding-left: 82px;
+}
+
+@media (max-width: 560px) {
+  .faq__answer {
+    padding-left: 20px;
   }
 }

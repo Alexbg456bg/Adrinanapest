@@ -13,6 +13,30 @@
   left: -160px;
 }
 
+/* Линията над стъпките се "чертае" спрямо скрола — показва напредъка. */
+.process__timeline {
+  position: relative;
+  height: 3px;
+  margin-bottom: 30px;
+  border-radius: 3px;
+  background: var(--color-border);
+  overflow: hidden;
+}
+
+.process__timeline-fill {
+  position: absolute;
+  inset: 0;
+  transform-origin: left center;
+  background: linear-gradient(90deg, var(--color-accent-light), var(--color-accent));
+  border-radius: 3px;
+}
+
+@media (max-width: 1000px) {
+  .process__timeline {
+    display: none;
+  }
+}
+
 .process__steps {
   display: grid;
   grid-template-columns: repeat(5, 1fr);

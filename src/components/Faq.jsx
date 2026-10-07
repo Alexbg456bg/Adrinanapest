@@ -33,11 +33,12 @@ const FAQS = [
   },
 ]
 
-function FaqItem({ item, isOpen, onToggle }) {
+function FaqItem({ item, index, isOpen, onToggle }) {
   return (
     <div className={`faq__item ${isOpen ? 'is-open' : ''}`}>
       <button type="button" className="faq__question" onClick={onToggle} aria-expanded={isOpen}>
-        <span>{item.q}</span>
+        <span className="faq__num">{String(index + 1).padStart(2, '0')}</span>
+        <span className="faq__q">{item.q}</span>
         <motion.span
           className="faq__chevron"
           animate={{ rotate: isOpen ? 180 : 0 }}
@@ -88,6 +89,7 @@ export default function Faq() {
             >
               <FaqItem
                 item={item}
+                index={i}
                 isOpen={openIndex === i}
                 onToggle={() => setOpenIndex(openIndex === i ? -1 : i)}
               />

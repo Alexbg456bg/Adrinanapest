@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
 import { motion, useInView, animate } from 'framer-motion'
 import { IconSpray, IconBug, IconRat, IconShield } from './icons.jsx'
 import RevealHeading from './RevealHeading.jsx'
@@ -19,21 +19,23 @@ function formatArea(n) {
 function CoverageValue({ value }) {
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: '-80px' })
-  const [display, setDisplay] = useState(0)
 
+  // Пише директно в DOM-а вместо setState на всеки кадър.
   useEffect(() => {
-    if (!inView) return
+    if (!inView) return undefined
     const controls = animate(0, value, {
       duration: 1.8,
       ease: 'easeOut',
-      onUpdate: (v) => setDisplay(v),
+      onUpdate: (v) => {
+        if (ref.current) ref.current.textContent = `над ${formatArea(v)} m²`
+      },
     })
     return () => controls.stop()
   }, [inView, value])
 
   return (
     <span ref={ref} className="coverage__value">
-      над {formatArea(display)} m²
+      над 0 m²
     </span>
   )
 }

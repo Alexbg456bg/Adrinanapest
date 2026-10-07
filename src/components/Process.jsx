@@ -1,5 +1,6 @@
-import { motion } from 'framer-motion'
-import { IconSearch, IconClipboard, IconCertificate, IconRepeat, IconShield, IconArrowRight } from './icons.jsx'
+import { useRef } from 'react'
+import { motion, useScroll, useTransform } from 'framer-motion'
+import { IconSearch, IconClipboard, IconCertificate, IconRepeat, IconShield } from './icons.jsx'
 import RevealHeading from './RevealHeading.jsx'
 import TiltCard from './TiltCard.jsx'
 import CarouselDots from './CarouselDots.jsx'
@@ -41,6 +42,9 @@ const STEPS = [
 ]
 
 export default function Process() {
+  const wrapRef = useRef(null)
+  const { scrollYProgress } = useScroll({ target: wrapRef, offset: ['start 80%', 'end 60%'] })
+  const fill = useTransform(scrollYProgress, [0, 1], [0, 1])
   const { ref: carouselRef, active, scrollToIndex } = useMobileCarousel(STEPS.length)
 
   return (
@@ -54,9 +58,12 @@ export default function Process() {
           <p>Пет стъпки от <strong>огледа</strong> до документирания резултат.</p>
         </div>
 
+        <div className="process__wrap" ref={wrapRef}>
+          <div className="process__timeline" aria-hidden="true">
+            <motion.span className="process__timeline-fill" style={{ scaleX: fill }} />
+          </div>
         <div className="process__steps" ref={carouselRef}>
           {STEPS.map((s, i) => {
-            const isRowEnd = (i + 1) % 5 === 0
             return (
               <TiltCard
                 key={s.n}
@@ -76,22 +83,10 @@ export default function Process() {
                 </div>
                 <h3>{s.title}</h3>
                 <p>{s.desc}</p>
-
-                {!isRowEnd && i < STEPS.length - 1 && (
-                  <motion.span
-                    className="process__arrow"
-                    aria-hidden="true"
-                    initial={{ opacity: 0, x: -6 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: false, margin: '-80px' }}
-                    transition={{ duration: 0.4, delay: (i % 5) * 0.1 + 0.35 }}
-                  >
-                    <IconArrowRight width={18} height={18} />
-                  </motion.span>
-                )}
               </TiltCard>
             )
           })}
+        </div>
         </div>
         <CarouselDots count={STEPS.length} active={active} onSelect={scrollToIndex} />
       </div>

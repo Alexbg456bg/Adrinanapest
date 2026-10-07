@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Roboto+Slab:wght@600;700;800&display=swap');
-
 :root {
   /* Тъмно navy — основен тъмен тон (по образец на референтния редизайн) */
   --color-primary: #102731;
@@ -31,8 +29,8 @@
   --shadow-xl: 0 32px 80px rgba(6, 28, 41, 0.32);
 
   --container-width: 1180px;
-  --font-heading: 'Roboto Slab', 'Georgia', serif;
-  --font-body: 'Manrope', 'Segoe UI', system-ui, sans-serif;
+  --font-heading: 'Onest', 'Segoe UI', system-ui, sans-serif;
+  --font-body: 'Onest', 'Segoe UI', system-ui, sans-serif;
 }
 
 * {
@@ -142,28 +140,30 @@ button {
   background: var(--color-bg-alt);
 }
 
+/* Надпис над заглавие: тънка линия + главни букви с разредка (като при
+   референтния дизайн), вместо капсула. Номерът на секцията идва от
+   CSS counter в .section-head (виж по-долу). */
 .eyebrow {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 14px;
   font-size: 12.5px;
-  font-weight: 800;
-  letter-spacing: 0.12em;
+  font-weight: 700;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--color-primary);
-  background: rgba(16, 39, 49, 0.08);
-  border: 1px solid rgba(16, 39, 49, 0.14);
-  padding: 7px 16px 7px 12px;
-  border-radius: 999px;
-  margin-bottom: 20px;
+  color: var(--color-accent-dark);
+  background: none;
+  border: 0;
+  padding: 0;
+  border-radius: 0;
+  margin-bottom: 22px;
 }
 
 .eyebrow::before {
   content: '';
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--color-accent);
+  width: 42px;
+  height: 1px;
+  background: currentColor;
   flex-shrink: 0;
 }
 
@@ -171,25 +171,55 @@ button {
    (.eyebrow.eyebrow--light), за да печели гарантирано над базовия .eyebrow
    независимо от реда на зареждане на CSS файловете на компонентите. */
 .eyebrow.eyebrow--light {
-  background: rgba(255, 255, 255, 0.12);
-  border-color: rgba(255, 255, 255, 0.2);
-  color: #fff;
+  background: none;
+  border: 0;
+  color: var(--color-mint);
 }
 
-.eyebrow--light::before {
-  background: var(--color-mint);
+.eyebrow.eyebrow--light::before {
+  background: currentColor;
+}
+
+main {
+  counter-reset: section;
 }
 
 .section-head {
-  max-width: 640px;
-  margin: 0 auto 60px;
-  text-align: center;
+  max-width: 760px;
+  margin: 0 0 64px;
+  text-align: left;
+  counter-increment: section;
+}
+
+.section-head .eyebrow::before {
+  content: counter(section, decimal-leading-zero);
+  width: auto;
+  height: auto;
+  background: none;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  order: -2;
+}
+
+.section-head .eyebrow::after {
+  content: '';
+  width: 42px;
+  height: 1px;
+  background: currentColor;
+  order: -1;
 }
 
 .section-head h2 {
-  font-size: clamp(30px, 4.2vw, 44px);
+  font-size: clamp(32px, 4.6vw, 52px);
   letter-spacing: -0.03em;
-  margin-bottom: 18px;
+  line-height: 1.08;
+  margin-bottom: 20px;
+}
+
+.section-head p {
+  font-size: 18px;
+  line-height: 1.7;
+  max-width: 620px;
 }
 
 .accent-text {
@@ -213,10 +243,10 @@ button {
   justify-content: center;
   gap: 10px;
   padding: 15px 30px;
-  border-radius: var(--radius-sm);
-  font-weight: 700;
-  font-size: 15px;
-  letter-spacing: -0.01em;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 15.5px;
+  letter-spacing: -0.005em;
   border: 2px solid transparent;
   transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
   white-space: nowrap;
@@ -238,8 +268,7 @@ button {
 }
 
 .btn-outline {
-  background: rgba(255, 255, 255, 0.06);
-  backdrop-filter: blur(6px);
+  background: rgba(255, 255, 255, 0.12);
   border-color: rgba(255, 255, 255, 0.35);
   color: #fff;
 }

@@ -13,7 +13,7 @@ export default function PageLoader() {
 
   useEffect(() => {
     document.body.classList.add('is-loading')
-    const fadeTimer = setTimeout(() => setFading(true), 850)
+    const fadeTimer = setTimeout(() => setFading(true), 550)
     const removeTimer = setTimeout(() => {
       setVisible(false)
       document.body.classList.remove('is-loading')
@@ -23,7 +23,7 @@ export default function PageLoader() {
         const target = document.querySelector(window.location.hash)
         if (target) target.scrollIntoView({ behavior: 'instant' })
       }
-    }, 1250)
+    }, 950)
     return () => {
       clearTimeout(fadeTimer)
       clearTimeout(removeTimer)

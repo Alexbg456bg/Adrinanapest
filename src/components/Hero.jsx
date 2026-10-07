@@ -1,18 +1,9 @@
-import { useEffect, useRef, useState } from 'react'
+import { useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
-import { IconCheck, IconShield } from './icons.jsx'
-import PestBackdrop from './PestBackdrop.jsx'
+import { IconCheck, IconArrowRight } from './icons.jsx'
 import Magnetic from './Magnetic.jsx'
-import HeroMonitorNetwork from './HeroMonitorNetwork.jsx'
 import HeroSlideshow from './HeroSlideshow.jsx'
 import { handleHashClick } from '../utils/scroll.js'
-import hlebarkaPhoto from '../assets/pests/hlebarka.jpg'
-import mravkaPhoto from '../assets/pests/mravka.jpg'
-import osaPhoto from '../assets/pests/osa.jpg'
-import balhaPhoto from '../assets/pests/balha.jpg'
-import karlezhPhoto from '../assets/pests/karlezh.jpg'
-import gryzachPhoto from '../assets/pests/gryzach.jpg'
-import wallTreatmentPhoto from '../assets/team/wall-treatment.jpg'
 import './Hero.css'
 
 const container = {
@@ -27,50 +18,10 @@ const item = {
   show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } },
 }
 
-// Реални снимки на вредителите, с които работи фирмата — обикалят в орбита
-// около баджа "23 години опит".
-const ORBIT_ITEMS = [
-  { photo: hlebarkaPhoto, label: 'Хлебарки' },
-  { photo: mravkaPhoto, label: 'Мравки' },
-  { photo: osaPhoto, label: 'Оси' },
-  { photo: balhaPhoto, label: 'Бълхи' },
-  { photo: gryzachPhoto, label: 'Гризачи' },
-  { photo: karlezhPhoto, label: 'Кърлежи' },
-]
-const ORBIT_RADIUS_DESKTOP = 132
-const ORBIT_RADIUS_MOBILE = 66
-const ORBIT_DURATION = 34
-
-const CAPTION_LABELS = ['Дезинсекция', 'Дератизация', 'Дезинфекция', 'Дезакаризация']
-
-function orbitPosition(index, total, radius) {
-  const angle = (360 / total) * index - 90
-  const rad = (angle * Math.PI) / 180
-  return { x: Math.cos(rad) * radius, y: Math.sin(rad) * radius }
-}
-
-// На тесни екрани орбитата трябва да е по-малка, иначе снимките периодично
-// застъпват "Дезинсекция / Дератизация..." плочките под баджа при въртене.
-function useOrbitRadius() {
-  const [radius, setRadius] = useState(() =>
-    typeof window !== 'undefined' && window.innerWidth <= 900 ? ORBIT_RADIUS_MOBILE : ORBIT_RADIUS_DESKTOP
-  )
-
-  useEffect(() => {
-    const update = () => setRadius(window.innerWidth <= 900 ? ORBIT_RADIUS_MOBILE : ORBIT_RADIUS_DESKTOP)
-    update()
-    window.addEventListener('resize', update)
-    return () => window.removeEventListener('resize', update)
-  }, [])
-
-  return radius
-}
+const SERVICE_LINKS = ['Дезинфекция', 'Дезинсекция', 'Дератизация', 'Дезакаризация']
 
 export default function Hero() {
   const pinRef = useRef(null)
-  const visualRef = useRef(null)
-  const captionRefs = useRef([])
-  const orbitRadius = useOrbitRadius()
   const { scrollYProgress } = useScroll({
     target: pinRef,
     offset: ['start start', 'end start'],
@@ -83,8 +34,6 @@ export default function Hero() {
   const radius = useTransform(scrollYProgress, [0, 1], [0, 48])
   const y = useTransform(scrollYProgress, [0, 1], [0, -30])
   const dim = useTransform(scrollYProgress, [0, 0.8], [0, 0.6])
-  const cueOpacity = useTransform(scrollYProgress, [0, 0.3], [1, 0])
-  const backdropParallax = useTransform(scrollYProgress, [0, 1], [0, -60])
 
   return (
     <div className="hero-pin" ref={pinRef}>
@@ -108,11 +57,7 @@ export default function Hero() {
                 <span className="hero__accent">Документиран резултат.</span>
               </motion.h1>
 
-              <motion.p variants={item} className="hero__lead hero__lead--full">
-                АДРИНА планира, изпълнява и документира ДДД програми за обществени структури и
-                предприятия.
-              </motion.p>
-              <motion.p variants={item} className="hero__lead hero__lead--short">
+              <motion.p variants={item} className="hero__lead">
                 АДРИНА планира, изпълнява и документира ДДД програми за обществени структури и
                 предприятия.
               </motion.p>
@@ -124,6 +69,7 @@ export default function Hero() {
                 <Magnetic>
                   <a href="#sektori" className="btn btn-outline hero__phone-cta" onClick={handleHashClick('#sektori')}>
                     Решения за организации
+                    <IconArrowRight width={16} height={16} />
                   </a>
                 </Magnetic>
               </motion.div>
@@ -135,90 +81,22 @@ export default function Hero() {
               </motion.ul>
             </motion.div>
           </div>
-
-          <div className="hero__visual" ref={visualRef}>
-            <PestBackdrop
-              photo={wallTreatmentPhoto}
-              className="hero__visual-backdrop"
-              parallaxY={backdropParallax}
-            />
-            <div className="hero__visual-bg" aria-hidden="true">
-              <motion.span
-                className="hero__blob hero__blob--1"
-                animate={{ y: [0, -24, 0], x: [0, 16, 0] }}
-                transition={{ duration: 9, repeat: Infinity, ease: 'easeInOut' }}
-              />
-              <motion.span
-                className="hero__blob hero__blob--2"
-                animate={{ y: [0, 20, 0], x: [0, -18, 0] }}
-                transition={{ duration: 11, repeat: Infinity, ease: 'easeInOut' }}
-              />
-              <div className="hero__grid" />
-            </div>
-
-            <motion.div
-              className="hero__badge"
-              initial={{ opacity: 0, scale: 0.85 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.7, delay: 0.3, ease: 'easeOut' }}
-            >
-              <motion.div
-                className="hero__badge-ring"
-                animate={{ rotate: 360 }}
-                transition={{ duration: 40, repeat: Infinity, ease: 'linear' }}
-              />
-              <motion.div
-                className="hero__badge-core"
-                animate={{ scale: [1, 1.05, 1] }}
-                transition={{ duration: 3.2, repeat: Infinity, ease: 'easeInOut' }}
-              >
-                <IconShield width={44} height={44} />
-                <strong>23</strong>
-                <span>години опит</span>
-              </motion.div>
-
-              <motion.div
-                className="hero__orbit"
-                animate={{ rotate: 360 }}
-                transition={{ duration: ORBIT_DURATION, repeat: Infinity, ease: 'linear' }}
-              >
-                {ORBIT_ITEMS.map(({ photo, label }, i) => {
-                  const { x: ox, y: oy } = orbitPosition(i, ORBIT_ITEMS.length, orbitRadius)
-                  return (
-                    <div
-                      key={label}
-                      className="hero__orbit-slot"
-                      style={{ transform: `translate(-50%, -50%) translate(${ox}px, ${oy}px)` }}
-                    >
-                      <motion.div
-                        className="hero__chip hero__chip--photo"
-                        animate={{ rotate: -360 }}
-                        transition={{ duration: ORBIT_DURATION, repeat: Infinity, ease: 'linear' }}
-                      >
-                        <img src={photo} alt={label} loading="lazy" />
-                      </motion.div>
-                    </div>
-                  )
-                })}
-              </motion.div>
-            </motion.div>
-
-            <HeroMonitorNetwork containerRef={visualRef} targetRefs={captionRefs} />
-
-            <div className="hero__visual-caption">
-              {CAPTION_LABELS.map((label, i) => (
-                <span key={label} ref={(el) => (captionRefs.current[i] = el)}>
-                  {label}
-                </span>
-              ))}
-            </div>
-          </div>
         </div>
 
-        <motion.div className="hero__scroll-cue" style={{ opacity: cueOpacity }}>
-          <span />
-          <small>Скролнете</small>
-        </motion.div>
+        <nav className="hero__services" aria-label="Услуги">
+          {SERVICE_LINKS.map((label, i) => (
+            <a
+              key={label}
+              href="#uslugi"
+              className="hero__service"
+              onClick={handleHashClick('#uslugi')}
+            >
+              <span className="hero__service-num">{String(i + 1).padStart(2, '0')}</span>
+              <span className="hero__service-label">{label}</span>
+              <IconArrowRight width={16} height={16} />
+            </a>
+          ))}
+        </nav>
       </motion.section>
     </div>
   )

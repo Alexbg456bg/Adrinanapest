@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
 import { motion, useInView, animate } from 'framer-motion'
 import BrandMotif from './BrandMotif.jsx'
 import './Stats.css'
@@ -15,22 +15,24 @@ const STATS = [
 function Counter({ value, suffix }) {
   const ref = useRef(null)
   const inView = useInView(ref, { once: false, margin: '-80px' })
-  const [display, setDisplay] = useState(0)
 
+  // Числото се пише директно в DOM-а, а не през setState на всеки кадър —
+  // така броячът не пре-рендерира React компонента 60 пъти в секунда.
   useEffect(() => {
-    if (!inView) return
+    if (!inView) return undefined
     const controls = animate(0, value, {
       duration: 1.6,
       ease: 'easeOut',
-      onUpdate: (v) => setDisplay(Math.round(v)),
+      onUpdate: (v) => {
+        if (ref.current) ref.current.textContent = `${Math.round(v)}${suffix}`
+      },
     })
     return () => controls.stop()
-  }, [inView, value])
+  }, [inView, value, suffix])
 
   return (
     <span ref={ref} className="stats__number">
-      {display}
-      {suffix}
+      {`0${suffix}`}
     </span>
   )
 }

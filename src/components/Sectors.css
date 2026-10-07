@@ -13,18 +13,64 @@
   left: -200px;
 }
 
+/* Bento подредба: една голяма плочка със снимка + по-малки около нея. */
 .sectors__grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
+  grid-auto-rows: minmax(210px, auto);
+  gap: 20px;
 }
 
 .sectors__card {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
   background: #fff;
   border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  padding: 28px 24px 26px;
+  border-radius: var(--radius-lg);
+  padding: 28px 26px 26px;
   transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.sectors__card--feature {
+  grid-column: 1 / 3;
+  grid-row: 1 / 3;
+  border: 0;
+  padding: 40px;
+  color: #fff;
+}
+
+.sectors__feature-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.sectors__feature-shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(6, 28, 41, 0.92) 0%, rgba(6, 28, 41, 0.35) 60%, rgba(6, 28, 41, 0.15) 100%);
+}
+
+.sectors__card--feature > *:not(img):not(.sectors__feature-shade) {
+  position: relative;
+}
+
+.sectors__card--feature h3 {
+  color: #fff;
+  font-size: clamp(26px, 2.6vw, 36px);
+  letter-spacing: -0.025em;
+  max-width: 420px;
+}
+
+.sectors__card--feature p {
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 16px;
+  max-width: 420px;
 }
 
 .sectors__card:hover {
@@ -59,6 +105,11 @@
   .sectors__grid {
     grid-template-columns: repeat(2, 1fr);
   }
+  .sectors__card--feature {
+    grid-column: 1 / -1;
+    grid-row: auto;
+    min-height: 300px;
+  }
 }
 
 @media (max-width: 560px) {
@@ -83,6 +134,9 @@
     flex: 0 0 78%;
     scroll-snap-align: start;
     padding: 22px 20px 20px;
+  }
+  .sectors__card--feature {
+    min-height: 280px;
   }
   .sectors__icon {
     width: 44px;
