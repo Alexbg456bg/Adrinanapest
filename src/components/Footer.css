@@ -84,3 +84,10 @@
   font-size: 13px;
   color: rgba(255, 255, 255, 0.5);
 }
+
+/* Телефон: място за плаващите бутони, за да не покриват текста */
+@media (max-width: 560px) {
+  .container.footer__bottom {
+    padding: 20px 20px 96px;
+  }
+}

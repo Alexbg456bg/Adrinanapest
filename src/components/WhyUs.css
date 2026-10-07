@@ -209,3 +209,23 @@
     margin: 0 auto;
   }
 }
+
+@media (max-width: 560px) {
+  .why__inner {
+    gap: 32px;
+  }
+  .why__photo {
+    max-width: none;
+    aspect-ratio: 4 / 3;
+  }
+  .why__content h2 {
+    font-size: 26px;
+    margin-bottom: 24px;
+  }
+  .why__list {
+    gap: 18px;
+  }
+  .why__point {
+    gap: 14px;
+  }
+}

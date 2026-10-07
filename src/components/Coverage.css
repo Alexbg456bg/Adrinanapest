@@ -109,3 +109,26 @@
     gap: 18px;
   }
 }
+
+/* Телефон: по една карта на ред — иконка вляво, данните вдясно. */
+@media (max-width: 560px) {
+  .coverage__grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .coverage__card {
+    display: grid;
+    grid-template-columns: 52px 1fr;
+    column-gap: 16px;
+    row-gap: 2px;
+    align-items: center;
+    padding: 18px 18px 18px 16px;
+  }
+  .coverage__icon {
+    grid-row: 1 / span 4;
+    align-self: start;
+  }
+  .coverage__value {
+    font-size: 24px;
+  }
+}
