@@ -18,8 +18,6 @@ const item = {
   show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } },
 }
 
-const SERVICE_LINKS = ['Дезинфекция', 'Дезинсекция', 'Дератизация', 'Дезакаризация']
-
 export default function Hero() {
   const pinRef = useRef(null)
   const { scrollYProgress } = useScroll({
@@ -82,21 +80,6 @@ export default function Hero() {
             </motion.div>
           </div>
         </div>
-
-        <nav className="hero__services" aria-label="Услуги">
-          {SERVICE_LINKS.map((label, i) => (
-            <a
-              key={label}
-              href="#kontakti"
-              className="hero__service"
-              onClick={handleHashClick('#kontakti')}
-            >
-              <span className="hero__service-num">{String(i + 1).padStart(2, '0')}</span>
-              <span className="hero__service-label">{label}</span>
-              <IconArrowRight width={16} height={16} />
-            </a>
-          ))}
-        </nav>
       </motion.section>
     </div>
   )
