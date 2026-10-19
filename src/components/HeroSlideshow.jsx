@@ -1,26 +1,26 @@
 import { useEffect, useState } from 'react'
-import corridorSprayPhoto from '../assets/team/corridor-spray-vertical.jpg'
-import vanWarehouseSprayPhoto from '../assets/team/van-warehouse-spray.jpg'
-import basementDuoSprayPhoto from '../assets/team/basement-duo-spray.jpg'
-import mechanicalRoomSprayPhoto from '../assets/team/mechanical-room-spray.jpg'
-import warehouseAisleWalkPhoto from '../assets/team/warehouse-aisle-walk.jpg'
-import officeFogPhoto from '../assets/team/office-fog.jpg'
-import warehouseSprayPhoto from '../assets/team/warehouse-spray.jpg'
-import vanInspectionPhoto from '../assets/team/van-inspection.jpg'
-import warehouseFlashlightPhoto from '../assets/team/warehouse-flashlight.jpg'
+import curtainEntrancePhoto from '../assets/photos/curtain-entrance.webp'
+import cleanroomFoggerPhoto from '../assets/photos/cleanroom-fogger.webp'
+import fencePerimeterPhoto from '../assets/photos/fence-perimeter-fogging.webp'
+import baitStationPhoto from '../assets/photos/bait-station-outdoor.webp'
+import mallTreatmentPhoto from '../assets/photos/mall-treatment-team.webp'
+import kitchenInspectionPhoto from '../assets/photos/kitchen-monitoring-inspection.webp'
+import warehouseFoggingPhoto from '../assets/photos/warehouse-fogging-duo.webp'
+import chemicalStoragePhoto from '../assets/photos/chemical-storage-walk.webp'
+import fieldTickSamplingPhoto from '../assets/photos/field-tick-sampling.webp'
 import './HeroSlideshow.css'
 
 // Реални снимки от обекти се редуват на цял екран зад текста на Hero.
 // Портретни кадри за телефон, пейзажни за таблет/десктоп — иначе object-fit
 // реже прекалено много от всяка снимка.
 const PORTRAIT_SLIDES = [
-  corridorSprayPhoto,
-  vanWarehouseSprayPhoto,
-  basementDuoSprayPhoto,
-  mechanicalRoomSprayPhoto,
-  warehouseAisleWalkPhoto,
+  curtainEntrancePhoto,
+  cleanroomFoggerPhoto,
+  fencePerimeterPhoto,
+  baitStationPhoto,
+  mallTreatmentPhoto,
 ]
-const LANDSCAPE_SLIDES = [warehouseSprayPhoto, officeFogPhoto, vanInspectionPhoto, warehouseFlashlightPhoto]
+const LANDSCAPE_SLIDES = [kitchenInspectionPhoto, warehouseFoggingPhoto, chemicalStoragePhoto, fieldTickSamplingPhoto]
 const SLIDE_DURATION = 5000
 const PORTRAIT_QUERY = '(max-width: 560px)'
 
@@ -43,13 +43,23 @@ function useSlides() {
 export default function HeroSlideshow() {
   const slides = useSlides()
   const [index, setIndex] = useState(0)
+  // Предишният кадър остава напълно видим ОТДОЛУ, докато новият се появява
+  // отгоре — иначе двата се топят едновременно, сумарно са ~50% прозрачни и
+  // тъмният фон "премигва" при всяка смяна.
+  const [prev, setPrev] = useState(-1)
   const [ready, setReady] = useState(false)
   const [loaded, setLoaded] = useState(() => new Set([0, 1]))
 
   useEffect(() => {
     setIndex(0)
+    setPrev(-1)
     setLoaded(new Set([0, 1]))
-    const timer = setInterval(() => setIndex((i) => (i + 1) % slides.length), SLIDE_DURATION)
+    let current = 0
+    const timer = setInterval(() => {
+      setPrev(current)
+      current = (current + 1) % slides.length
+      setIndex(current)
+    }, SLIDE_DURATION)
     return () => clearInterval(timer)
   }, [slides])
 
@@ -75,10 +85,10 @@ export default function HeroSlideshow() {
             src={src}
             alt=""
             decoding="async"
-            fetchPriority={i === 0 ? 'high' : 'low'}
+            fetchpriority={i === 0 ? 'high' : 'low'}
             className={`hero-slideshow__img${i === index && ready ? ' is-active' : ''}${
-              i === 0 && !ready ? ' is-initial' : ''
-            }`}
+              i === prev && i !== index ? ' is-prev' : ''
+            }${i === 0 && !ready ? ' is-initial' : ''}`}
           />
         ) : null
       )}

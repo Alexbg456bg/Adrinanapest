@@ -16,7 +16,7 @@
   opacity: 0;
   transform: scale(1);
   will-change: transform, opacity;
-  transition: opacity 0.9s ease-in-out, transform 5.9s linear;
+  transition: opacity 0.9s ease-in-out, transform 5s linear;
 }
 
 .hero-slideshow__img.is-initial,
@@ -25,13 +25,24 @@
 }
 
 .hero-slideshow__img.is-active {
+  z-index: 2;
   transform: scale(1.08);
+}
+
+/* Предишният кадър стои напълно видим под новия (без собствен fade и без
+   да се "отдръпва" от увеличението), докато новият го покрие изцяло. */
+.hero-slideshow__img.is-prev {
+  z-index: 1;
+  opacity: 1;
+  transform: scale(1.08);
+  transition: none;
 }
 
 /* Десктоп: по-тъмно отляво, където е текстът, и към лентата с услугите. */
 .hero-slideshow__scrim {
   position: absolute;
   inset: 0;
+  z-index: 3;
   background:
     linear-gradient(90deg, rgba(6, 28, 41, 0.92) 0%, rgba(6, 28, 41, 0.72) 42%, rgba(6, 28, 41, 0.28) 100%),
     linear-gradient(0deg, rgba(6, 28, 41, 0.75) 0%, transparent 38%);
@@ -42,7 +53,7 @@
   top: 110px;
   left: 16px;
   right: 16px;
-  z-index: 1;
+  z-index: 4;
   display: none;
   gap: 6px;
 }

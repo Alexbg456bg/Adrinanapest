@@ -4,7 +4,7 @@ import { IconPhone, IconMail, IconPin, IconClock } from './icons.jsx'
 import Magnetic from './Magnetic.jsx'
 import PestBackdrop from './PestBackdrop.jsx'
 import RevealHeading from './RevealHeading.jsx'
-import vanInspectionPhoto from '../assets/team/van-inspection.jpg'
+import vanInspectionPhoto from '../assets/photos/mall-treatment-team.webp'
 import sprayerVideo from '../assets/video/sprayer.mp4'
 import './Contact.css'
 
@@ -111,21 +111,6 @@ export default function Contact() {
               </div>
             </li>
           </ul>
-
-          <div className="contact__trust">
-            <div className="contact__trust-item">
-              <strong>Протокол</strong>
-              <span>и фактура</span>
-            </div>
-            <div className="contact__trust-item">
-              <strong>Без граница</strong>
-              <span>в региона</span>
-            </div>
-            <div className="contact__trust-item">
-              <strong>24 ч.</strong>
-              <span>реакция при спешност</span>
-            </div>
-          </div>
         </motion.div>
 
         <motion.form

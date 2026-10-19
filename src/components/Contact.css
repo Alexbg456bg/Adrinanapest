@@ -77,33 +77,6 @@
   gap: 6px;
 }
 
-.contact__trust {
-  display: flex;
-  gap: 28px;
-  flex-wrap: wrap;
-  padding-top: 24px;
-  border-top: 1px solid rgba(255, 255, 255, 0.12);
-}
-
-.contact__trust-item {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.contact__trust-item strong {
-  font-family: var(--font-heading);
-  font-size: 22px;
-  color: var(--color-mint);
-  line-height: 1;
-}
-
-.contact__trust-item span {
-  font-size: 11.5px;
-  font-weight: 600;
-  color: rgba(255, 255, 255, 0.65);
-}
-
 .contact__form {
   display: flex;
   flex-direction: column;
@@ -134,7 +107,7 @@
 .contact__form .field textarea:focus {
   outline: none;
   background: #fff;
-  box-shadow: 0 0 0 1px rgba(5, 166, 143, 0.25), 0 10px 26px rgba(5, 166, 143, 0.16);
+  box-shadow: 0 0 0 1px rgba(104, 117, 66, 0.25), 0 10px 26px rgba(104, 117, 66, 0.16);
   transform: translateY(-1px);
 }
 
@@ -203,7 +176,7 @@
 .contact__form .field--select select:focus {
   outline: none;
   background: #fff;
-  box-shadow: 0 0 0 1px rgba(5, 166, 143, 0.25), 0 10px 26px rgba(5, 166, 143, 0.16);
+  box-shadow: 0 0 0 1px rgba(104, 117, 66, 0.25), 0 10px 26px rgba(104, 117, 66, 0.16);
   transform: translateY(-1px);
 }
 

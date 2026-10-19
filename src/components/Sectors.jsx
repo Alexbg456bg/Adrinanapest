@@ -3,7 +3,7 @@ import RevealHeading from './RevealHeading.jsx'
 import TiltCard from './TiltCard.jsx'
 import CarouselDots from './CarouselDots.jsx'
 import BrandMotif from './BrandMotif.jsx'
-import featurePhoto from '../assets/team/warehouse-spray.jpg'
+import featurePhoto from '../assets/photos/warehouse-fogging-duo.webp'
 import { useMobileCarousel } from './useMobileCarousel.js'
 import './Sectors.css'
 

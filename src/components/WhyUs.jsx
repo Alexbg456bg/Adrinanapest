@@ -1,7 +1,7 @@
 import { useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { IconClock, IconPin, IconLeaf, IconBuilding, IconCertificate } from './icons.jsx'
-import corridorCheckPhoto from '../assets/team/corridor-check.jpg'
+import corridorCheckPhoto from '../assets/photos/cleanroom-fogger.webp'
 import BlurReveal from './BlurReveal.jsx'
 import BrandMotif from './BrandMotif.jsx'
 import './WhyUs.css'
@@ -62,7 +62,7 @@ export default function WhyUs() {
           <div className="why__photo">
             <motion.img
               src={corridorCheckPhoto}
-              alt="Специалист на АДРИНА проверява станция за мониторинг на обект"
+              alt="Специалист на АДРИНА обработва помещение с ULV генератор"
               loading="lazy"
               style={{ y: parallaxY }}
             />

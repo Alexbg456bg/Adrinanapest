@@ -1,41 +1,14 @@
-import { useEffect, useRef } from 'react'
-import { motion, useInView, animate } from 'framer-motion'
+import { motion } from 'framer-motion'
 import BrandMotif from './BrandMotif.jsx'
 import './Stats.css'
 
 // Само потвърдени факти — без предположения за клиентска база, обем
-// обработени площи или сертификати.
+// обработени площи или сертификати. Числата са статични (без брояч).
 const STATS = [
-  { kind: 'number', value: 4, suffix: '', label: 'ДДД услуги в едно портфолио' },
-  { kind: 'number', value: 7, suffix: '', label: 'типа обекти — корпоративни, обществени и частни' },
-  { kind: 'number', value: 24, suffix: ' ч.', label: 'реакция при спешност' },
-  { kind: 'text', big: 'IPM подход', label: 'оценка, превенция и контрол' },
+  { big: '4', label: 'ДДД услуги в едно портфолио' },
+  { big: '7', label: 'типа обекти — корпоративни, обществени и частни' },
+  { big: 'IPM подход', label: 'оценка, превенция и контрол' },
 ]
-
-function Counter({ value, suffix }) {
-  const ref = useRef(null)
-  const inView = useInView(ref, { once: false, margin: '-80px' })
-
-  // Числото се пише директно в DOM-а, а не през setState на всеки кадър —
-  // така броячът не пре-рендерира React компонента 60 пъти в секунда.
-  useEffect(() => {
-    if (!inView) return undefined
-    const controls = animate(0, value, {
-      duration: 1.6,
-      ease: 'easeOut',
-      onUpdate: (v) => {
-        if (ref.current) ref.current.textContent = `${Math.round(v)}${suffix}`
-      },
-    })
-    return () => controls.stop()
-  }, [inView, value, suffix])
-
-  return (
-    <span ref={ref} className="stats__number">
-      {`0${suffix}`}
-    </span>
-  )
-}
 
 export default function Stats() {
   return (
@@ -49,14 +22,10 @@ export default function Stats() {
             className="stats__item"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, margin: '-60px' }}
+            viewport={{ once: true, margin: '-60px' }}
             transition={{ duration: 0.5, delay: i * 0.08 }}
           >
-            {s.kind === 'number' ? (
-              <Counter value={s.value} suffix={s.suffix} />
-            ) : (
-              <span className="stats__number">{s.big}</span>
-            )}
+            <span className="stats__number">{s.big}</span>
             <span className="stats__label">{s.label}</span>
           </motion.div>
         ))}
