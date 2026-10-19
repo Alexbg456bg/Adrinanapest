@@ -13,25 +13,25 @@ const STEPS = [
     n: '01',
     icon: IconSearch,
     title: 'Оглед',
-    desc: 'Проверяваме рисковите точки, условията и следите от активност.',
+    desc: 'Проверка на рисковите точки, условията и следите от активност.',
   },
   {
     n: '02',
     icon: IconClipboard,
     title: 'Оценка',
-    desc: 'Определяме мерките, графика, отговорностите и местата за наблюдение.',
+    desc: 'Определяне на източниците на риск и нивото на установената активност.',
   },
   {
     n: '03',
     icon: IconCertificate,
     title: 'План',
-    desc: 'Отразяваме извършената работа, приложените средства и указанията към клиента.',
+    desc: 'Мерки, график, отговорности и места за наблюдение — съобразени с работния режим.',
   },
   {
     n: '04',
     icon: IconShield,
     title: 'Контрол',
-    desc: 'Сравняваме резултатите и при нужда променяме плана.',
+    desc: 'Целенасочени ДДД обработки и протокол за извършената работа и приложените средства.',
   },
   {
     n: '05',
@@ -54,7 +54,7 @@ export default function Process() {
       <div className="container">
         <div className="section-head">
           <span className="eyebrow">Процес</span>
-          <RevealHeading>Как <span className="accent-text">работим</span></RevealHeading>
+          <RevealHeading>Как работи <span className="accent-text">АДРИНА</span></RevealHeading>
           <p>Пет стъпки от <strong>огледа</strong> до документирания резултат.</p>
         </div>
 

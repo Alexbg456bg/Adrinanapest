@@ -9,7 +9,7 @@ const CARDS = [
   { icon: IconSpray, title: 'Дезинфекция', value: 87000, note: 'ежемесечно' },
   { icon: IconBug, title: 'Дезинсекция', subtitle: '(и дезакаризация)', value: 12000, note: 'ежемесечно' },
   { icon: IconRat, title: 'Дератизация', value: 65000, note: 'ежемесечно' },
-  { icon: IconShield, title: 'Общо ДДД мероприятия', value: 164000, note: 'всеки месец', dark: true },
+  { icon: IconShield, title: 'Общо ДДД мероприятия на месец', value: 164000, note: 'всеки месец', dark: true },
 ]
 
 function formatArea(n) {
@@ -47,13 +47,13 @@ export default function Coverage() {
       <BrandMotif className="brand-motif--coverage-left" />
       <div className="container">
         <div className="section-head">
-          <span className="eyebrow">Корпоративни решения</span>
-          <RevealHeading>Контролът започва <span className="accent-text">преди появата на проблем</span></RevealHeading>
+          <span className="eyebrow">Корпоративни ДДД услуги</span>
+          <RevealHeading>Контрол на вредителите, <span className="accent-text">съобразен с всеки обект</span></RevealHeading>
           <p>
-            Оглеждаме обекта, определяме източниците на риск и изготвяме план с конкретни мерки,
-            честота и контролни точки. Така защитаваме хората, животните, суровините и работния
-            процес и ограничаваме риска от замърсяване, бракувана продукция и прекъсване на
-            дейността.
+            АДРИНА планира и извършва дезинфекция, дезинсекция, дезакаризация и дератизация според
+            вида на обекта, работния режим и установената активност. По този начин контролът на
+            вредителите се свързва пряко с опазването на здравето, хигиената на средата, защитата на
+            суровините и продукцията и нормалното протичане на работния процес.
           </p>
         </div>
 

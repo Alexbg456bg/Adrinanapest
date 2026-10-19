@@ -17,7 +17,7 @@ const CONTACT_INFO = {
 
 const SERVICES = ['Дезинсекция', 'Дератизация', 'Дезинфекция', 'Дезакаризация', 'Друго']
 
-const EMPTY_FORM = { name: '', phone: '', email: '', service: SERVICES[0], message: '', _gotcha: '' }
+const EMPTY_FORM = { name: '', organization: '', phone: '', email: '', service: SERVICES[0], message: '', _gotcha: '' }
 
 // Формата изпраща директно през Formspree (без нужда от бекенд/PHP хостинг) —
 // работи еднакво в локална разработка и на живо. Имейлът, на който пристигат
@@ -80,8 +80,8 @@ export default function Contact() {
           <span className="eyebrow eyebrow--light">Контакти</span>
           <RevealHeading>Заявете оглед <span className="accent-text">на обекта</span></RevealHeading>
           <p className="contact__lead">
-            Свържете се с нас по телефон, имейл или чрез формата. Работим без ограничение
-            в региона — отговаряме бързо на всяко запитване.
+            Изпратете информация за обекта по телефон, имейл или чрез формата. АДРИНА работи без
+            регионално ограничение и отговаря бързо на всяко запитване.
           </p>
 
           <ul className="contact__list">
@@ -89,8 +89,7 @@ export default function Contact() {
               <span className="contact__list-icon"><IconPhone width={18} height={18} /></span>
               <div className="contact__list-text">
                 <a href={`tel:+359${CONTACT_INFO.phone.replace(/^0/, '').replace(/\s/g, '')}`}>{CONTACT_INFO.phone}</a>
-                <span className="contact__sep">/</span>
-                <a href={`tel:+359${CONTACT_INFO.phone2.replace(/^0/, '').replace(/\s/g, '')}`}>{CONTACT_INFO.phone2}</a>
+                <a className="contact__phone2" href={`tel:+359${CONTACT_INFO.phone2.replace(/^0/, '').replace(/\s/g, '')}`}>{CONTACT_INFO.phone2}</a>
               </div>
             </li>
             <li>
@@ -114,10 +113,6 @@ export default function Contact() {
           </ul>
 
           <div className="contact__trust">
-            <div className="contact__trust-item">
-              <strong>23</strong>
-              <span>години опит</span>
-            </div>
             <div className="contact__trust-item">
               <strong>Протокол</strong>
               <span>и фактура</span>
@@ -161,7 +156,7 @@ export default function Contact() {
                 Изпратено!
               </motion.h3>
               <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 2.85 }}>
-                Ще се свържем с вас възможно най-скоро.
+                Запитването е получено — АДРИНА ще се свърже с вас възможно най-скоро.
               </motion.p>
             </motion.div>
           ) : (
@@ -181,6 +176,10 @@ export default function Contact() {
               <div className="field">
                 <input required name="name" value={form.name} onChange={handleChange} placeholder=" " />
                 <label>Име</label>
+              </div>
+              <div className="field">
+                <input name="organization" value={form.organization} onChange={handleChange} placeholder=" " />
+                <label>Организация (незадължително)</label>
               </div>
               <div className="field">
                 <input required name="phone" value={form.phone} onChange={handleChange} placeholder=" " />

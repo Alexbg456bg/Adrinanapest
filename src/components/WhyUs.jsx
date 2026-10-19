@@ -10,12 +10,12 @@ const POINTS = [
   {
     icon: IconClock,
     title: 'Опит от 2003 г.',
-    desc: '23 години практика в обекти с висока натовареност и постоянен режим на работа.',
+    desc: 'Практика в обекти с висока натовареност и постоянен режим на работа.',
   },
   {
     icon: IconPin,
     title: 'Без регионално ограничение',
-    desc: 'Обслужваме обекти в цялата страна по договорен график, съобразен с производствения режим.',
+    desc: 'Обекти в цялата страна, обслужвани по договорен график, съобразен с производствения режим.',
   },
   {
     icon: IconLeaf,
@@ -55,17 +55,17 @@ export default function WhyUs() {
           viewport={{ once: false, margin: '-100px' }}
           transition={{ duration: 0.6 }}
         >
+          <div className="why__years">
+            <strong>23+</strong>
+            <span>години професионална практика</span>
+          </div>
           <div className="why__photo">
             <motion.img
               src={corridorCheckPhoto}
-              alt="Специалист на Адрина ООД проверява станция за мониторинг на обект"
+              alt="Специалист на АДРИНА проверява станция за мониторинг на обект"
               loading="lazy"
               style={{ y: parallaxY }}
             />
-            <div className="why__photo-badge">
-              <strong>23</strong>
-              <span>години опит</span>
-            </div>
           </div>
         </motion.div>
 
@@ -95,15 +95,21 @@ export default function WhyUs() {
           </div>
 
           <div className="why__about">
-            <p className="why__about-lead">АДРИНА ООД е основана в София през 2003 г.</p>
+            <p className="why__about-lead">
+              АДРИНА ООД е създадена в София през 2003 г. Дружеството, ЕИК 131046886, извършва
+              дейността съгласно разрешение №60-00-16/22.04.2020 г. и работи под ръководството на
+              регистрирани ръководители ДДД.
+            </p>
             <div className="why__team">
               <div className="why__team-member">
                 <strong>Елени Кацарова</strong>
                 <span>биолог, ръководител ДДД</span>
+                <span>удостоверение №2-25/01.04.2005 г.</span>
               </div>
               <div className="why__team-member">
                 <strong>Адриана Кацарова</strong>
                 <span>еколог, ръководител ДДД</span>
+                <span>удостоверение №2-77/12.06.2026 г.</span>
               </div>
             </div>
           </div>

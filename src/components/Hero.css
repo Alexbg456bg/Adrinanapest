@@ -41,10 +41,10 @@
 
 .hero__content h1 {
   color: #fff;
-  font-size: clamp(40px, 5.2vw, 76px);
-  font-weight: 800;
-  line-height: 1.04;
-  letter-spacing: -0.035em;
+  font-size: clamp(40px, 5.2vw, 78px);
+  font-weight: 700;
+  line-height: 0.98;
+  letter-spacing: -0.052em;
   margin-bottom: 26px;
 }
 

@@ -77,10 +77,6 @@
   gap: 6px;
 }
 
-.contact__sep {
-  color: rgba(255, 255, 255, 0.4);
-}
-
 .contact__trust {
   display: flex;
   gap: 28px;
@@ -315,4 +311,13 @@
 .contact__list li:first-child .contact__list-text {
   flex-wrap: wrap;
   gap: 4px 14px;
+}
+
+/* Вторият номер — резервен, затова по-дребен и на отделен ред под главния. */
+.contact__list li:first-child .contact__list-text a.contact__phone2 {
+  flex-basis: 100%;
+  font-size: clamp(16px, 1.5vw, 19px);
+  font-weight: 700;
+  letter-spacing: 0;
+  color: rgba(255, 255, 255, 0.75);
 }

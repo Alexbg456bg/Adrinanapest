@@ -152,6 +152,14 @@ export const IconUsers = (props) => (
   </svg>
 )
 
+export const IconHome = (props) => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" {...props}>
+    <path d="M3.5 11 12 4l8.5 7" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M6 9.5V20h12V9.5" strokeLinejoin="round" />
+    <path d="M10 20v-5.5h4V20" strokeLinejoin="round" />
+  </svg>
+)
+
 export const IconBuilding = (props) => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" {...props}>
     <rect x="4" y="4" width="10" height="17" rx="1" />

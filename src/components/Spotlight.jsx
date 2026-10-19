@@ -5,7 +5,7 @@ import RevealHeading from './RevealHeading.jsx'
 import './Spotlight.css'
 
 const FACTS = [
-  { value: '23', label: 'години професионален опит' },
+  { value: 'IPM', label: 'непрекъснат контрол и проследяване' },
   { value: 'Протокол', label: 'и фактура след третиране' },
   { value: '4', label: 'ДДД услуги в едно портфолио' },
 ]
@@ -58,7 +58,7 @@ export default function Spotlight() {
             <span className="eyebrow eyebrow--light">На терен</span>
             <RevealHeading className="spotlight__title">
               Рискът не изчаква работния график —{' '}
-              <span className="accent-text">ние също не.</span>
+              <span className="accent-text">АДРИНА също не.</span>
             </RevealHeading>
             <p className="spotlight__lead">
               Защитно оборудване и обучен екип за обекти с непрекъснат режим на работа —

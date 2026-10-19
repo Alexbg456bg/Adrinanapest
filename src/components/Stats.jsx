@@ -6,10 +6,10 @@ import './Stats.css'
 // Само потвърдени факти — без предположения за клиентска база, обем
 // обработени площи или сертификати.
 const STATS = [
-  { kind: 'number', value: 23, suffix: '', label: 'години опит (от 2003 г.)' },
   { kind: 'number', value: 4, suffix: '', label: 'ДДД услуги в едно портфолио' },
+  { kind: 'number', value: 7, suffix: '', label: 'типа обекти — корпоративни, обществени и частни' },
   { kind: 'number', value: 24, suffix: ' ч.', label: 'реакция при спешност' },
-  { kind: 'text', big: 'IPM подход', label: 'превенция, наблюдение и контрол' },
+  { kind: 'text', big: 'IPM подход', label: 'оценка, превенция и контрол' },
 ]
 
 function Counter({ value, suffix }) {

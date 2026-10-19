@@ -1,4 +1,4 @@
-import { IconBuilding, IconCertificate, IconSpray, IconPin, IconShield, IconStar } from './icons.jsx'
+import { IconBuilding, IconCertificate, IconSpray, IconPin, IconShield, IconStar, IconHome } from './icons.jsx'
 import RevealHeading from './RevealHeading.jsx'
 import TiltCard from './TiltCard.jsx'
 import CarouselDots from './CarouselDots.jsx'
@@ -12,31 +12,43 @@ const SECTORS = [
     icon: IconBuilding,
     title: 'Индустриални обекти',
     desc: 'Големи площи, производствени линии и непрекъснат режим.',
+    examples: 'Преработка на текстил от втора употреба · лазерна обработка · дървопреработване',
   },
   {
     icon: IconCertificate,
     title: 'Обществени и административни обекти',
     desc: 'Планирани посещения и отчетност пред отговорните лица.',
+    examples: 'Обществени приюти за животни · административни сгради · офиси',
   },
   {
     icon: IconSpray,
     title: 'Хранително-вкусова промишленост',
     desc: 'Хигиенни режими, критични точки и готовност за проверка.',
+    examples: 'Месопреработвателни предприятия · кравеферми · оранжерийни комплекси',
   },
   {
     icon: IconPin,
     title: 'Логистика и складове',
     desc: 'Входящи доставки, периметър и защита на стоките.',
+    examples: 'Куриерско-спедиторски логистични центрове · складови бази',
   },
   {
     icon: IconShield,
-    title: 'Здравеопазване и социални структури',
+    title: 'Здравни и социални структури',
     desc: 'Биосигурност, чувствителни групи и работни протоколи.',
+    examples: 'Лечебни заведения · социални услуги · центрове за грижа',
   },
   {
     icon: IconStar,
     title: 'Хотели и ресторанти',
-    desc: 'Дискретна работа, превенция и защита на репутацията.',
+    desc: 'Планиран контрол, хигиенна защита и грижа за репутацията.',
+    examples: 'Хотели · места за настаняване · ресторанти · барове · хранителни магазини · професионални кухни',
+  },
+  {
+    icon: IconHome,
+    title: 'Частни домове',
+    desc: 'Оценка на риска, безопасно третиране и ясни указания.',
+    examples: 'Апартаменти · къщи · дворове · общи части',
   },
 ]
 
@@ -49,9 +61,9 @@ export default function Sectors() {
       <BrandMotif className="brand-motif--sectors-left" />
       <div className="container">
         <div className="section-head">
-          <span className="eyebrow">Обществени и корпоративни обекти</span>
-          <RevealHeading>Всеки обект има <span className="accent-text">различен режим на работа</span></RevealHeading>
-          <p>Мерките и честотата се определят според предназначението, работния режим и присъствието на хора и животни.</p>
+          <span className="eyebrow">Обществени, корпоративни и частни обекти</span>
+          <RevealHeading>ДДД мерките се определят <span className="accent-text">според спецификата на обекта</span></RevealHeading>
+          <p>Обработките се планират според дейността и работния режим. Присъствието на хора и животни определя организацията и мерките за безопасност.</p>
         </div>
 
         <div className="sectors__grid" ref={carouselRef}>
@@ -77,6 +89,7 @@ export default function Sectors() {
               </span>
               <h3>{s.title}</h3>
               <p>{s.desc}</p>
+              <p className="sectors__examples">{s.examples}</p>
             </TiltCard>
           ))}
         </div>

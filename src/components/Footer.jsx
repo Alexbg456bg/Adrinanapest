@@ -5,10 +5,9 @@ import { handleHashClick } from '../utils/scroll.js'
 import './Footer.css'
 
 const LINKS = [
-  { href: '#uslugi', label: 'Услуги' },
+  { href: '#sektori', label: 'Сектори' },
   { href: '#zashto-nie', label: 'Защо АДРИНА' },
-  { href: '#kak-rabotim', label: 'Как работим' },
-  { href: '#vaprosi', label: 'Въпроси' },
+  { href: '#kak-rabotim', label: 'Как работи АДРИНА' },
   { href: '#kontakti', label: 'Контакти' },
 ]
 

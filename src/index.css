@@ -29,8 +29,8 @@
   --shadow-xl: 0 32px 80px rgba(6, 28, 41, 0.32);
 
   --container-width: 1180px;
-  --font-heading: 'Onest', 'Segoe UI', system-ui, sans-serif;
-  --font-body: 'Onest', 'Segoe UI', system-ui, sans-serif;
+  --font-heading: 'Manrope', 'Segoe UI', system-ui, sans-serif;
+  --font-body: 'Manrope', 'Segoe UI', system-ui, sans-serif;
 }
 
 * {
@@ -83,9 +83,14 @@ h1, h2, h3, h4 {
   line-height: 1.15;
 }
 
-h1, h2 {
-  font-weight: 800;
-  letter-spacing: -0.02em;
+h1 {
+  font-weight: 700;
+  letter-spacing: -0.05em;
+}
+
+h2 {
+  font-weight: 600;
+  letter-spacing: -0.04em;
 }
 
 h3 {
