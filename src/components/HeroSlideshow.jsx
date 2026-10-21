@@ -13,14 +13,23 @@ import './HeroSlideshow.css'
 // Реални снимки от обекти се редуват на цял екран зад текста на Hero.
 // Портретни кадри за телефон, пейзажни за таблет/десктоп — иначе object-fit
 // реже прекалено много от всяка снимка.
+// Заглавната снимка (по желание на клиентката) е специалистката с опашката
+// в кухнята — първа и на телефон, и на десктоп. На телефон кадърът е
+// пейзажен, затова object-position го центрира върху нея (дясната ѝ част).
 const PORTRAIT_SLIDES = [
-  curtainEntrancePhoto,
-  cleanroomFoggerPhoto,
-  fencePerimeterPhoto,
-  baitStationPhoto,
-  mallTreatmentPhoto,
+  { src: kitchenInspectionPhoto, position: '72% center' },
+  { src: curtainEntrancePhoto },
+  { src: cleanroomFoggerPhoto },
+  { src: fencePerimeterPhoto },
+  { src: baitStationPhoto },
+  { src: mallTreatmentPhoto },
 ]
-const LANDSCAPE_SLIDES = [kitchenInspectionPhoto, warehouseFoggingPhoto, chemicalStoragePhoto, fieldTickSamplingPhoto]
+const LANDSCAPE_SLIDES = [
+  { src: kitchenInspectionPhoto },
+  { src: warehouseFoggingPhoto },
+  { src: chemicalStoragePhoto },
+  { src: fieldTickSamplingPhoto },
+]
 const SLIDE_DURATION = 5000
 const PORTRAIT_QUERY = '(max-width: 560px)'
 
@@ -78,11 +87,12 @@ export default function HeroSlideshow() {
 
   return (
     <div className="hero-slideshow" aria-hidden="true">
-      {slides.map((src, i) =>
+      {slides.map(({ src, position }, i) =>
         loaded.has(i) ? (
           <img
             key={src}
             src={src}
+            style={position ? { objectPosition: position } : undefined}
             alt=""
             decoding="async"
             fetchpriority={i === 0 ? 'high' : 'low'}

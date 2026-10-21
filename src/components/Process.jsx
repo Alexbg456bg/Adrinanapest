@@ -54,7 +54,7 @@ export default function Process() {
       <div className="container">
         <div className="section-head">
           <span className="eyebrow">Процес</span>
-          <RevealHeading>Как работи <span className="accent-text">АДРИНА</span></RevealHeading>
+          <RevealHeading>Етапи на <span className="accent-text">работа</span></RevealHeading>
           <p>Пет стъпки от <strong>огледа</strong> до документирания резултат.</p>
         </div>
 

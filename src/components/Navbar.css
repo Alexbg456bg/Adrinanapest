@@ -61,22 +61,19 @@
   font-weight: 700;
 }
 
+/* "ПЕСТ КОНТРОЛ" — винаги видимо (и след скрол), по-едро и контрастно:
+   светло маслинено върху тъмния Hero, наситено маслинено върху белия navbar. */
 .navbar__logo-text small {
-  font-size: 10.5px;
-  font-weight: 700;
-  letter-spacing: 0.09em;
+  margin-top: 2px;
+  font-size: 12.5px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--color-accent);
-  max-height: 14px;
-  opacity: 1;
-  overflow: hidden;
-  transition: max-height 0.3s ease, opacity 0.25s ease, margin-top 0.3s ease;
 }
 
-.navbar--scrolled .navbar__logo-text small {
-  max-height: 0;
-  opacity: 0;
-  margin-top: -2px;
+.navbar:not(.navbar--scrolled) .navbar__logo-text small {
+  color: var(--color-mint);
 }
 
 .navbar__logo-mark {

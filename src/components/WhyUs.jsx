@@ -70,7 +70,7 @@ export default function WhyUs() {
         </motion.div>
 
         <div className="why__content">
-          <span className="eyebrow">Защо АДРИНА</span>
+          <span className="eyebrow">АДРИНА</span>
           <BlurReveal>Резултат, <span className="accent-text">който издържа на проверка</span></BlurReveal>
 
           <div className="why__list">

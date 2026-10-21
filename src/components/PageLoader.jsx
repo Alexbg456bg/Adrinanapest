@@ -37,7 +37,7 @@ export default function PageLoader() {
     <div className={`page-loader ${fading ? 'is-fading' : ''}`}>
       <div className="page-loader__mark">
         <Logo size={56} />
-        <span>Адрина ООД</span>
+        <span>АДРИНА</span>
       </div>
     </div>
   )
