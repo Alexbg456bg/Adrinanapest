@@ -5,6 +5,7 @@
   overflow: hidden;
 }
 
+/* Една статична заглавна снимка — без fade, увеличение или смяна на кадри. */
 .hero-slideshow__img {
   position: absolute;
   inset: 0;
@@ -12,68 +13,17 @@
   height: 100%;
   object-fit: cover;
   object-position: center 30%;
-  filter: grayscale(0.15) contrast(1.08);
-  opacity: 0;
-  transform: scale(1);
-  will-change: transform, opacity;
-  transition: opacity 0.9s ease-in-out, transform 5s linear;
+  filter: contrast(1.05);
 }
 
-.hero-slideshow__img.is-initial,
-.hero-slideshow__img.is-active {
-  opacity: 1;
-}
-
-.hero-slideshow__img.is-active {
-  z-index: 2;
-  transform: scale(1.08);
-}
-
-/* Предишният кадър стои напълно видим под новия (без собствен fade и без
-   да се "отдръпва" от увеличението), докато новият го покрие изцяло. */
-.hero-slideshow__img.is-prev {
-  z-index: 1;
-  opacity: 1;
-  transform: scale(1.08);
-  transition: none;
-}
-
-/* Десктоп: по-тъмно отляво, където е текстът, и към лентата с услугите. */
+/* Десктоп: по-тъмно отляво, където е текстът. */
 .hero-slideshow__scrim {
   position: absolute;
   inset: 0;
-  z-index: 3;
+  z-index: 1;
   background:
     linear-gradient(90deg, rgba(6, 28, 41, 0.92) 0%, rgba(6, 28, 41, 0.72) 42%, rgba(6, 28, 41, 0.28) 100%),
     linear-gradient(0deg, rgba(6, 28, 41, 0.75) 0%, transparent 38%);
-}
-
-.hero-slideshow__progress {
-  position: absolute;
-  top: 110px;
-  left: 16px;
-  right: 16px;
-  z-index: 4;
-  display: none;
-  gap: 6px;
-}
-
-.hero-slideshow__progress-track {
-  flex: 1;
-  height: 3px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.25);
-  overflow: hidden;
-}
-
-.hero-slideshow__progress-fill {
-  display: block;
-  height: 100%;
-  width: 100%;
-  transform-origin: left center;
-  animation: hero-slide-progress 5s linear forwards;
-  background: var(--color-mint);
-  border-radius: 999px;
 }
 
 @media (max-width: 900px) {
@@ -87,17 +37,9 @@
   }
 }
 
+/* Телефон: пейзажната снимка се центрира върху специалистката (вдясно). */
 @media (max-width: 560px) {
-  .hero-slideshow__progress {
-    display: flex;
-  }
-}
-
-@keyframes hero-slide-progress {
-  from {
-    transform: scaleX(0);
-  }
-  to {
-    transform: scaleX(1);
+  .hero-slideshow__img {
+    object-position: 72% center;
   }
 }
