@@ -286,6 +286,15 @@
   gap: 4px 14px;
 }
 
+/* Имейлът е със същия едър шрифт като главния телефон; на тесен екран може да
+   се пренесе само след "@" (виж <wbr> в Contact.jsx). */
+.contact__list li:nth-child(2) .contact__list-text a {
+  font-size: clamp(24px, 2.6vw, 34px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
 /* Вторият номер — резервен, затова по-дребен и на отделен ред под главния. */
 .contact__list li:first-child .contact__list-text a.contact__phone2 {
   flex-basis: 100%;

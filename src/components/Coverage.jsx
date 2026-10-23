@@ -1,24 +1,28 @@
 import { useEffect, useRef } from 'react'
 import { motion, useInView, animate } from 'framer-motion'
-import { IconSpray, IconBug, IconRat, IconShield } from './icons.jsx'
+import { IconShield } from './icons.jsx'
+import { IconDisinfection, IconInsects, IconRodent } from './CoverageIcons.jsx'
 import RevealHeading from './RevealHeading.jsx'
 import BrandMotif from './BrandMotif.jsx'
 import './Coverage.css'
 
 const CARDS = [
-  { icon: IconSpray, title: 'Дезинфекция', value: 87000, note: 'ежемесечно' },
-  { icon: IconBug, title: 'Дезинсекция', subtitle: '(и дезакаризация)', value: 12000, note: 'ежемесечно' },
-  { icon: IconRat, title: 'Дератизация', value: 65000, note: 'ежемесечно' },
-  { icon: IconShield, title: 'Общо ДДД мероприятия на месец', value: 164000, note: 'всеки месец', dark: true },
+  { icon: IconDisinfection, size: 34, title: 'Дезинфекция', value: 87000, note: 'ежемесечно' },
+  { icon: IconInsects, size: 34, title: 'Дезинсекция', subtitle: '(и дезакаризация)', value: 12000, note: 'ежемесечно' },
+  { icon: IconRodent, size: 34, title: 'Дератизация', value: 65000, note: 'ежемесечно' },
+  { icon: IconShield, size: 26, title: 'Обработени площи месечно', value: 164000, note: 'общо по услуги', dark: true },
 ]
 
+// Неразкъсваем интервал за хилядите и пред m², за да не се пренася "87" / "000 m²".
 function formatArea(n) {
-  return Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ')
+  return `${Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ')} m²`
 }
 
 function CoverageValue({ value }) {
   const ref = useRef(null)
-  const inView = useInView(ref, { once: true, margin: '-80px' })
+  // Само вертикален марж: на телефон '-80px' изрязва и страничните ръбове, а
+  // късият текст в лявата колона остава изцяло извън зоната и броячът не стартира.
+  const inView = useInView(ref, { once: true, margin: '-80px 0px' })
 
   // Пише директно в DOM-а вместо setState на всеки кадър.
   useEffect(() => {
@@ -27,15 +31,18 @@ function CoverageValue({ value }) {
       duration: 1.8,
       ease: 'easeOut',
       onUpdate: (v) => {
-        if (ref.current) ref.current.textContent = `над ${formatArea(v)} m²`
+        if (ref.current) ref.current.textContent = formatArea(v)
       },
     })
     return () => controls.stop()
   }, [inView, value])
 
   return (
-    <span ref={ref} className="coverage__value">
-      над 0 m²
+    <span className="coverage__value">
+      <span className="coverage__prefix">над</span>
+      <span ref={ref} className="coverage__num">
+        {formatArea(0)}
+      </span>
     </span>
   )
 }
@@ -68,7 +75,7 @@ export default function Coverage() {
               transition={{ duration: 0.5, delay: i * 0.12 }}
             >
               <span className="coverage__icon">
-                <c.icon width={24} height={24} />
+                <c.icon width={c.size} height={c.size} />
               </span>
               <h3>
                 {c.title}

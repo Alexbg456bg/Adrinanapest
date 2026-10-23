@@ -80,8 +80,9 @@ export default function Contact() {
           <span className="eyebrow eyebrow--light">Контакти</span>
           <RevealHeading>Заявете оглед <span className="accent-text">на обекта</span></RevealHeading>
           <p className="contact__lead">
-            Изпратете информация за обекта по телефон, имейл или чрез формата. АДРИНА работи без
-            регионално ограничение и отговаря бързо на всяко запитване.
+            Изпратете информация за обекта по телефон, имейл или чрез формата. АДРИНА обслужва
+            София и областта, а обекти в други региони — по предварителна уговорка, и отговаря
+            бързо на всяко запитване.
           </p>
 
           <ul className="contact__list">
@@ -95,7 +96,9 @@ export default function Contact() {
             <li>
               <span className="contact__list-icon"><IconMail width={18} height={18} /></span>
               <div className="contact__list-text">
-                <a href={`mailto:${CONTACT_INFO.email}`}>{CONTACT_INFO.email}</a>
+                <a href={`mailto:${CONTACT_INFO.email}`}>
+                  {CONTACT_INFO.email.split('@')[0]}@<wbr />{CONTACT_INFO.email.split('@')[1]}
+                </a>
               </div>
             </li>
             <li>
@@ -107,7 +110,7 @@ export default function Contact() {
             <li>
               <span className="contact__list-icon"><IconClock width={18} height={18} /></span>
               <div className="contact__list-text">
-                <span>На разположение при спешност</span>
+                <span>Приоритетна реакция при спешни случаи</span>
               </div>
             </li>
           </ul>

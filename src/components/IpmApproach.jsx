@@ -20,7 +20,7 @@ export default function IpmApproach() {
       <BrandMotif className="brand-motif--ipm" />
       <div className="container ipm__inner">
         <div className="ipm__copy">
-          <span className="eyebrow">Екологичен IPM подход</span>
+          <span className="eyebrow">IPM подход</span>
           <RevealHeading>Планирани обработки и <span className="accent-text">контрол на резултата</span></RevealHeading>
           <p>
             АДРИНА прилага интегрирано управление на вредителите, което съчетава професионални ДДД

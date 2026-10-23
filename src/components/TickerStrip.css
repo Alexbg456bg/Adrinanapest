@@ -12,11 +12,12 @@
   animation: ticker-scroll 48s linear infinite;
 }
 
+/* Разстоянието текст → точка и точка → следващ текст е еднакво (gap = padding-right). */
 .ticker__item {
   display: flex;
   align-items: center;
-  gap: 32px;
-  padding: 0 32px;
+  gap: 36px;
+  padding: 0 36px 0 0;
   font-family: var(--font-heading);
   font-weight: 800;
   font-size: clamp(20px, 2.6vw, 36px);
@@ -47,9 +48,4 @@
   .ticker__track {
     animation: none;
   }
-}
-
-.ticker__item:nth-child(even) {
-  color: transparent;
-  -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.55);
 }

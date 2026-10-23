@@ -3,6 +3,7 @@ import Hero from './components/Hero.jsx'
 import Stats from './components/Stats.jsx'
 import Coverage from './components/Coverage.jsx'
 import Sectors from './components/Sectors.jsx'
+import PhotoStrip from './components/PhotoStrip.jsx'
 import WhyUs from './components/WhyUs.jsx'
 import Process from './components/Process.jsx'
 import TickerStrip from './components/TickerStrip.jsx'
@@ -26,6 +27,7 @@ function App() {
         <Stats />
         <Coverage />
         <Sectors />
+        <PhotoStrip />
         <TickerStrip
           items={['Индустриални обекти', 'Административни сгради', 'Хранително-вкусова промишленост', 'Логистика и складове', 'Здравни структури', 'Хотели и ресторанти', 'Търговски обекти, пазари и молове']}
         />
