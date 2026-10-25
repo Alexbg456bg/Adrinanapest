@@ -12,8 +12,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  /* Вертикална снимка в пейзажен кадър: показваме фигурата в цял ръст. */
-  object-position: center 66%;
+  object-position: center 30%;
   filter: contrast(1.05);
 }
 
@@ -38,9 +37,9 @@
   }
 }
 
-/* Телефон: снимката е вертикална като екрана — центрираме върху специалистката. */
+/* Телефон: пейзажната снимка се центрира върху специалистката (вдясно). */
 @media (max-width: 560px) {
   .hero-slideshow__img {
-    object-position: 52% 72%;
+    object-position: 72% center;
   }
 }

@@ -1,6 +1,10 @@
+/* overflow:hidden реже опашките на буквите (д, р, у, ц…) — добавяме място отдолу
+   и го връщаме с отрицателен margin, така че редът да не расте. */
 .reveal-word__mask {
   display: inline-block;
   overflow: hidden;
+  padding-bottom: 0.22em;
+  margin-bottom: -0.22em;
 }
 
 .reveal-word {
