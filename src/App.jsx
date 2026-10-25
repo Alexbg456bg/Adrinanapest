@@ -3,12 +3,11 @@ import Hero from './components/Hero.jsx'
 import Stats from './components/Stats.jsx'
 import Coverage from './components/Coverage.jsx'
 import Sectors from './components/Sectors.jsx'
-import Services from './components/Services.jsx'
+import PhotoStrip from './components/PhotoStrip.jsx'
 import WhyUs from './components/WhyUs.jsx'
 import Process from './components/Process.jsx'
 import TickerStrip from './components/TickerStrip.jsx'
-import Spotlight from './components/Spotlight.jsx'
-import Faq from './components/Faq.jsx'
+import IpmApproach from './components/IpmApproach.jsx'
 import Contact from './components/Contact.jsx'
 import Footer from './components/Footer.jsx'
 import FloatingCall from './components/FloatingCall.jsx'
@@ -28,14 +27,13 @@ function App() {
         <Stats />
         <Coverage />
         <Sectors />
-        <Services />
+        <PhotoStrip />
         <TickerStrip
-          items={['Индустриални обекти', 'Административни сгради', 'Хранително-вкусова промишленост', 'Логистика и складове', 'Здравни структури', 'Хотели и ресторанти']}
+          items={['Индустриални обекти', 'Административни сгради', 'Хранително-вкусова промишленост', 'Логистика и складове', 'Здравни структури', 'Хотели и ресторанти', 'Търговски обекти, пазари и молове']}
         />
         <WhyUs />
         <Process />
-        <Spotlight />
-        <Faq />
+        <IpmApproach />
         <Contact />
       </main>
       <Footer />

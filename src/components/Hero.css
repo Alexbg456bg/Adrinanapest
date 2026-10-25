@@ -36,15 +36,15 @@
 .hero__text {
   width: 100%;
   max-width: 940px;
-  padding: 150px clamp(24px, 6vw, 96px) 190px;
+  padding: 150px clamp(24px, 6vw, 96px) 140px;
 }
 
 .hero__content h1 {
   color: #fff;
-  font-size: clamp(40px, 5.2vw, 76px);
-  font-weight: 800;
-  line-height: 1.04;
-  letter-spacing: -0.035em;
+  font-size: clamp(40px, 5.2vw, 78px);
+  font-weight: 700;
+  line-height: 0.98;
+  letter-spacing: -0.052em;
   margin-bottom: 26px;
 }
 
@@ -92,63 +92,6 @@
   border-radius: 50%;
   padding: 3px;
   flex-shrink: 0;
-}
-
-/* ---------- Лента с услугите най-долу ---------- */
-
-.hero__services {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 4;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  border-top: 1px solid rgba(255, 255, 255, 0.18);
-  /* Без backdrop-filter: размазването на движещата се снимка отдолу се
-     прерисува на всеки кадър; по-плътният градиент изглежда почти същото. */
-  background: linear-gradient(180deg, rgba(6, 28, 41, 0.62), rgba(6, 28, 41, 0.9));
-}
-
-.hero__service {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  padding: 30px clamp(20px, 3vw, 44px);
-  color: #fff;
-  border-right: 1px solid rgba(255, 255, 255, 0.12);
-  transition: background 0.3s ease;
-}
-
-.hero__service:last-child {
-  border-right: 0;
-}
-
-.hero__service:hover {
-  background: rgba(113, 212, 197, 0.1);
-}
-
-.hero__service-num {
-  font-size: 14px;
-  font-weight: 700;
-  color: var(--color-mint);
-  letter-spacing: 0.04em;
-}
-
-.hero__service-label {
-  flex: 1;
-  font-size: 17px;
-  font-weight: 600;
-  letter-spacing: -0.01em;
-}
-
-.hero__service svg {
-  color: var(--color-mint);
-  transition: transform 0.3s ease;
-}
-
-.hero__service:hover svg {
-  transform: translateX(5px);
 }
 
 /* ---------- Responsive ---------- */
@@ -213,9 +156,6 @@
     border-radius: 999px;
     padding: 6px 12px 6px 6px;
   }
-  .hero__services {
-    display: none;
-  }
 }
 
 /* ---------- Телефон: hero на цял екран, съдържание отдолу, лента с услуги ---------- */
@@ -231,7 +171,7 @@
     align-items: flex-end;
   }
   .hero__text {
-    padding: 120px 20px 28px;
+    padding: 120px 20px 76px;
   }
   .hero__content h1 {
     font-size: clamp(34px, 10vw, 42px);

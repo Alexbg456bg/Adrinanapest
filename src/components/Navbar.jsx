@@ -7,10 +7,9 @@ import { handleHashClick } from '../utils/scroll.js'
 import './Navbar.css'
 
 const LINKS = [
-  { href: '#uslugi', label: 'Услуги' },
-  { href: '#zashto-nie', label: 'Защо АДРИНА' },
-  { href: '#kak-rabotim', label: 'Как работим' },
-  { href: '#vaprosi', label: 'Въпроси' },
+  { href: '#sektori', label: 'Сектори' },
+  { href: '#zashto-nie', label: 'АДРИНА' },
+  { href: '#kak-rabotim', label: 'Процес' },
   { href: '#kontakti', label: 'Контакти' },
 ]
 
@@ -50,8 +49,8 @@ export default function Navbar() {
         <a href="#top" className="navbar__logo" onClick={handleHashClick('#top')}>
           <Logo size={36} />
           <span className="navbar__logo-text">
-            Адрина <em>ООД</em>
-            <small>Пест Контрол</small>
+            АДРИНА
+            <small>ПЕСТ КОНТРОЛ</small>
           </span>
         </a>
 

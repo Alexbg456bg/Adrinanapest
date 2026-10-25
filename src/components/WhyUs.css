@@ -72,8 +72,9 @@
 
 .why__media {
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
+  gap: 36px;
 }
 
 .why__photo {
@@ -101,32 +102,28 @@
   background: linear-gradient(0deg, rgba(6, 28, 41, 0.75) 0%, transparent 45%);
 }
 
-.why__photo-badge {
-  position: absolute;
-  left: 20px;
-  bottom: 20px;
-  z-index: 1;
+/* "23+" отстрани до снимката — по модела на референтния сайт на клиентката
+   (Roboto Slab, голямо число, малък подпис отдолу). */
+.why__years {
   display: flex;
   flex-direction: column;
-  padding: 14px 20px;
-  border-radius: var(--radius-md);
-  background: rgba(6, 28, 41, 0.55);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.16);
+  flex-shrink: 0;
 }
 
-.why__photo-badge strong {
-  font-family: var(--font-heading);
-  font-size: 26px;
-  color: var(--color-mint);
-  line-height: 1;
-}
-
-.why__photo-badge span {
-  font-size: 12px;
+.why__years strong {
+  font-family: 'Roboto Slab', Georgia, serif;
+  font-size: clamp(64px, 7vw, 100px);
   font-weight: 700;
-  color: rgba(255, 255, 255, 0.8);
-  margin-top: 4px;
+  line-height: 1;
+  color: var(--color-mint);
+}
+
+.why__years span {
+  max-width: 170px;
+  margin-top: 8px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.82);
 }
 
 .why__list {
@@ -148,7 +145,7 @@
   border-radius: 12px;
   background: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.14);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14), 0 8px 20px rgba(5, 166, 143, 0.18);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14), 0 8px 20px rgba(104, 117, 66, 0.18);
   color: var(--color-mint);
   display: flex;
   align-items: center;
@@ -206,7 +203,18 @@
   }
   .why__photo {
     max-width: 320px;
-    margin: 0 auto;
+  }
+}
+
+@media (max-width: 560px) {
+  .why__media {
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
+  .why__years {
+    align-items: center;
+    text-align: center;
   }
 }
 

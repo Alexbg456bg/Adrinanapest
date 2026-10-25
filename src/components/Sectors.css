@@ -88,7 +88,7 @@
   background: linear-gradient(150deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
   color: var(--color-mint);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16), inset 0 0 0 1px rgba(255, 255, 255, 0.05),
-    0 10px 24px rgba(5, 166, 143, 0.22);
+    0 10px 24px rgba(104, 117, 66, 0.22);
   margin-bottom: 18px;
 }
 
@@ -99,6 +99,30 @@
 
 .sectors__card p {
   font-size: 14.5px;
+}
+
+/* Конкретни примери за типа обекти — по-дребни, под основното описание. */
+.sectors__card p.sectors__examples {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--color-border);
+  font-size: 12.5px;
+  line-height: 1.55;
+  color: var(--color-text-muted, #6b7a80);
+}
+
+.sectors__card--feature p.sectors__examples {
+  border-top-color: rgba(255, 255, 255, 0.18);
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 13.5px;
+}
+
+/* 7 карти: голямата заема 2×2, останалите 6 запълват 3 колони — седмата
+   ("Частни домове") остава сама на последния ред, затова се разтяга по цялата ширина. */
+@media (min-width: 901px) {
+  .sectors__card:nth-child(7) {
+    grid-column: 1 / -1;
+  }
 }
 
 @media (max-width: 900px) {

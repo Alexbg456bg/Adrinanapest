@@ -5,10 +5,9 @@ import { handleHashClick } from '../utils/scroll.js'
 import './Footer.css'
 
 const LINKS = [
-  { href: '#uslugi', label: 'Услуги' },
-  { href: '#zashto-nie', label: 'Защо АДРИНА' },
-  { href: '#kak-rabotim', label: 'Как работим' },
-  { href: '#vaprosi', label: 'Въпроси' },
+  { href: '#sektori', label: 'Сектори' },
+  { href: '#zashto-nie', label: 'АДРИНА' },
+  { href: '#kak-rabotim', label: 'Процес' },
   { href: '#kontakti', label: 'Контакти' },
 ]
 
@@ -26,8 +25,8 @@ export default function Footer() {
           </span>
           <p>
             ДДД управление за производствени, логистични и корпоративни обекти — от 2003 г.
-            Дезинсекция, дератизация, дезинфекция и дезакаризация с протокол след
-            всяко третиране.
+            Дезинсекция, дератизация, дезинфекция и дезакаризация с придружаваща
+            документация след всяко третиране.
           </p>
         </div>
 

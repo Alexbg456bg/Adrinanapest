@@ -77,37 +77,6 @@
   gap: 6px;
 }
 
-.contact__sep {
-  color: rgba(255, 255, 255, 0.4);
-}
-
-.contact__trust {
-  display: flex;
-  gap: 28px;
-  flex-wrap: wrap;
-  padding-top: 24px;
-  border-top: 1px solid rgba(255, 255, 255, 0.12);
-}
-
-.contact__trust-item {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.contact__trust-item strong {
-  font-family: var(--font-heading);
-  font-size: 22px;
-  color: var(--color-mint);
-  line-height: 1;
-}
-
-.contact__trust-item span {
-  font-size: 11.5px;
-  font-weight: 600;
-  color: rgba(255, 255, 255, 0.65);
-}
-
 .contact__form {
   display: flex;
   flex-direction: column;
@@ -138,7 +107,7 @@
 .contact__form .field textarea:focus {
   outline: none;
   background: #fff;
-  box-shadow: 0 0 0 1px rgba(5, 166, 143, 0.25), 0 10px 26px rgba(5, 166, 143, 0.16);
+  box-shadow: 0 0 0 1px rgba(104, 117, 66, 0.25), 0 10px 26px rgba(104, 117, 66, 0.16);
   transform: translateY(-1px);
 }
 
@@ -207,7 +176,7 @@
 .contact__form .field--select select:focus {
   outline: none;
   background: #fff;
-  box-shadow: 0 0 0 1px rgba(5, 166, 143, 0.25), 0 10px 26px rgba(5, 166, 143, 0.16);
+  box-shadow: 0 0 0 1px rgba(104, 117, 66, 0.25), 0 10px 26px rgba(104, 117, 66, 0.16);
   transform: translateY(-1px);
 }
 
@@ -341,4 +310,22 @@
 .contact__list li:first-child .contact__list-text {
   flex-wrap: wrap;
   gap: 4px 14px;
+}
+
+/* Имейлът е със същия едър шрифт като главния телефон; на тесен екран може да
+   се пренесе само след "@" (виж <wbr> в Contact.jsx). */
+.contact__list li:nth-child(2) .contact__list-text a {
+  font-size: clamp(24px, 2.6vw, 34px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+/* Вторият номер — резервен, затова по-дребен и на отделен ред под главния. */
+.contact__list li:first-child .contact__list-text a.contact__phone2 {
+  flex-basis: 100%;
+  font-size: clamp(16px, 1.5vw, 19px);
+  font-weight: 700;
+  letter-spacing: 0;
+  color: rgba(255, 255, 255, 0.75);
 }

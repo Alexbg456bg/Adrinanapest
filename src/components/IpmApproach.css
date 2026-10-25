@@ -1,0 +1,197 @@
+.ipm {
+  position: relative;
+  overflow: hidden;
+}
+
+.brand-motif--ipm {
+  bottom: -220px;
+  left: -220px;
+}
+
+.ipm__inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 72px;
+  align-items: center;
+}
+
+.ipm__copy h2 {
+  font-size: clamp(30px, 4vw, 48px);
+  margin: 14px 0 22px;
+}
+
+.ipm__copy p {
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--color-text-muted);
+  max-width: 560px;
+}
+
+.ipm__quote {
+  margin: 32px 0 0;
+  padding-left: 22px;
+  border-left: 3px solid var(--color-accent);
+  font-size: 19px;
+  line-height: 1.5;
+  color: var(--color-text-muted);
+}
+
+.ipm__quote strong {
+  display: block;
+  color: var(--color-primary);
+  font-weight: 700;
+}
+
+/* ---------- Кръгова схема ---------- */
+
+.ipm__visual {
+  --radius: 190px;
+  position: relative;
+  width: calc(var(--radius) * 2 + 150px);
+  aspect-ratio: 1;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.ipm__ring {
+  position: absolute;
+  inset: 75px;
+  border-radius: 50%;
+  border: 1.5px dashed rgba(16, 39, 49, 0.22);
+}
+
+.ipm__core {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 168px;
+  height: 168px;
+  margin: -84px 0 0 -84px;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: linear-gradient(150deg, var(--color-primary) 0%, var(--color-primary-deep) 100%);
+  box-shadow: 0 24px 48px rgba(6, 28, 41, 0.28);
+}
+
+.ipm__core strong {
+  font-size: 40px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  color: var(--color-mint);
+}
+
+.ipm__core span {
+  max-width: 100px;
+  margin-top: 8px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  line-height: 1.4;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.ipm__cycle {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Всеки етап се поставя върху окръжността: завърта се на --angle, отмества се
+   с радиуса и се завърта обратно, за да остане текстът хоризонтален. */
+.ipm__step {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 150px;
+  margin: -46px 0 0 -75px;
+  transform: rotate(var(--angle)) translate(var(--radius)) rotate(calc(var(--angle) * -1));
+}
+
+.ipm__step-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 14px 10px 12px;
+  border-radius: var(--radius-md);
+  background: #fff;
+  border: 1px solid var(--color-border);
+  box-shadow: 0 12px 28px rgba(6, 28, 41, 0.08);
+}
+
+.ipm__step-num {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  color: var(--color-accent);
+}
+
+.ipm__step-title {
+  margin-top: 2px;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.ipm__step-note {
+  font-size: 12.5px;
+  color: var(--color-text-muted);
+}
+
+@media (max-width: 1100px) {
+  .ipm__visual {
+    --radius: 160px;
+  }
+}
+
+@media (max-width: 900px) {
+  .ipm__inner {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+}
+
+/* Телефон: кръгът става твърде тесен — етапите се подреждат в списък под
+   центъра, всеки със своя номер. */
+@media (max-width: 560px) {
+  .ipm__visual {
+    width: 100%;
+    aspect-ratio: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+  .ipm__ring {
+    display: none;
+  }
+  .ipm__core {
+    position: static;
+    margin: 0;
+    width: 140px;
+    height: 140px;
+  }
+  .ipm__cycle {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .ipm__step {
+    position: static;
+    width: auto;
+    margin: 0;
+    transform: none;
+  }
+  .ipm__step:last-child {
+    grid-column: 1 / -1;
+  }
+}

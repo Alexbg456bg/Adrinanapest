@@ -18,8 +18,6 @@ const item = {
   show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } },
 }
 
-const SERVICE_LINKS = ['Дезинфекция', 'Дезинсекция', 'Дератизация', 'Дезакаризация']
-
 export default function Hero() {
   const pinRef = useRef(null)
   const { scrollYProgress } = useScroll({
@@ -58,8 +56,8 @@ export default function Hero() {
               </motion.h1>
 
               <motion.p variants={item} className="hero__lead">
-                АДРИНА планира, изпълнява и документира ДДД програми за обществени структури и
-                предприятия.
+                Професионален контрол на вредители и оценка на биологичния риск за корпоративни,
+                обществени и частни обекти.
               </motion.p>
 
               <motion.div variants={item} className="hero__actions">
@@ -68,35 +66,20 @@ export default function Hero() {
                 </Magnetic>
                 <Magnetic>
                   <a href="#sektori" className="btn btn-outline hero__phone-cta" onClick={handleHashClick('#sektori')}>
-                    Решения за организации
+                    ДДД услуги за организации
                     <IconArrowRight width={16} height={16} />
                   </a>
                 </Magnetic>
               </motion.div>
 
               <motion.ul variants={item} className="hero__checks">
-                <li><IconCheck width={16} height={16} /> 23 години опит с бизнес клиенти</li>
-                <li><IconCheck width={16} height={16} /> Протокол и фактура след всяко третиране</li>
-                <li><IconCheck width={16} height={16} /> Без прекъсване на процеса</li>
+                <li><IconCheck width={16} height={16} /> От 2003 г. — професионален опит</li>
+                <li><IconCheck width={16} height={16} /> IPM подход — оценка, превенция и контрол</li>
+                <li><IconCheck width={16} height={16} /> Документирана работа — протоколи, картосхеми и отчети</li>
               </motion.ul>
             </motion.div>
           </div>
         </div>
-
-        <nav className="hero__services" aria-label="Услуги">
-          {SERVICE_LINKS.map((label, i) => (
-            <a
-              key={label}
-              href="#uslugi"
-              className="hero__service"
-              onClick={handleHashClick('#uslugi')}
-            >
-              <span className="hero__service-num">{String(i + 1).padStart(2, '0')}</span>
-              <span className="hero__service-label">{label}</span>
-              <IconArrowRight width={16} height={16} />
-            </a>
-          ))}
-        </nav>
       </motion.section>
     </div>
   )

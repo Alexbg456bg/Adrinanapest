@@ -50,7 +50,7 @@
   background: linear-gradient(150deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
   color: var(--color-mint);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16), inset 0 0 0 1px rgba(255, 255, 255, 0.05),
-    0 10px 24px rgba(5, 166, 143, 0.22);
+    0 10px 24px rgba(104, 117, 66, 0.22);
 }
 
 .coverage__card--dark .coverage__icon {
@@ -81,6 +81,10 @@
 }
 
 .coverage__value {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  column-gap: 0.32em;
   font-family: var(--font-heading);
   font-size: clamp(22px, 2.4vw, 28px);
   font-weight: 800;
@@ -89,6 +93,17 @@
 
 .coverage__card--dark .coverage__value {
   color: var(--color-mint);
+}
+
+.coverage__prefix {
+  font-size: 0.62em;
+  font-weight: 700;
+  opacity: 0.7;
+}
+
+/* Стойността никога не се разкъсва — "87 000 m²" остава на един ред. */
+.coverage__num {
+  white-space: nowrap;
 }
 
 .coverage__note {
@@ -110,25 +125,33 @@
   }
 }
 
-/* Телефон: по една карта на ред — иконка вляво, данните вдясно. */
+/* Телефон: картите са тесни — "над" отива над числото, а цифрите се смаляват
+   плавно с ширината на екрана, така че стойността да се чете цялостна. */
 @media (max-width: 560px) {
-  .coverage__grid {
-    grid-template-columns: 1fr;
-    gap: 12px;
-  }
   .coverage__card {
-    display: grid;
-    grid-template-columns: 52px 1fr;
-    column-gap: 16px;
-    row-gap: 2px;
-    align-items: center;
-    padding: 18px 18px 18px 16px;
+    padding: 22px 14px 20px;
   }
   .coverage__icon {
-    grid-row: 1 / span 4;
-    align-self: start;
+    width: 46px;
+    height: 46px;
+    border-radius: 13px;
+  }
+  .coverage__icon svg {
+    width: 30px;
+    height: 30px;
+  }
+  .coverage__card h3 {
+    font-size: 15px;
   }
   .coverage__value {
-    font-size: 24px;
+    flex-direction: column;
+    align-items: flex-start;
+    row-gap: 0;
+    font-size: clamp(14px, 4.7vw, 19px);
+    letter-spacing: -0.02em;
+  }
+  .coverage__prefix {
+    font-size: 12px;
+    letter-spacing: 0;
   }
 }
