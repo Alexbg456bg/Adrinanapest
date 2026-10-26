@@ -1,6 +1,6 @@
 import { useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
-import { IconClock, IconPin, IconLeaf, IconBuilding, IconCertificate } from './icons.jsx'
+import { IconClock, IconRepeat, IconLeaf, IconBuilding, IconCertificate } from './icons.jsx'
 import corridorCheckPhoto from '../assets/photos/cleanroom-fogger.webp'
 import BlurReveal from './BlurReveal.jsx'
 import BrandMotif from './BrandMotif.jsx'
@@ -13,9 +13,9 @@ const POINTS = [
     desc: 'Практика в обекти с висока натовареност и постоянен режим на работа.',
   },
   {
-    icon: IconPin,
-    title: 'София и областта',
-    desc: 'Обекти в други региони — по предварителна уговорка. Работата следва договорен график, съобразен с производствения режим.',
+    icon: IconRepeat,
+    title: 'Работа по договорен график',
+    desc: 'Обработките се планират и провеждат по график, съобразен с производствения режим на обекта.',
   },
   {
     icon: IconLeaf,

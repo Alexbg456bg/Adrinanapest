@@ -27,17 +27,19 @@ function animatedScrollTo(targetY, duration = 550) {
 // (2) в някои обвивки/webview-и native scroll-to-#hash изобщо не се
 // задейства при клик (hash-ът в адреса се сменя, но страницата не se
 // премества) — затова скролваме изрично с JS при всеки клик на вътрешен линк.
-export function scrollToHash(hash) {
+export function scrollToHash(hash, { push = true } = {}) {
   const id = hash.replace('#', '')
   const target = document.getElementById(id)
   if (!target) return
   // .navbar__inner (не целия .navbar) — когато мобилното меню е отворено,
   // .navbar включва и разгънатия списък, което би завишило офсета неправилно.
+  // +72px: фиксираното меню (с вертикалния му padding) не бива да закрива
+  // началото на секцията — иска се ясен отстъп под него.
   const navbarInner = document.querySelector('.navbar__inner')
-  const offset = (navbarInner?.offsetHeight || 0) + 32
+  const offset = (navbarInner?.offsetHeight || 0) + 72
   const top = target.getBoundingClientRect().top + window.scrollY - offset
   animatedScrollTo(Math.max(top, 0))
-  if (window.history?.pushState) window.history.pushState(null, '', hash)
+  if (push && window.history?.pushState) window.history.pushState(null, '', hash)
 }
 
 export function handleHashClick(hash) {

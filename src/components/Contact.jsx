@@ -12,7 +12,7 @@ const CONTACT_INFO = {
   phone: '0887 803 023',
   phone2: '0884 388 435',
   email: 'adrinapest@gmail.com',
-  address: 'ул. „Цар Самуил“ 109, гр. София',
+  address: 'гр. София',
 }
 
 const SERVICES = ['Дезинсекция', 'Дератизация', 'Дезинфекция', 'Дезакаризация', 'Друго']
@@ -80,8 +80,7 @@ export default function Contact() {
           <span className="eyebrow eyebrow--light">Контакти</span>
           <RevealHeading>Заявете оглед <span className="accent-text">на обекта</span></RevealHeading>
           <p className="contact__lead">
-            Изпратете информация за обекта по телефон, имейл или чрез формата. АДРИНА обслужва
-            София и областта, а обекти в други региони — по предварителна уговорка, и отговаря
+            Изпратете информация за обекта по телефон, имейл или чрез формата. АДРИНА отговаря
             бързо на всяко запитване.
           </p>
 
@@ -215,6 +214,11 @@ export default function Contact() {
                   )}
                 </button>
               </Magnetic>
+
+              <p className="contact__privacy">
+                С изпращането на запитването се съгласявате АДРИНА ООД да използва подадените данни
+                само за връзка с вас по него. Данните не се предоставят на трети лица.
+              </p>
             </>
           )}
         </motion.form>

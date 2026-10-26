@@ -8,10 +8,10 @@ export default function BlurReveal({ as = 'h2', children, className = '' }) {
   return (
     <MotionTag
       className={className}
-      initial={{ opacity: 0, filter: 'blur(14px)', y: 10 }}
+      initial={{ opacity: 0, filter: 'blur(10px)', y: 10 }}
       whileInView={{ opacity: 1, filter: 'blur(0px)', y: 0 }}
-      viewport={{ once: false, margin: '-80px' }}
-      transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+      viewport={{ once: true, margin: '0px 0px -40px 0px' }}
+      transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
     >
       {children}
     </MotionTag>

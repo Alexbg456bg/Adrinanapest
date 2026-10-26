@@ -9,7 +9,7 @@
 .ticker__track {
   display: flex;
   width: max-content;
-  animation: ticker-scroll 48s linear infinite;
+  animation: ticker-scroll var(--ticker-duration, 48s) linear infinite;
 }
 
 /* Разстоянието текст → точка и точка → следващ текст е еднакво (gap = padding-right). */
@@ -20,11 +20,17 @@
   padding: 0 36px 0 0;
   font-family: var(--font-heading);
   font-weight: 800;
-  font-size: clamp(20px, 2.6vw, 36px);
-  letter-spacing: -0.03em;
+  font-size: clamp(16px, 1.9vw, 26px);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
   line-height: 1;
-  color: rgba(255, 255, 255, 0.9);
+  color: #fff;
   white-space: nowrap;
+}
+
+/* Наименованията се редуват: бяло, следващото зелено. */
+.ticker__item--green {
+  color: var(--color-accent-light);
 }
 
 .ticker__dot {

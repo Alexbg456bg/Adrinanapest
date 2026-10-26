@@ -9,6 +9,7 @@ const LINKS = [
   { href: '#zashto-nie', label: 'АДРИНА' },
   { href: '#kak-rabotim', label: 'Процес' },
   { href: '#kontakti', label: 'Контакти' },
+  { href: '#portal', label: 'Клиентски портал' },
 ]
 
 export default function Footer() {
@@ -44,7 +45,7 @@ export default function Footer() {
 
       <div className="container footer__bottom">
         <span>© {year} Адрина ООД. Всички права запазени.</span>
-        <span className="footer__license">ЕИК 131046886 · ул. „Цар Самуил“ 109, София</span>
+        <span className="footer__license">ЕИК 131046886 · гр. София</span>
       </div>
     </footer>
   )

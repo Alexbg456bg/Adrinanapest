@@ -82,7 +82,7 @@
 .ipm__core strong {
   font-size: 40px;
   font-weight: 800;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.015em;
   line-height: 1;
   color: var(--color-mint);
 }
@@ -142,7 +142,8 @@
 }
 
 .ipm__step-note {
-  font-size: 12.5px;
+  font-size: 14px;
+  font-weight: 500;
   color: var(--color-text-muted);
 }
 

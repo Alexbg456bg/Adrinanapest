@@ -5,6 +5,13 @@ import './RevealHeading.css'
 // Разбива децата на елемента на думи и обвива всяка в motion.span с маска
 // (overflow:hidden), за да "изгрява" ред по ред при влизане в изгледа —
 // вдъхновено от word-reveal ефекта на https://microbiolab-bg.com/.
+// Нарочно само вертикален viewport margin: '-80px' изрязва и страничните
+// ръбове на екрана и къси думи в началото на ред ("с", "и", "на") никога не
+// се засичаха като видими — оставаха невидими (на телефон липсваше "с").
+// Общото забавяне е ограничено, за да приключи ефектът за около секунда.
+const WORD_DELAY = 0.03
+const MAX_DELAY = 0.3
+
 function renderWords(children, idxRef) {
   const out = []
 
@@ -12,8 +19,10 @@ function renderWords(children, idxRef) {
     if (typeof child === 'string' || typeof child === 'number') {
       String(child).split(/(\s+)/).forEach((part, i) => {
         if (part === '') return
+        // Обикновен интервал (не &nbsp;): при пренасяне на нов ред се свива и
+        // не измества първата дума навътре спрямо останалите редове.
         if (/^\s+$/.test(part)) {
-          out.push(<span key={`sp-${idxRef.i}-${i}`}>&nbsp;</span>)
+          out.push(' ')
           return
         }
         const current = idxRef.i++
@@ -23,8 +32,8 @@ function renderWords(children, idxRef) {
               className="reveal-word"
               initial={{ opacity: 0, y: '0.65em' }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: false, margin: '-80px' }}
-              transition={{ duration: 0.55, ease: 'easeOut', delay: current * 0.045 }}
+              viewport={{ once: true, margin: '0px 0px -40px 0px' }}
+              transition={{ duration: 0.4, ease: 'easeOut', delay: Math.min(current * WORD_DELAY, MAX_DELAY) }}
             >
               {part}
             </motion.span>

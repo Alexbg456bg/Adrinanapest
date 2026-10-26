@@ -63,7 +63,7 @@
 .sectors__card--feature h3 {
   color: #fff;
   font-size: clamp(26px, 2.6vw, 36px);
-  letter-spacing: -0.025em;
+  letter-spacing: -0.012em;
   max-width: 420px;
 }
 
@@ -98,7 +98,8 @@
 }
 
 .sectors__card p {
-  font-size: 14.5px;
+  font-size: 15.5px;
+  line-height: 1.6;
 }
 
 /* Конкретни примери за типа обекти — по-дребни, под основното описание. */
@@ -106,15 +107,16 @@
   margin-top: 12px;
   padding-top: 12px;
   border-top: 1px solid var(--color-border);
-  font-size: 12.5px;
+  font-size: 14px;
   line-height: 1.55;
-  color: var(--color-text-muted, #6b7a80);
+  font-weight: 500;
+  color: var(--color-text-muted);
 }
 
 .sectors__card--feature p.sectors__examples {
   border-top-color: rgba(255, 255, 255, 0.18);
-  color: rgba(255, 255, 255, 0.7);
-  font-size: 13.5px;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 14.5px;
 }
 
 /* 7 карти: голямата заема 2×2, останалите 6 запълват 3 колони — седмата
@@ -171,6 +173,6 @@
     font-size: 16.5px;
   }
   .sectors__card p {
-    font-size: 14px;
+    font-size: 15px;
   }
 }

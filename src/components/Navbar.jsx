@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { IconPhone } from './icons.jsx'
+import { IconPhone, IconLock } from './icons.jsx'
 import Logo from './Logo.jsx'
 import Magnetic from './Magnetic.jsx'
 import { handleHashClick } from '../utils/scroll.js'
@@ -11,6 +11,7 @@ const LINKS = [
   { href: '#zashto-nie', label: 'АДРИНА' },
   { href: '#kak-rabotim', label: 'Процес' },
   { href: '#kontakti', label: 'Контакти' },
+  { href: '#portal', label: 'Клиентски портал', lock: true },
 ]
 
 const PHONE = '0887 803 023'
@@ -62,6 +63,7 @@ export default function Navbar() {
               className={activeId === l.href.slice(1) ? 'is-active' : ''}
               onClick={handleHashClick(l.href)}
             >
+              {l.lock && <IconLock className="navbar__lock" width={14} height={14} />}
               {l.label}
             </a>
           ))}
@@ -70,7 +72,7 @@ export default function Navbar() {
         <div className="navbar__actions">
           <a href={`tel:+359${PHONE.replace(/^0/, '').replace(/\s/g, '')}`} className="navbar__phone">
             <IconPhone width={18} height={18} />
-            {PHONE}
+            <span className="navbar__phone-text">{PHONE}</span>
           </a>
           <Magnetic strength={10}>
             <a href="#kontakti" className="btn btn-primary navbar__cta" onClick={handleHashClick('#kontakti')}>Запитване</a>
@@ -106,6 +108,7 @@ export default function Navbar() {
                   setOpen(false)
                 }}
               >
+                {l.lock && <IconLock className="navbar__lock" width={15} height={15} />}
                 {l.label}
               </a>
             ))}

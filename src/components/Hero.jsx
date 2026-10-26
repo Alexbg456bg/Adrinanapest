@@ -51,8 +51,8 @@ export default function Hero() {
               animate="show"
             >
               <motion.h1 variants={item}>
-                Контролирана среда.{' '}
-                <span className="hero__accent">Документиран резултат.</span>
+                Професионален контрол на вредители.{' '}
+                <span className="hero__accent">Проследим резултат.</span>
               </motion.h1>
 
               <motion.p variants={item} className="hero__lead">

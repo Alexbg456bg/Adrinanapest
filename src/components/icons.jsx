@@ -219,3 +219,11 @@ export const IconQuote = (props) => (
     <path d="M4 24V15.2C4 8.6 7.9 3.6 14 0l2.2 3.4C12 6 9.9 8.7 9.6 12.4c.5-.2 1.1-.3 1.8-.3 3 0 5.4 2.3 5.4 5.6 0 3.4-2.6 6.3-6 6.3-3.8 0-6.8-2.7-6.8-8zm17.8 0V15.2c0-6.6 3.9-11.6 10-15.2l2.2 3.4c-4.2 2.6-6.3 5.3-6.6 9 .5-.2 1.1-.3 1.8-.3 3 0 5.4 2.3 5.4 5.6 0 3.4-2.6 6.3-6 6.3-3.8 0-6.8-2.7-6.8-8z" />
   </svg>
 )
+
+export const IconLock = (props) => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" {...props}>
+    <rect x="5" y="10.5" width="14" height="10" rx="2" />
+    <path d="M8 10.5V8a4 4 0 0 1 8 0v2.5" strokeLinecap="round" />
+    <circle cx="12" cy="15.5" r="1.2" fill="currentColor" stroke="none" />
+  </svg>
+)

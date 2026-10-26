@@ -96,7 +96,7 @@
 }
 
 .process__step p {
-  font-size: 14.5px;
+  font-size: 15.5px;
 }
 
 .process__arrow {
@@ -162,6 +162,6 @@
     font-size: 16.5px;
   }
   .process__step p {
-    font-size: 14px;
+    font-size: 15px;
   }
 }

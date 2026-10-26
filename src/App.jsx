@@ -8,6 +8,7 @@ import WhyUs from './components/WhyUs.jsx'
 import Process from './components/Process.jsx'
 import TickerStrip from './components/TickerStrip.jsx'
 import IpmApproach from './components/IpmApproach.jsx'
+import ClientPortal from './components/ClientPortal.jsx'
 import Contact from './components/Contact.jsx'
 import Footer from './components/Footer.jsx'
 import FloatingCall from './components/FloatingCall.jsx'
@@ -29,11 +30,12 @@ function App() {
         <Sectors />
         <PhotoStrip />
         <TickerStrip
-          items={['Индустриални обекти', 'Административни сгради', 'Хранително-вкусова промишленост', 'Логистика и складове', 'Здравни структури', 'Хотели и ресторанти', 'Търговски обекти, пазари и молове']}
+          items={['Индустриални обекти', 'Административни сгради', 'ХВП и аграрни обекти', 'Логистика и складове', 'Здравни структури', 'Хотели и ресторанти', 'Търговски обекти, пазари и молове']}
         />
         <WhyUs />
         <Process />
         <IpmApproach />
+        <ClientPortal />
         <Contact />
       </main>
       <Footer />

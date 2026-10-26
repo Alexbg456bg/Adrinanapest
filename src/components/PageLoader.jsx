@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import Logo from './Logo.jsx'
+import { scrollToHash } from '../utils/scroll.js'
 import './PageLoader.css'
 
 // Кратка встъпителна анимация на логото при първо зареждане.
@@ -19,10 +20,7 @@ export default function PageLoader() {
       document.body.classList.remove('is-loading')
       // Докато body имаше overflow:hidden, браузърът не успя да скролне до
       // евентуален #hash от адреса при първото зареждане — довършваме го ръчно.
-      if (window.location.hash) {
-        const target = document.querySelector(window.location.hash)
-        if (target) target.scrollIntoView({ behavior: 'instant' })
-      }
+      if (window.location.hash) scrollToHash(window.location.hash, { push: false })
     }, 950)
     return () => {
       clearTimeout(fadeTimer)
