@@ -1,54 +1,126 @@
 <?php
 /**
- * Обработва заявките от контактната форма на сайта на "Адрина ООД".
- * Статичен хостинг (SuperHosting) без база данни — само изпраща имейл чрез mail().
- * Файлът се качва на хостинга в същата папка като build-натия сайт (dist/).
+ * Приема запитванията от контактната форма на сайта на "АДРИНА ООД" и ги
+ * праща по имейл до фирмената поща. Без база данни — само mail().
+ * Използва се при cPanel хостинг (билд с `npm run build:cpanel`).
  */
 
 declare(strict_types=1);
 
+date_default_timezone_set('Europe/Sofia');
+
 header('Content-Type: application/json; charset=utf-8');
+header('X-Content-Type-Options: nosniff');
+header('Cache-Control: no-store');
 
-// Получателят на заявките.
-const TO_EMAIL = 'adrinapest@gmail.com';
-const MAX_FIELD_LENGTH = 800;
+// Получател и подател. Подателят е реален адрес на същия домейн — така SPF/DKIM
+// на хостинга важат и писмата не отиват в спам.
+const TO_EMAIL = 'office@adrinapest.com';
+const FROM_EMAIL = 'office@adrinapest.com';
+const FROM_NAME = 'Сайт АДРИНА';
 
-function fail(int $code, string $error): void
+const MAX_BODY_BYTES = 20000;
+const MAX_MESSAGE_LENGTH = 3000;
+const MAX_PER_HOUR = 5;
+
+function respond(int $code, array $payload): void
 {
     http_response_code($code);
-    echo json_encode(['success' => false, 'error' => $error], JSON_UNESCAPED_UNICODE);
+    echo json_encode($payload, JSON_UNESCAPED_UNICODE);
     exit;
 }
 
-if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+function fail(int $code, string $error): void
+{
+    respond($code, ['success' => false, 'error' => $error]);
+}
+
+function cut(string $value, int $max): string
+{
+    return function_exists('mb_substr') ? mb_substr($value, 0, $max, 'UTF-8') : substr($value, 0, $max);
+}
+
+// Едноредово поле (влиза в имейл хедъри и тема): маха нови редове и управляващи знаци.
+function cleanLine($value, int $max): string
+{
+    $value = is_string($value) ? $value : '';
+    $value = preg_replace('/[\x00-\x1F\x7F]+/u', ' ', $value) ?? '';
+    return cut(trim($value), $max);
+}
+
+// Свободен текст (съобщение): пази новите редове, маха останалите управляващи знаци.
+function cleanText($value, int $max): string
+{
+    $value = is_string($value) ? $value : '';
+    $value = str_replace(["\r\n", "\r"], "\n", $value);
+    $value = preg_replace('/[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]+/u', '', $value) ?? '';
+    return cut(trim($value), $max);
+}
+
+function bareHost(string $host): string
+{
+    $host = strtolower(trim(explode(':', $host)[0]));
+    return preg_replace('/^www\./', '', $host) ?? $host;
+}
+
+// Не повече от MAX_PER_HOUR успешни запитвания на час от един IP адрес.
+function tooManyRequests(string $ip): bool
+{
+    $file = sys_get_temp_dir() . '/adrina_contact_' . hash('sha256', $ip) . '.json';
+    $now = time();
+    $hits = [];
+    if (is_file($file)) {
+        $decoded = json_decode((string) @file_get_contents($file), true);
+        if (is_array($decoded)) {
+            foreach ($decoded as $t) {
+                if (is_int($t) && $t > $now - 3600) {
+                    $hits[] = $t;
+                }
+            }
+        }
+    }
+    if (count($hits) >= MAX_PER_HOUR) {
+        return true;
+    }
+    $hits[] = $now;
+    @file_put_contents($file, json_encode($hits), LOCK_EX);
+    return false;
+}
+
+if (($_SERVER['REQUEST_METHOD'] ?? '') !== 'POST') {
     fail(405, 'method_not_allowed');
 }
 
-$raw = file_get_contents('php://input');
-$data = json_decode($raw ?: '', true);
+// Заявката трябва да идва от самия сайт.
+$origin = $_SERVER['HTTP_ORIGIN'] ?? '';
+if ($origin !== '') {
+    $originHost = (string) (parse_url($origin, PHP_URL_HOST) ?? '');
+    if (bareHost($originHost) !== bareHost($_SERVER['HTTP_HOST'] ?? '')) {
+        fail(403, 'forbidden_origin');
+    }
+}
+
+$raw = (string) file_get_contents('php://input', false, null, 0, MAX_BODY_BYTES + 1);
+if (strlen($raw) > MAX_BODY_BYTES) {
+    fail(413, 'payload_too_large');
+}
+
+$data = json_decode($raw, true);
 if (!is_array($data)) {
     fail(400, 'invalid_payload');
 }
 
-// Honeypot — ако е попълнено скритото поле, значи е бот. Връщаме "успех", без да пращаме имейл.
-if (!empty($data['company'])) {
-    echo json_encode(['success' => true], JSON_UNESCAPED_UNICODE);
-    exit;
+// Honeypot — скритото поле се попълва само от ботове; на тях връщаме "успех" и не пращаме нищо.
+if (!empty($data['_gotcha']) || !empty($data['company'])) {
+    respond(200, ['success' => true]);
 }
 
-// Маха нови редове (за да не може някой да инжектира допълнителни mail хедъри) и подрязва дължината.
-function cleanField($value, int $max = MAX_FIELD_LENGTH): string
-{
-    $value = is_string($value) ? $value : '';
-    $value = trim(preg_replace('/[\r\n]+/', ' ', $value));
-    return mb_substr($value, 0, $max);
-}
-
-$name = cleanField($data['name'] ?? '', 150);
-$phone = cleanField($data['phone'] ?? '', 60);
-$email = cleanField($data['email'] ?? '', 150);
-$service = cleanField($data['service'] ?? '', 100);
-$message = cleanField($data['message'] ?? '', MAX_FIELD_LENGTH);
+$name = cleanLine($data['name'] ?? '', 150);
+$organization = cleanLine($data['organization'] ?? '', 150);
+$phone = cleanLine($data['phone'] ?? '', 60);
+$email = cleanLine($data['email'] ?? '', 150);
+$service = cleanLine($data['service'] ?? '', 100);
+$message = cleanText($data['message'] ?? '', MAX_MESSAGE_LENGTH);
 
 if ($name === '' || $phone === '' || $message === '') {
     fail(422, 'missing_required_fields');
@@ -58,34 +130,42 @@ if ($email !== '' && !filter_var($email, FILTER_VALIDATE_EMAIL)) {
     fail(422, 'invalid_email');
 }
 
-$host = preg_replace('/[^a-zA-Z0-9.-]/', '', $_SERVER['HTTP_HOST'] ?? 'adrinapest.com');
-$fromEmail = 'noreply@' . $host;
+$ip = (string) ($_SERVER['REMOTE_ADDR'] ?? 'unknown');
+if (tooManyRequests($ip)) {
+    fail(429, 'too_many_requests');
+}
 
-$subject = '=?UTF-8?B?' . base64_encode('Ново запитване от сайта — ' . ($service ?: 'ДДД услуга')) . '?=';
+$subject = '=?UTF-8?B?' . base64_encode('Ново запитване от сайта — ' . ($service !== '' ? $service : 'ДДД услуга')) . '?=';
 
-$bodyLines = [
+$body = implode("\n", [
+    'Ново запитване от сайта adrinapest.com',
+    '',
     'Име: ' . $name,
+    'Организация: ' . ($organization !== '' ? $organization : '—'),
     'Телефон: ' . $phone,
     'Имейл: ' . ($email !== '' ? $email : '—'),
     'Услуга: ' . ($service !== '' ? $service : '—'),
+    'Получено: ' . date('d.m.Y H:i'),
     '',
     'Съобщение:',
     $message,
-];
-$body = implode("\n", $bodyLines);
+]);
 
 $headers = [
-    'From: Сайт Адрина ООД <' . $fromEmail . '>',
+    'From: =?UTF-8?B?' . base64_encode(FROM_NAME) . '?= <' . FROM_EMAIL . '>',
+    'MIME-Version: 1.0',
     'Content-Type: text/plain; charset=UTF-8',
+    'Content-Transfer-Encoding: 8bit',
 ];
 if ($email !== '') {
     $headers[] = 'Reply-To: ' . $email;
 }
 
-$sent = mail(TO_EMAIL, $subject, $body, implode("\r\n", $headers));
+$sent = mail(TO_EMAIL, $subject, $body, implode("\r\n", $headers), '-f' . FROM_EMAIL);
 
 if (!$sent) {
+    error_log('contact.php: mail() не успя да изпрати запитване.');
     fail(500, 'mail_failed');
 }
 
-echo json_encode(['success' => true], JSON_UNESCAPED_UNICODE);
+respond(200, ['success' => true]);

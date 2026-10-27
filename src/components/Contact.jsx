@@ -19,11 +19,13 @@ const SERVICES = ['Дезинсекция', 'Дератизация', 'Дези�
 
 const EMPTY_FORM = { name: '', organization: '', phone: '', email: '', service: SERVICES[0], message: '', _gotcha: '' }
 
-// Формата изпраща директно през Formspree (без нужда от бекенд/PHP хостинг) —
-// работи еднакво в локална разработка и на живо. Имейлът, на който пристигат
-// заявките, се управлява от настройките на формуляра в dashboard-а на Formspree
-// (formspree.io/forms), не от кода — смяната на получателя не изисква редеплой.
+// Билдът за cPanel (`npm run build:cpanel`, mode "cpanel") праща запитванията
+// към собствения /contact.php, който ги изпраща по имейл до фирмената поща.
+// Всички останали случаи (локална разработка, GitHub Pages) нямат PHP и
+// използват Formspree — получателят там се задава в dashboard-а на Formspree
+// (formspree.io/forms), не от кода.
 const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xljeyreq'
+const FORM_ENDPOINT = import.meta.env.MODE === 'cpanel' ? '/contact.php' : FORMSPREE_ENDPOINT
 
 export default function Contact() {
   const [form, setForm] = useState(EMPTY_FORM)
@@ -49,12 +51,15 @@ export default function Contact() {
     if (form._gotcha) return // honeypot — бот попълнил скрито поле
     setStatus('sending')
     try {
-      const res = await fetch(FORMSPREE_ENDPOINT, {
+      const res = await fetch(FORM_ENDPOINT, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify({ ...form, _subject: `Ново запитване — ${form.service}` }),
       })
-      if (res.ok) {
+      // Успех само ако отговорът е JSON с success/ok — иначе хостингът може да
+      // върне 200 с HTML грешка (напр. PHP не се изпълнява) и да излъжем клиента.
+      const result = await res.json().catch(() => null)
+      if (res.ok && result && (result.success === true || result.ok === true)) {
         setStatus('sent')
       } else {
         setStatus('error')
