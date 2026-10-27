@@ -19,13 +19,12 @@ const SERVICES = ['Дезинсекция', 'Дератизация', 'Дези�
 
 const EMPTY_FORM = { name: '', organization: '', phone: '', email: '', service: SERVICES[0], message: '', _gotcha: '' }
 
-// Билдът за cPanel (`npm run build:cpanel`, mode "cpanel") праща запитванията
-// към собствения /contact.php, който ги изпраща по имейл до фирмената поща.
-// Всички останали случаи (локална разработка, GitHub Pages) нямат PHP и
-// използват Formspree — получателят там се задава в dashboard-а на Formspree
-// (formspree.io/forms), не от кода.
+// В продукция (cPanel) запитванията отиват към собствения /contact.php, който ги
+// изпраща по имейл до фирмената поща. Локалната разработка (`npm run dev`) няма
+// PHP и затова ползва Formspree — получателят там се задава в dashboard-а на
+// Formspree (formspree.io/forms), не от кода.
 const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xljeyreq'
-const FORM_ENDPOINT = import.meta.env.MODE === 'cpanel' ? '/contact.php' : FORMSPREE_ENDPOINT
+const FORM_ENDPOINT = import.meta.env.PROD ? '/contact.php' : FORMSPREE_ENDPOINT
 
 export default function Contact() {
   const [form, setForm] = useState(EMPTY_FORM)

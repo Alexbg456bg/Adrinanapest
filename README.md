@@ -22,14 +22,11 @@ npm run dev
 ## Build за продукция
 
 ```bash
-npm run build          # за GitHub Pages (base /Adrinanapest/)
-npm run build:cpanel   # за cPanel хостинг (в корена на домейна, base /)
+npm run build
 ```
 
-Готовите файлове излизат в `dist/`. За cPanel съдържанието на `dist/` (вкл.
-`.htaccess` и `404.html`) се качва в root папката на домейна (`public_html/`).
-Файлът `public/contact.php` се копира в `dist/` при build, но докато формата
-пише през Formspree, не е нужен на хостинга.
+Готовите файлове излизат в `dist/`. Съдържанието на `dist/` (вкл. `.htaccess`, `404.html` и
+`contact.php`) се качва в root папката на домейна (`public_html/`) на cPanel хостинга.
 
 ## Структура
 
@@ -71,13 +68,10 @@ public/
 
 ## Контактната форма
 
-Има два начина на изпращане, според вида на build-а (виж `src/components/Contact.jsx`):
-
-- **cPanel (`npm run build:cpanel`)** — праща към `/contact.php` (`public/contact.php`),
-  който изпраща имейл с PHP `mail()` до `office@adrinapest.com` (подател — същият адрес,
-  за да важат SPF/DKIM на хостинга). Без база данни.
-- **GitHub Pages / локална разработка** — няма PHP, затова се ползва Formspree
-  (получателят се задава в dashboard-а на Formspree).
+В продукция (`npm run build`) формата праща към `/contact.php` (`public/contact.php`), който
+изпраща имейл с PHP `mail()` до `office@adrinapest.com` (подател — същият адрес, за да важат
+SPF/DKIM на хостинга). Без база данни. При локална разработка (`npm run dev`) няма PHP и се
+ползва Formspree (получателят се задава в dashboard-а на Formspree). Виж `src/components/Contact.jsx`.
 
 `contact.php` проверява: само POST, произход на заявката (трябва да е самият сайт),
 размер на тялото, задължителни полета, валиден имейл, honeypot (`_gotcha`), ограничение
@@ -93,7 +87,7 @@ public/
 ## Хостинг
 
 Сайтът е статичен — на хостинга (cPanel на домейна adrinapest.com) се качват само
-файловете от `npm run build:cpanel` (файлов мениджър или FTP). Node.js не е нужен
+файловете от `npm run build` (файлов мениджър или FTP). Node.js не е нужен
 на хостинга, а само локално, за да се build-не сайтът.
 
 Стъпки за публикуване: резервно копие на стария сайт → изтриване на старото
